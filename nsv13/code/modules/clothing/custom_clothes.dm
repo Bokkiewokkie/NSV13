@@ -833,3 +833,12 @@
 	icon = 'nsv13/icons/mob/accessories.dmi'
 	icon_state = "maidapronsynd"
 	item_state = "maidapronsynd"
+
+
+/obj/item/clothing/under/ship/syndicate_officer
+	name = "Syndicate officer jumpsuit"
+	desc = "A stylish jumpsuit worn by commanding officers on Syndicate vessels and bases."
+	icon_state = "syndicate_officer"
+	item_color = "syndicate_officer"
+	item_state = "bl_suit"
+	can_adjust = TRUE
