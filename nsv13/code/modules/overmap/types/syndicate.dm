@@ -66,6 +66,22 @@
 							"aft_starboard" = list("name" = "Aft Starboard", "max_armour" = 800, "current_armour" = 800))
 	armor = list("overmap_light" = 70, "overmap_heavy" = 30)
 
+/obj/structure/overmap/syndicate/pvp/submarine
+	name = "SSV Krypton"
+	icon = 'nsv13/icons/overmap/syndicate/submarine.dmi'
+	icon_state = "submarine"
+	mass = MASS_MEDIUM
+	sprite_size = 48
+	damage_states = TRUE
+	pixel_z = -32
+	pixel_w = -32
+	max_integrity = 700 //Max health
+	integrity_failure = 700
+	collision_positions = list(new /datum/vector2d(-15,59), new /datum/vector2d(-19,22), new /datum/vector2d(-15,-39), new /datum/vector2d(-7,-62), new /datum/vector2d(6,-63), new /datum/vector2d(17,-35), new /datum/vector2d(22,22), new /datum/vector2d(9,49), new /datum/vector2d(-1,58))
+	role = PVP_SHIP
+	use_armor_quadrants = FALSE //No magic repair machine for you
+	cloak_factor = 100 //Magic cloak number
+
 //AI Versions
 
 /obj/structure/overmap/syndicate/ai/Initialize()
