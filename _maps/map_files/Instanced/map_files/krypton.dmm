@@ -1,59 +1,149 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"c" = (
-/obj/machinery/computer/ship/dradis/console{
+"a" = (
+/turf/open/floor/plasteel/stairs/right{
 	dir = 8
 	},
+/area/hammurabi/bridge)
+"b" = (
 /turf/open/floor/mineral/plastitanium/red,
-/area/space)
-"f" = (
-/turf/open/floor/plasteel/stairs,
-/area/space)
-"j" = (
-/turf/open/floor/carpet/red,
-/area/space)
-"r" = (
+/area/hammurabi/bridge)
+"d" = (
+/turf/closed/wall/r_wall,
+/area/hammurabi/maintenance/exterior)
+"e" = (
 /turf/open/floor/plasteel/stairs/left{
 	dir = 8
 	},
-/area/space)
-"v" = (
+/area/hammurabi/bridge)
+"f" = (
 /obj/structure/railing{
 	dir = 6
 	},
 /turf/open/floor/mineral/plastitanium,
-/area/space)
-"y" = (
+/area/hammurabi/bridge)
+"g" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/hammurabi/bridge)
+"h" = (
+/obj/structure/chair/comfy/shuttle{
+	color = "#696969";
+	dir = 4;
+	icon_state = "shuttle_chair";
+	name = "bridge chair"
+	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/space)
+/area/hammurabi/bridge)
+"k" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/red,
+/area/hammurabi/bridge)
+"l" = (
+/obj/structure/railing/corner,
+/turf/open/floor/mineral/plastitanium,
+/area/hammurabi/bridge)
+"m" = (
+/turf/closed/wall/r_wall,
+/area/hammurabi/maintenance)
+"n" = (
+/obj/machinery/computer/ship/dradis/console{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
+"o" = (
+/obj/machinery/door/airlock/ship/security,
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
+"r" = (
+/obj/machinery/computer/ship/tactical/console{
+	dir = 10
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
+"s" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
+"t" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/hammurabi/bridge)
+"v" = (
+/obj/machinery/computer/ship/navigation/console{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
+"x" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/hammurabi/bridge)
+"y" = (
+/turf/open/floor/plasteel/stairs/medium{
+	dir = 8
+	},
+/area/hammurabi/bridge)
+"A" = (
+/obj/machinery/door/airlock/ship/maintenance,
+/turf/open/floor/plating,
+/area/hammurabi/maintenance)
+"B" = (
+/turf/closed/wall/steel,
+/area/hammurabi/maintenance)
 "D" = (
+/obj/machinery/computer/ship/dradis/console{
+	dir = 10
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
+"H" = (
+/turf/closed/wall/r_wall,
+/area/hammurabi/bridge)
+"I" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/carpet/red,
+/area/hammurabi/bridge)
+"J" = (
+/turf/open/floor/plating,
+/area/hammurabi/maintenance)
+"K" = (
+/turf/closed/wall/steel,
+/area/hammurabi/maintenance/exterior)
+"M" = (
+/turf/open/floor/carpet/red,
+/area/hammurabi/bridge)
+"O" = (
 /obj/structure/railing{
 	dir = 5
 	},
 /turf/open/floor/mineral/plastitanium,
-/area/space)
-"L" = (
-/turf/open/floor/plasteel/stairs/right{
-	dir = 8
-	},
-/area/space)
+/area/hammurabi/bridge)
 "P" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium,
-/area/space)
-"U" = (
+/area/hammurabi/bridge)
+"S" = (
 /turf/open/floor/mineral/plastitanium,
-/area/space)
-"V" = (
-/turf/open/floor/monotile/dark,
-/area/space)
+/area/hammurabi/bridge)
 "W" = (
 /turf/open/space/basic,
 /area/space)
-"Y" = (
-/turf/open/floor/carpet/royalblack,
-/area/space)
+"Z" = (
+/obj/machinery/door/airlock/ship/security{
+	name = "Captain's Quarters";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/hammurabi/bridge)
 
 (1,1,1) = {"
 W
@@ -31018,8 +31108,8 @@ W
 W
 W
 W
-V
-U
+W
+W
 W
 W
 W
@@ -31273,10 +31363,10 @@ W
 W
 W
 W
-j
-Y
 W
-y
+W
+W
+W
 W
 W
 W
@@ -31530,7 +31620,7 @@ W
 W
 W
 W
-f
+W
 W
 W
 W
@@ -31785,12 +31875,12 @@ W
 W
 W
 W
-U
-U
-U
-U
-U
-U
+W
+W
+W
+W
+W
+W
 W
 W
 W
@@ -32041,14 +32131,14 @@ W
 W
 W
 W
-U
-U
-U
-U
-U
-U
-U
-U
+W
+W
+W
+W
+W
+W
+W
+W
 W
 W
 W
@@ -32298,14 +32388,14 @@ W
 W
 W
 W
-U
-P
-v
-L
-r
-D
-P
-U
+W
+W
+W
+W
+W
+W
+W
+W
 W
 W
 W
@@ -32555,14 +32645,14 @@ W
 W
 W
 W
-U
-y
-y
-y
-y
-y
-y
-U
+W
+W
+W
+W
+W
+W
+W
+W
 W
 W
 W
@@ -32813,12 +32903,12 @@ W
 W
 W
 W
-y
-y
-y
-y
-y
-y
+W
+W
+W
+W
+W
+W
 W
 W
 W
@@ -33071,10 +33161,10 @@ W
 W
 W
 W
-c
-y
-y
-y
+W
+W
+W
+W
 W
 W
 W
@@ -39745,25 +39835,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+H
+H
+H
+H
+S
+S
+S
+b
+b
+b
+S
+S
+S
+H
+H
+H
+H
+H
 W
 W
 W
@@ -40002,25 +40092,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+M
+H
+S
+S
+b
+b
+b
+b
+b
+S
+S
+H
+M
+k
+M
+H
 W
 W
 W
@@ -40259,25 +40349,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+M
+Z
+b
+b
+b
+b
+b
+b
+b
+b
+b
+o
+M
+k
+I
+H
 W
 W
 W
@@ -40516,25 +40606,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+M
+H
+S
+S
+S
+b
+b
+b
+S
+S
+S
+H
+M
+k
+M
+H
 W
 W
 W
@@ -40773,25 +40863,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+k
+k
+H
+l
+P
+f
+a
+y
+e
+O
+P
+t
+H
+M
+M
+M
+H
 W
 W
 W
@@ -41030,25 +41120,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+x
+H
+f
+b
+b
+b
+b
+b
+b
+b
+O
+H
+M
+M
+M
+H
 W
 W
 W
@@ -41287,25 +41377,25 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+H
+M
+H
+H
+b
+b
+b
+b
+b
+b
+b
+b
+b
+H
+H
+H
+H
+H
 W
 W
 W
@@ -41545,23 +41635,23 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+H
+b
+b
+S
+S
+b
+S
+S
+b
+b
+H
+J
+J
+B
 W
 W
 W
@@ -41802,23 +41892,23 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+H
+b
+b
+S
+m
+A
+m
+S
+b
+b
+A
+J
+J
+B
 W
 W
 W
@@ -42059,23 +42149,23 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+M
+M
+H
+b
+h
+s
+m
+J
+m
+s
+h
+b
+H
+J
+J
+B
 W
 W
 W
@@ -42316,23 +42406,23 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+H
+H
+H
+r
+n
+H
+m
+J
+m
+H
+D
+v
+H
+J
+J
+B
 W
 W
 W
@@ -42573,23 +42663,23 @@ W
 W
 W
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+H
+H
+H
+H
+g
+g
+H
+m
+J
+m
+H
+g
+g
+H
+B
+B
+B
 W
 W
 W
@@ -42830,23 +42920,23 @@ W
 W
 W
 W
+K
+W
+K
+K
 W
 W
 W
+m
+J
+m
 W
 W
 W
+K
+K
 W
-W
-W
-W
-W
-W
-W
-W
-W
-W
-W
+K
 W
 W
 W
@@ -43087,23 +43177,23 @@ W
 W
 W
 W
+K
+W
+K
 W
 W
 W
 W
+m
+J
+m
 W
 W
 W
 W
+K
 W
-W
-W
-W
-W
-W
-W
-W
-W
+K
 W
 W
 W
@@ -43346,19 +43436,19 @@ W
 W
 W
 W
+K
 W
 W
 W
 W
+m
+J
+m
 W
 W
 W
 W
-W
-W
-W
-W
-W
+K
 W
 W
 W
@@ -43608,9 +43698,9 @@ W
 W
 W
 W
-W
-W
-W
+m
+m
+m
 W
 W
 W
@@ -43866,7 +43956,7 @@ W
 W
 W
 W
-W
+d
 W
 W
 W
@@ -44123,7 +44213,7 @@ W
 W
 W
 W
-W
+d
 W
 W
 W
@@ -44380,7 +44470,7 @@ W
 W
 W
 W
-W
+d
 W
 W
 W
@@ -44637,7 +44727,7 @@ W
 W
 W
 W
-W
+d
 W
 W
 W
@@ -44894,7 +44984,7 @@ W
 W
 W
 W
-W
+d
 W
 W
 W
