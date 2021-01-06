@@ -24,6 +24,7 @@
 	default_hardpoints = list(/obj/item/vehicle_hardpoint/engine/pathetic, /obj/item/vehicle_hardpoint/wheels/heavy) //What does it start with, if anything.
 	var/ready = TRUE
 	var/list/loaded = list() //Loaded fighters
+	var/datum/component/tug_loadout/loadout //Tug gun slot
 
 /obj/vehicle/sealed/car/realistic/fighter_tug/emp_act(severity)
 	. = ..()
@@ -93,6 +94,7 @@
 /obj/vehicle/sealed/car/realistic/fighter_tug/Initialize()
 	. = ..()
 	set_light(5)
+	loadout = AddComponent(loadout_type)
 
 /obj/vehicle/sealed/car/realistic/fighter_tug/proc/hitch(obj/structure/overmap/fighter/target)
 	if(!target || LAZYFIND(loaded, target) || target.mag_lock)//No sucking
@@ -194,3 +196,100 @@
 	icon = 'nsv13/icons/obj/vehicles32.dmi'
 	icon_state = "key"
 	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/fighter_component/primary/illegal/on_install(obj/vehicle/sealed/car/realistic/fighter_tug)
+	. = ..()
+
+/obj/item/fighter_component/primary/illegal
+	name = "Tug 30mm Vulcan Cannon"
+	desc = "A heavily modified version of the regular fighter-mounted 30mm Vulcan Cannon, designed to be mounted on tugs."
+	icon_state = "lightcannon"
+	accepted_ammo = /obj/item/ammo_box/magazine/light_cannon
+	burst_size = 1
+	fire_delay = 0.2 SECONDS
+
+/obj/vehicle/sealed/car/realistic/fighter_tug/attackby(obj/item/W, mob/user, params)
+	for(var/slot in loadout.equippable_slots)
+		var/obj/item/fighter_component/FC = loadout.get_slot(slot)
+		if(FC?.load(src, W))
+			return FALSE
+	if(istype(W, /obj/item/fighter_component))
+		var/obj/item/fighter_component/FC = W
+		loadout.install_hardpoint(FC)
+		return FALSE
+	..()
+
+/datum/component/tug_loadout // Yes
+	can_transfer = FALSE
+	var/list/equippable_slots = "Primary"
+	var/list/hardpoint_slots = list()
+	var/obj/vehicle/sealed/car/realistic/fighter_tug/holder //To get overmap class vars.
+
+/datum/component/tug_loadout/Initialize(source)
+	. = ..()
+	if(!istype(parent, /obj/structure/overmap))
+		return COMPONENT_INCOMPATIBLE
+	START_PROCESSING(SSobj, src)
+	holder = parent
+	for(var/hardpoint in equippable_slots)
+		hardpoint_slots[hardpoint] = null
+
+/datum/component/tug_loadout/proc/get_slot(slot)
+	RETURN_TYPE(/obj/item/fighter_component)
+	return hardpoint_slots[slot]
+
+/datum/component/tug_loadout/proc/install_hardpoint(obj/item/fighter_component/replacement)
+	var/slot = replacement.slot
+	if(slot && !(slot in equippable_slots))
+		replacement.visible_message("<span class='warning'>[replacement] can't fit onto [parent]")
+		return FALSE
+	remove_hardpoint(slot, FALSE)
+	replacement.on_install(holder)
+	if(slot)
+		hardpoint_slots[slot] = replacement
+
+/datum/component/tug_loadout/proc/remove_hardpoint(slot, due_to_damage)
+	if(!slot)
+		return FALSE
+
+	var/obj/item/fighter_component/component = null
+	if(istype(slot, /obj/item/fighter_component))
+		component = slot
+		hardpoint_slots[component.slot] = null
+	else
+		component = get_slot(slot)
+		hardpoint_slots[slot] = null
+
+	if(component && istype(component))
+		component.remove_from(holder, due_to_damage)
+
+/datum/component/tug_loadout/proc/dump_contents(slot)
+	var/obj/item/fighter_component/component = null
+	if(istype(slot, /obj/item/fighter_component))
+		component = slot
+	else
+		component = get_slot(slot)
+	component.dump_contents()
+
+/datum/component/tug_loadout/process()
+	for(var/slot in equippable_slots)
+		var/obj/item/fighter_component/component = hardpoint_slots[slot]
+		component?.process()
+
+/obj/vehicle/sealed/car/realistic/fighter_tug/proc/hardpoint_fire(obj/vehicle/sealed/car/realistic/fighter_tug/target, fireMode)
+	if(istype(src, /obj/vehicle/sealed/car/realistic/fighter_tug))
+		var/obj/vehicle/sealed/car/realistic/fighter_tug/F = src
+		for(var/slot in F.loadout.equippable_slots)
+			var/obj/item/fighter_component/weapon = F.loadout.hardpoint_slots[slot]
+			//Look for any "primary" hardpoints, be those guns or utility slots
+			if(!weapon || weapon.fire_mode != fireMode)
+				continue
+			var/datum/ship_weapon/SW = weapon_types[weapon.fire_mode]
+			for(var/I = 0; I < SW.burst_size; I++)
+				weapon.fire(target)
+				sleep(1)
+			return TRUE
+	return FALSE
+
+/obj/vehicle/sealed/car/realistic/fighter_tug/proc/primary_fire(obj/vehicle/sealed/car/realistic/fighter_tug/target)
+	hardpoint_fire(target, FIRE_MODE_PDC)
