@@ -25,7 +25,7 @@
 
 //High damage torp. Use this when youve exhausted their flak.
 /obj/item/ship_weapon/ammunition/torpedo/hull_shredder
-	name = "NTP-4 'BNKR' 430mm Armour Pentetrating Torpedo"
+	name = "NTP-4 'BNKR' 430mm armour penetrating torpedo"
 	icon = 'nsv13/icons/obj/munition_types.dmi'
 	icon_state = "hull_shredder"
 	desc = "A heavy torpedo which is enriched with depleted uranium, allowing it to penetrate heavy armour plates."
@@ -225,3 +225,17 @@
 /obj/item/projectile/bullet/torpedo/probe
 	icon_state = "probe"
 	damage = 5
+
+//A Xenobio slime core powered torp, I'm sure this can't go wrong
+/obj/item/ship_weapon/ammunition/torpedo/slime
+	name = "NTX '' experimental torpedo"
+	desc = "A torpedo designed to be loaded with 'slime cores'"
+	icon_state = "slime"
+	projectile_type = /obj/item/projectile/bullet/torpedo/slime
+
+/obj/item/projectile/bullet/torpedo/slime
+	icon_state = "slime"
+	damage = 1
+
+
+
