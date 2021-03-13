@@ -8294,10 +8294,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/central)
-"een" = (
-/obj/item/cigbutt,
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck1/starboard/aft)
 "eeA" = (
 /obj/structure/table_frame,
 /obj/machinery/power/apc/auto_name/north{
@@ -12098,6 +12094,10 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/security/prison)
+"fOP" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plating,
+/area/maintenance/department/bridge)
 "fOU" = (
 /obj/machinery/rnd/production/techfab/department/security,
 /obj/effect/turf_decal/stripes/box,
@@ -13156,10 +13156,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/aft)
-"gpy" = (
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/wood,
-/area/maintenance/nsv/deck1/port/aft)
 "gpB" = (
 /obj/structure/chair{
 	dir = 4
@@ -15829,6 +15825,13 @@
 	icon_state = "platingdmg1"
 	},
 /area/maintenance/nsv/deck1/aft)
+"hBN" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small,
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck1/port/fore)
 "hBP" = (
 /turf/open/floor/carpet/blue,
 /area/nsv/hanger/notkmcstupidhanger/pilot)
@@ -17890,6 +17893,10 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/nsv/officerquarters)
+"izu" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "izB" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/monotile,
@@ -24838,6 +24845,11 @@
 "lSJ" = (
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/captain/private)
+"lSR" = (
+/obj/structure/closet/wardrobe/green,
+/obj/machinery/light/small,
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck1/port/fore)
 "lTd" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -32300,6 +32312,14 @@
 	},
 /turf/open/floor/plasteel/ridged/steel,
 /area/nsv/weapons/starboard)
+"ppF" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck1/port/fore)
 "ppI" = (
 /obj/structure/peacekeeper_barricade/metal{
 	dir = 4
@@ -33509,6 +33529,11 @@
 	},
 /turf/open/floor/plating,
 /area/nsv/hanger)
+"pXr" = (
+/obj/item/cigbutt,
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck1/starboard/aft)
 "pXN" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -33787,13 +33812,6 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/security/armory)
-"qfG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck1/port/fore)
 "qfO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -37820,6 +37838,16 @@
 	},
 /turf/open/floor/monotile,
 /area/hallway/nsv/deck1/frame1/central)
+"sjH" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plating,
+/area/maintenance/nsv/deck1/starboard)
 "skv" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -44165,9 +44193,6 @@
 	},
 /turf/open/floor/monotile,
 /area/hallway/nsv/deck1/frame1/central)
-"vig" = (
-/turf/open/floor/engine,
-/area/science/explab)
 "vir" = (
 /obj/structure/window/plasma/reinforced{
 	dir = 4
@@ -44956,6 +44981,10 @@
 	},
 /turf/open/floor/plasteel/ship/techfloor/alt,
 /area/nsv/hanger)
+"vAM" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/engine,
+/area/science/explab)
 "vAS" = (
 /obj/machinery/computer/med_data{
 	dir = 4
@@ -46640,10 +46669,6 @@
 /obj/effect/landmark/start/captain,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/captain)
-"wsg" = (
-/obj/structure/closet/wardrobe/green,
-/turf/open/floor/plating,
-/area/maintenance/nsv/deck1/port/fore)
 "wso" = (
 /obj/machinery/door/airlock/ship/command{
 	name = "Executive Officer's Office";
@@ -49948,6 +49973,11 @@
 	},
 /turf/open/floor/monotile,
 /area/security/brig)
+"xVY" = (
+/obj/item/twohanded/required/kirbyplants/random,
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/wood,
+/area/maintenance/nsv/deck1/port/aft)
 "xWS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -67908,7 +67938,7 @@ vlI
 hPK
 flh
 qsa
-een
+pXr
 liY
 mUx
 eYd
@@ -69159,7 +69189,7 @@ xgq
 pPJ
 vRl
 rUM
-gpy
+xVY
 bDV
 iWV
 cTq
@@ -73268,7 +73298,7 @@ eyq
 csK
 lMF
 csK
-csK
+izu
 csK
 pdN
 cDJ
@@ -82332,7 +82362,7 @@ oLe
 nmT
 dDO
 xff
-uGg
+sjH
 hiC
 gId
 aaa
@@ -84836,7 +84866,7 @@ fPg
 tkI
 ugv
 unX
-vig
+vAM
 vFd
 lmr
 kys
@@ -88957,7 +88987,7 @@ dwy
 dwy
 yjQ
 bJE
-wsg
+lSR
 fFa
 kqC
 fFa
@@ -91786,7 +91816,7 @@ yjQ
 bKN
 jgY
 pCU
-qfG
+ppF
 wVY
 pSv
 yjc
@@ -93842,7 +93872,7 @@ xKP
 idU
 uHw
 qBa
-kuJ
+hBN
 pSv
 wVv
 hpA
@@ -97717,7 +97747,7 @@ mSZ
 pqY
 xKq
 ybx
-eEY
+fOP
 sXx
 qND
 fsA
