@@ -384,7 +384,8 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	if(statpanel("Faction"))
 		stat(null, "Faction influence:")
 		for(var/datum/faction/F in SSstar_system.factions)
-			stat(null, "[F.name]: [F.tickets]")
+			if(F.listfaction)
+				stat(null, "[F.name]: [F.tickets]")
 
 /datum/team/nuclear/roundend_report()
 	if(istype(SSticker.mode, /datum/game_mode/pvp))

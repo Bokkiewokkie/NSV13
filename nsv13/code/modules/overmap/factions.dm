@@ -18,6 +18,7 @@
 	var/list/randomspawn_only_fleet_types = list()	//These fleets only get spawned randomly, not by say, missions.
 	var/next_fleet_spawn = 0 //Factions spawn fleets more frequently when they're doing well with tickets.
 	var/fleet_spawn_rate = 20 MINUTES //By default, 1 / 10 minutes.
+	var/listfaction = TRUE //If this faction should appear on the faction list or not
 
 /**
 Procs for handling factions winning / losing
@@ -165,3 +166,11 @@ Set up relationships.
 	preset_enemies = list(FACTION_ID_NT)
 	fleet_types = list(/datum/fleet/pirate/scout = 1, /datum/fleet/pirate/raiding = 1)
 	id = FACTION_ID_PIRATES
+
+/datum/faction/abomination
+	name = "error"
+	desc = "Unidentified lifeforms detected"
+	preset_enemies = list(FACTION_ID_NT, FACTION_ID_SOLGOV, FACTION_ID_SYNDICATE, FACTION_ID_UNATHI, FACTION_ID_PIRATES) //Hatred of all living things that aren't abominations
+	fleet_types = null
+	id = FACTION_ID_ABOMINATION
+	listfaction = FALSE

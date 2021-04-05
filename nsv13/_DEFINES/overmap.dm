@@ -77,3 +77,4 @@ GLOBAL_LIST_INIT(overmap_impact_sounds, list('nsv13/sound/effects/ship/freespace
 #define FACTION_ID_SOLGOV 3
 #define FACTION_ID_UNATHI 4
 #define FACTION_ID_PIRATES 5
+#define FACTION_ID_ABOMINATION 6
