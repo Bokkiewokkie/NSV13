@@ -135,16 +135,18 @@ Misc projectile types, effects, think of this as the special FX file.
 		return FALSE 	 //Nsv13 - faction checking for overmaps. We're gonna just cut off real early and save some math if the IFF doesn't check out.
 	if(istype(target, /obj/structure/overmap)) //Were we to explode on an actual overmap, this would oneshot the ship as it's a powerful explosion.
 		return BULLET_ACT_HIT
-	var/obj/item/projectile/P = target //This is hacky, refactor check_faction to unify both of these. I'm bodging it for now.
-	if(isprojectile(target) && P.faction != faction) //Because we could be in the same faction and collide with another bullet. Let's not blow ourselves up ok?
-		if(obj_integrity <= P.damage) //Tank the hit, take some damage
-			qdel(P)
-			explode()
-			return BULLET_ACT_HIT
+	if(isprojectile(target))
+		if(target.faction != faction)
+			if(obj_integrity <= P.damage) //Tank the hit, take some damage
+				qdel(P)
+				explode()
+				return BULLET_ACT_HIT
+			else
+				qdel(P)
+				take_damage(P.damage)
+				return FALSE //Didn't take the hit
 		else
-			qdel(P)
-			take_damage(P.damage)
-			return FALSE //Didn't take the hit
+			return FALSE
 	if(!isprojectile(target)) //This is lazy as shit but is necessary to prevent explosions triggering on the overmap when two bullets collide. Fix this shit please.
 		explosion(target, 2, 4, 4)
 	return BULLET_ACT_HIT
@@ -173,6 +175,8 @@ Misc projectile types, effects, think of this as the special FX file.
 				OM?.relay_to_nearby(chosen)
 			qdel(src)
 			return FALSE
+		else
+			return TRUE
 	var/obj/structure/overmap/OM = A
 	if(!istype(OM))
 		return TRUE
