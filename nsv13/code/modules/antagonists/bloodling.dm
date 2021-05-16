@@ -192,10 +192,9 @@ Method to update the bloodling's movespeed etc.
 To be called whenever biomass is gained or lost.
 */
 /datum/component/bloodling/proc/update_mob()
-	var/speed = round(biomass / 50) //You move more slowly when you have more biomass...
-	evolution_step = CLAMP(speed, 1, max_evolution)
-	speed /= 2 //Shifting the movement slightly up so it can outrun better.
-	speed = CLAMP(speed, 0.5, max_evolution)
+	var/bioreq = round((biomass**(1/2)/(GLOB.player_list.len))-20)
+	evolution_step = CLAMP(bioreq, 1, max_evolution)
+	var/speed = CLAMP(round(biomass/100),0.5,max_evolution) //Go slower the more biomass you have
 	ling.remove_movespeed_modifier(MOVESPEED_ID_BLOODLING_BIOMASS, TRUE)
 	//WORM STUCK, WORM STUCK PLEASE, I BEG OF YOU.
 	if(!istype(ling, /mob/living/simple_animal/hostile/eldritch/armsy/prime/bloodling_ascended))
@@ -466,7 +465,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 		to_chat(user, "<span class='warning'>You are unable to do that right now.</span>")
 		return FALSE
 	var/datum/component/bloodling/B = user.GetComponent(/datum/component/bloodling)
-	if(B && B.biomass >= biomass_cost)
+	if(B && B.biomass > biomass_cost)
 		B.remove_biomass(biomass_cost)
 		return TRUE
 	to_chat(user, "<span class='warning'>You don't have the requisite biomass to do that. </span>")
@@ -1140,9 +1139,9 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 
 /datum/action/bloodling/ascend
 	name = "Ascend"
-	desc = "We shed our mortal coil and ascend into a greater being. This will consume 500 biomass..."
+	desc = "We shed our mortal coil and ascend into a greater being. This will consume [biomass_cost] biomass..."
 	button_icon_state = "ascend"
-	biomass_cost = 500
+	biomass_cost = (((13/2)**2)*(GLOB.player_list.len))+20
 
 /obj/structure/fluff/bloodling_tendril
 	name = "bloody tendril"
