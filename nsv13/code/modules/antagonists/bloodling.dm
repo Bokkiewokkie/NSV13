@@ -438,7 +438,8 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 /datum/action/bloodling
 	name = "Nothing"
-	background_icon_state = "bg_changeling"
+	button_icon = 'nsv13/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_bloodling"
 	icon_icon = 'nsv13/icons/mob/actions/actions_bloodling.dmi'
 	var/biomass_cost = 0
 	var/active = FALSE
@@ -1139,9 +1140,9 @@ Depending on what creature the entity gives life to, this can be EXTREMELY stron
 
 /datum/action/bloodling/ascend
 	name = "Ascend"
+	biomass_cost = ((GLOB.player_list.len)*(6.5**2)+20)
 	desc = "We shed our mortal coil and ascend into a greater being. This will consume [biomass_cost] biomass..."
 	button_icon_state = "ascend"
-	biomass_cost = (((13/2)**2)*(GLOB.player_list.len))+20
 
 /obj/structure/fluff/bloodling_tendril
 	name = "bloody tendril"
