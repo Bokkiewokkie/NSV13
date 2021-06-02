@@ -23,6 +23,10 @@
 		#include "map_files\Vago\Vago1.dmm"
 		#include "map_files\Vago\Vago2.dmm"
 
+		//Galactica
+		#include "map_files\Galactica\Galactica1.dmm"
+		#include "map_files\Galactica\Galactica2.dmm"
+
 		//Eclipse
 		#include "map_files\Eclipse\Eclipse1.dmm"
 		#include "map_files\Eclipse\Eclipse2.dmm"

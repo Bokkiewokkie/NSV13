@@ -81,7 +81,7 @@
 
 /obj/structure/closet/crate/secure/weapon/trader_arms
 	name = "Railgun Construction Kit"
-	preset_contents = list(
+	var/list/preset_contents = list(
 		/obj/structure/ship_weapon/railgun_assembly,\
 		/obj/item/ship_weapon/parts/railgun_rail,\
 		/obj/item/ship_weapon/parts/firing_electronics,\

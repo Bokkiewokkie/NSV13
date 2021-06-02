@@ -658,8 +658,8 @@ Returns a faction datum by its name (case insensitive!)
 /datum/star_system/sol
 	name = "Sol"
 	is_capital = TRUE
-	x = 4
-	y = 10
+	x = 7
+	y = 11
 	fleet_type = /datum/fleet/nanotrasen/earth
 	alignment = "nanotrasen"
 	system_type = "planet_earth"
@@ -757,7 +757,7 @@ Returns a faction datum by its name (case insensitive!)
 	name = "Tortuga"
 	x = 110
 	y = 45
-	alignment = "syndicate"
+	alignment = "pirate"
 	system_type = "pirate" //Guranteed piratical action!
 	threat_level = THREAT_LEVEL_UNSAFE
 	adjacency_list = list("P9X-334", "Antares")

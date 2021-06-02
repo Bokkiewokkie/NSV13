@@ -122,8 +122,8 @@
 				label = " [system.trader.name]"
 			if(system.trader && system.sector == 3) //Use shortnames in brazil for readability
 				label = " [system.trader.shortname]"
-			if(system.mission_sector)
-				label += " OBJECTIVE"
+			if(system.mission_sector && !system.is_capital)
+				label += " OCCUPIED"
 			if(system.objective_sector)
 				label += " MISSION"
 			system_list["label"] = label
