@@ -26,19 +26,21 @@
 
 //Chat toggles
 #define CHAT_OOC			(1<<0)
-#define CHAT_DEAD			(1<<1)
-#define CHAT_GHOSTEARS		(1<<2)
-#define CHAT_GHOSTSIGHT		(1<<3)
-#define CHAT_PRAYER			(1<<4)
-#define CHAT_RADIO			(1<<5)
-#define CHAT_PULLR			(1<<6)
-#define CHAT_GHOSTWHISPER	(1<<7)
-#define CHAT_GHOSTPDA		(1<<8)
-#define CHAT_GHOSTRADIO 	(1<<9)
-#define CHAT_BANKCARD  (1<<10)
-#define CHAT_GHOSTLAWS	(1<<11)
+#define CHAT_LOOC           (1<<1) //nsv13
+#define CHAT_DEAD			(1<<2)
+#define CHAT_GHOSTEARS		(1<<3)
+#define CHAT_GHOSTSIGHT		(1<<4)
+#define CHAT_PRAYER			(1<<5)
+#define CHAT_RADIO			(1<<6)
+#define CHAT_PULLR			(1<<7)
+#define CHAT_GHOSTWHISPER	(1<<8)
+#define CHAT_GHOSTPDA		(1<<9)
+#define CHAT_GHOSTRADIO 	(1<<10)
+#define CHAT_BANKCARD       (1<<11)
+#define CHAT_GHOSTLAWS	    (1<<12)
 
-#define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_PULLR|CHAT_GHOSTWHISPER|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_BANKCARD|CHAT_GHOSTLAWS)
+//nsv13 for below: add chat_looc
+#define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_LOOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_PULLR|CHAT_GHOSTWHISPER|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_BANKCARD|CHAT_GHOSTLAWS)
 
 #define PARALLAX_INSANE -1 //for show offs
 #define PARALLAX_HIGH    0 //default.
@@ -51,6 +53,7 @@
 #define PIXEL_SCALING_1_2X 1.5
 #define PIXEL_SCALING_2X 2
 #define PIXEL_SCALING_3X 3
+#define PIXEL_SCALING_4X 4
 
 #define SCALING_METHOD_NORMAL "normal"
 #define SCALING_METHOD_DISTORT "distort"
@@ -79,6 +82,7 @@
 #define EXP_TYPE_SILICON		"Silicon"
 #define EXP_TYPE_SERVICE		"Service"
 #define EXP_TYPE_MUNITIONS		"Munitions" //NSV13 -  Munitions added
+#define EXP_TYPE_GIMMICK		"Gimmick"
 #define EXP_TYPE_ANTAG			"Antag"
 #define EXP_TYPE_SPECIAL		"Special"
 #define EXP_TYPE_GHOST			"Ghost"

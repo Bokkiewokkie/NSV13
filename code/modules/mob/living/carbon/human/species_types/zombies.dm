@@ -61,7 +61,7 @@
 		playsound(C, pick(spooks), 50, TRUE, 10)
 		
 //Congrats you somehow died so hard you stopped being a zombie
-/datum/species/zombie/infectious/spec_death(mob/living/carbon/C)
+/datum/species/zombie/infectious/spec_death(gibbed, mob/living/carbon/C)
 	. = ..()
 	var/obj/item/organ/zombie_infection/infection
 	infection = C.getorganslot(ORGAN_SLOT_ZOMBIE)
@@ -80,6 +80,13 @@
 		infection = new()
 		infection.Insert(C)
 
+/datum/species/zombie/infectious/fast
+	name = "Fast Infectious Zombie"
+	id = "memezombiesfast"
+	limbs_id = "fzombie"
+	armor = 0
+	speedmod = 0
+	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
 
 // Your skin falls off
 /datum/species/krokodil_addict

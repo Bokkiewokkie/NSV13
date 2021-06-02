@@ -10,6 +10,7 @@
 	canSmoothWith = list()
 	smooth = SMOOTH_FALSE
 	var/growth_time = 1200
+	pressure_resistance = 200
 
 
 /obj/structure/alien/resin/flower_bud_enemy/Initialize()
@@ -60,6 +61,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 0
+	pressure_resistance = 200
 	faction = list("hostile","vines","plants")
 	var/list/grasping = list()
 	var/list/tethers = list()
@@ -74,8 +76,7 @@
 		var/datum/beam/B = grasping[L]
 		if(B)
 			qdel(B)
-	for(var/datum/component/tether in tethers)
-		tether.RemoveComponent()
+	QDEL_LIST(tethers)
 	grasping = null
 	return ..()
 
@@ -99,10 +100,10 @@
 
 		if(length(grasping) < max_grasps)
 			grasping:
-				for(var/mob/living/L in view(grasp_range, src))
-					if(L == src || faction_check_mob(L) || (L in grasping) || L == target)
+				for(var/mob/living/L in oview(grasp_range, src))
+					if(faction_check_mob(L) || (L in grasping) || L == target)
 						continue
-					for(var/turf/T in getline(src,L))
+					for(var/turf/T as() in getline(src,L))
 						if (T.density)
 							continue grasping
 						for(var/obj/O in T)

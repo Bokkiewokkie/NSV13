@@ -12,11 +12,14 @@
 #define ROLE_CHANGELING			"Changeling"
 #define ROLE_WIZARD				"Wizard"
 #define ROLE_MALF				"Malf AI"
+#define ROLE_INCURSION			"Incursion Team"
 #define ROLE_REV				"Revolutionary"
 #define ROLE_REV_HEAD			"Head Revolutionary"
 #define ROLE_ALIEN				"Xenomorph"
 #define ROLE_PAI				"pAI"
 #define ROLE_CULTIST			"Cultist"
+#define ROLE_SERVANT_OF_RATVAR	"Servant of Ratvar"
+#define ROLE_HERETIC			"Heretic"
 #define ROLE_BLOB				"Blob"
 #define ROLE_NINJA				"Space Ninja"
 #define ROLE_MONKEY				"Monkey"
@@ -27,7 +30,7 @@
 #define ROLE_BRAINWASHED		"Brainwashed Victim"
 #define ROLE_OVERTHROW			"Syndicate Mutineer"
 #define ROLE_HIVE				"Hivemind Host"
-#define ROLE_OBSESSED				"Obsessed"
+#define ROLE_OBSESSED			"Obsessed"
 #define ROLE_SENTIENCE			"Sentience Potion Spawn"
 #define ROLE_MIND_TRANSFER		"Mind Transfer Potion"
 #define ROLE_POSIBRAIN			"Posibrain"
@@ -37,8 +40,10 @@
 #define ROLE_INTERNAL_AFFAIRS	"Internal Affairs Agent"
 #define ROLE_GANG				"Gangster"
 #define ROLE_HOLOPARASITE		"Holoparasite"
+#define ROLE_TERATOMA			"Teratoma"
 
 #define ROLE_SYNDI_CREW			"Syndicate crew" //Nsv13 - added pvp role
+#define ROLE_BLOODLING			"Bloodling" //Nsv13 - Bloodling
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
@@ -46,6 +51,7 @@
 GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = /datum/game_mode/traitor,
 	ROLE_BROTHER = /datum/game_mode/traitor/bros,
+	ROLE_INCURSION = /datum/game_mode/incursion,
 	ROLE_OPERATIVE = /datum/game_mode/nuclear,
 	ROLE_CHANGELING = /datum/game_mode/changeling,
 	ROLE_WIZARD = /datum/game_mode/wizard,
@@ -54,6 +60,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_ALIEN,
 	ROLE_PAI,
 	ROLE_CULTIST = /datum/game_mode/cult,
+	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockcult,
 	ROLE_BLOB,
 	ROLE_NINJA,
 	ROLE_OBSESSED,
@@ -67,9 +74,13 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SENTIENCE,
 	ROLE_GANG = /datum/game_mode/gang,
 	ROLE_HOLOPARASITE,
-	ROLE_SYNDI_CREW = /datum/game_mode/pvp
-)) //Nsv13 - added ROLE_SYNDI_CREW here
-
+	ROLE_HERETIC = /datum/game_mode/heretics,
+	ROLE_SYNDI_CREW = /datum/game_mode/pvp, //NSV13
+	ROLE_TERATOMA,
+	ROLE_SYNDI_CREW = /datum/game_mode/pvp, //NSV13
+	ROLE_BLOODLING = /datum/game_mode/bloodling //NSV13
+))
+//nsv13 - pvp + bloodling modes added here
 
 
 //Job defines for what happens when you fail to qualify for any job during job selection

@@ -8,6 +8,7 @@
 	meat = null
 	damage_overlay_type = "synth"
 	mutanttongue = /obj/item/organ/tongue/robot
+	species_language_holder = /datum/language_holder/synthetic
 	limbs_id = "synth"
 	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = "robotic"
@@ -20,6 +21,8 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
+		O.brute_reduction = 5
+		O.burn_reduction = 4
 
 /datum/species/android/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -27,3 +30,5 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ORGANIC,FALSE, TRUE)
+		O.brute_reduction = initial(O.brute_reduction)
+		O.burn_reduction = initial(O.burn_reduction)

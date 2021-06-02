@@ -53,16 +53,8 @@
 	req_access = list(ACCESS_ATMOSPHERICS)
 	max_integrity = 250
 	integrity_failure = 80
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30, "stamina" = 0)
 	resistance_flags = FIRE_PROOF
-
-	FASTDMM_PROP(\
-		set_instance_vars(\
-			pixel_x = (dir & 3)? INSTANCE_VAR_DEFAULT : (dir == 4 ? -24 : 24),\
-			pixel_y = (dir & 3)? (dir == 1 ? -24 : 24) : INSTANCE_VAR_DEFAULT\
-        ),\
-		dir_amount = 4\
-    )
 
 	var/cyclestate = AIRLOCK_CYCLESTATE_INOPEN
 	var/interior_pressure = ONE_ATMOSPHERE
@@ -297,6 +289,9 @@
 /obj/machinery/advanced_airlock_controller/proc/unbolt_door(obj/machinery/door/airlock/door)
 	if(!door.wires.is_cut(WIRE_BOLTS))
 		door.unbolt()
+
+/obj/machinery/advanced_airlock_controller/process()
+	process_atmos()
 
 /obj/machinery/advanced_airlock_controller/process_atmos()
 	if((stat & (NOPOWER|BROKEN)) || shorted)
@@ -597,11 +592,14 @@
 		return ..()
 	return UI_CLOSE
 
-/obj/machinery/advanced_airlock_controller/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+
+/obj/machinery/advanced_airlock_controller/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/advanced_airlock_controller/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "AdvancedAirlockController", name, 440, 650, master_ui, state)
+		ui = new(user, src, "AdvancedAirlockController")
 		ui.open()
 
 /obj/machinery/advanced_airlock_controller/ui_data(mob/user)
@@ -622,7 +620,8 @@
 		"vents" = list(),
 		"airlocks" = list(),
 		"skip_timer" = (world.time - skip_timer),
-		"skip_delay" = skip_delay
+		"skip_delay" = skip_delay,
+		"vis_target" = "\ref[vis_target]"
 	)
 
 	if((locked && !user.has_unlimited_silicon_privilege) || (user.has_unlimited_silicon_privilege && aidisabled))
@@ -766,7 +765,6 @@
 	skip_timer = world.time
 
 /obj/machinery/advanced_airlock_controller/AltClick(mob/user)
-	..()
 	if(!user.canUseTopic(src, !issilicon(user)) || !isturf(loc))
 		return
 	else

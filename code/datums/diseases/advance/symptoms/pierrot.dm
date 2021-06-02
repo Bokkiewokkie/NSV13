@@ -59,9 +59,9 @@
 				if(clownmask)
 					give_clown_mask(A)
 				if(prob(5))
-					playsound(M.loc, 'sound/items/bikehorn.ogg', 50, 1)
-					if(honkspread && prob(25))
-						A.spread(1)
+					playsound(M.loc, 'sound/items/bikehorn.ogg', 100, 1)
+					if(honkspread)
+						A.spread(5)
 
 /datum/symptom/pierrot/End(datum/disease/advance/A)
 	..()
@@ -82,5 +82,5 @@
 				qdel(M.wear_mask)
 		var/obj/item/clothing/C = new /obj/item/clothing/mask/gas/clown_hat(M)
 		ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
-		M.equip_to_slot_or_del(C, SLOT_WEAR_MASK)
+		M.equip_to_slot_or_del(C, ITEM_SLOT_MASK)
 		return

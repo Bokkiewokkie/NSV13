@@ -5,7 +5,6 @@
 		return
 	last_target = target
 	if(next_firetime > world.time)
-		to_chat(pilot, "<span class='warning'>WARNING: Weapons cooldown in effect to prevent overheat.</span>")
 		return
 	if(ai_controlled) //Let the AI switch weapons according to range
 		ai_fire(target)
@@ -79,10 +78,7 @@
 				return FALSE
 			var/obj/proj_type = weapon_type.default_projectile_type
 			for(var/i; i < weapon_type.burst_size; i++)
-				if(lateral)
-					fire_lateral_projectile(proj_type, target)
-				else
-					fire_projectile(proj_type, target)
+				fire_projectile(proj_type, target, lateral=weapon_type.lateral)
 				sleep(1)
 			return TRUE
 	else if(weapons[mode] && weapons[mode].len) //It's the main ship, see if any part of our battery can fire
@@ -97,7 +93,8 @@
 		if(world.time < next_firetime) //Silence, SPAM.
 			return FALSE
 		var/datum/ship_weapon/SW = weapon_types[fire_mode]
-		to_chat(gunner, SW.failure_alert)
+		if(SW.selectable) //So they only get notified when their firing action was not successful.
+			to_chat(gunner, SW.failure_alert)
 	return FALSE
 
 /obj/structure/overmap/proc/fire_ordnance(atom/target, mode=fire_mode)
@@ -164,7 +161,6 @@
 		proj.set_pixel_speed(4)
 
 /obj/structure/overmap/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)
-	SEND_SIGNAL(src, COMSIG_DAMAGE_TAKEN, damage_amount) //Trigger to update our list of armour plates without making the server cry.
 	if(is_player_ship()) //Code for handling "superstructure crit" only applies to the player ship, nothing else.
 		if(obj_integrity <= damage_amount || structure_crit) //Superstructure crit! They would explode otherwise, unable to withstand the hit.
 			obj_integrity = 10 //Automatically set them to 10 HP, so that the hit isn't totally ignored. Say if we have a nuke dealing 1800 DMG (the ship's full health) this stops them from not taking damage from it, as it's more DMG than we can handle.
@@ -224,7 +220,7 @@
 	. = ..()
 	set_light(4)
 	for(var/mob/M in orange(src, 3))
-		if(isliving(M))
+		if(isliving(M) && M.client?.prefs.toggles & SOUND_AMBIENCE) && M.can_hear_ambience())
 			to_chat(M, "<span class='userdanger'>You hear a loud creak coming from above you. Take cover!</span>")
 			SEND_SOUND(M, pick('nsv13/sound/ambience/ship_damage/creak5.ogg','nsv13/sound/ambience/ship_damage/creak6.ogg'))
 

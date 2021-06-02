@@ -21,7 +21,7 @@
 			var/obj/item/projectile/P = hitby
 			if(P.damage_type != STAMINA)// disablers dont do shit to shields
 				attackforce = (P.damage / 2)
-		if(isitem(hitby))
+		else if(isitem(hitby))
 			var/obj/item/I = hitby
 			attackforce = damage
 			if(!I.damtype == BRUTE)
@@ -87,7 +87,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'
 	slot_flags = ITEM_SLOT_BACK
-	block_level = 2
+	block_level = 1
 	force = 10
 	throwforce = 5
 	throw_speed = 2

@@ -21,7 +21,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/glock
 	name = "Glock-13"
-	desc = "A small 9mm handgun used by Nanotrasen security forces. It has a polymer handle and a full durasteel body construction, giving it a ncie weight."
+	desc = "A small 9mm handgun used by Nanotrasen security forces. It has a polymer handle and a full durasteel body construction, giving it a nice weight."
 	icon = 'nsv13/icons/obj/guns/projectile.dmi'
 	icon_state = "secglock"
 	item_state = "glock"
@@ -33,6 +33,23 @@
 	can_flashlight = TRUE
 	flight_x_offset = 15
 	flight_y_offset = 12
+	fire_rate = 2
+
+/obj/item/gun/ballistic/automatic/pistol/glock/makarov
+	name = "Makarov NT"
+	desc = "An older handgun used by NT security forces, produced by H&KC but slowly being phased out by the Glock-13. One of the designers of the weapon went on record saying: 'There are no brakes on this commie fucktrain.'"
+	icon_state = "makarov"
+
+/obj/item/gun/ballistic/automatic/pistol/m1911/m9le
+	name = "\improper M9LE"
+	desc = "A military surplus pistol no longer in service, but boasting a higher muzzle velocity than other handguns. It's a reliable damage dealer despite its age."
+	icon = 'nsv13/icons/obj/guns/projectile.dmi'
+	icon_state = "m9"
+	item_state = "glock"
+	fire_sound = 'nsv13/sound/weapons/glock.ogg'
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/m45
+	can_suppress = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/glock/command
 	name = "Command Glock-13"
@@ -44,7 +61,7 @@
 	desc = "A handgun that's never let its owner down before. It's got a pleasant wooden grip with plenty of detailing etched into it. A nice, all round weapon to defend yourself with."
 
 /datum/design/rubbershot
-	name = "9mm Glock Round"
+	name = "9mm rubber Glock round"
 	id = "glock_ammo"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 500)
@@ -52,7 +69,7 @@
 	category = list("initial", "Security")
 
 /datum/design/tazer
-	name = "Tazer Round"
+	name = "3mm electro-shock tazer round"
 	id = "tazer_ammo"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 800)
@@ -60,12 +77,12 @@
 	category = list("initial", "Security")
 
 /obj/item/ammo_box/magazine/pistolm9mm/glock/lethal
-	name = "9mm pistol magazine"
+	name = "9mm pistol magazine (lethal)"
 	icon = 'nsv13/icons/obj/ammo.dmi'
 	ammo_type = /obj/item/ammo_casing/c9mm
 
 /obj/item/ammo_box/magazine/pistolm9mm/glock
-	name = "9mm pistol magazine"
+	name = "9mm pistol magazine (non-lethal)"
 	icon = 'nsv13/icons/obj/ammo.dmi'
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
@@ -116,7 +133,7 @@
 	icon_state = "taserrack-[ammo_count()]"
 
 /obj/item/ammo_casing/tazer
-	name =  "3mm electro-shock round"
+	name =  "3mm electro-shock tazer round"
 	desc = "A tazer cartridge."
 	caliber = "3mm"
 	icon = 'nsv13/icons/obj/ammo.dmi'

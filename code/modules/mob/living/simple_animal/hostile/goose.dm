@@ -9,7 +9,7 @@
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	speak_chance = 0
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 2) //NSV13 made the goose drop meat
 	response_help = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm = "kicks"
@@ -91,7 +91,7 @@
 	if (stat == DEAD)
 		return
 	var/turf/T = get_turf(src)
-	var/obj/item/reagent_containers/food/consumed = locate() in contents //Barf out a single food item from our guts
+	var/obj/item/consumed = locate() in contents //Barf out a single food item from our guts
 	if (prob(50) && consumed)
 		barf_food(consumed)
 	else

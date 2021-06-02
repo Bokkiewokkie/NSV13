@@ -6,7 +6,10 @@ import { Window } from '../layouts';
 export const GaussDispenser = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window resizable>
+    <Window
+      resizable
+      width={560}
+      height={600}>
       <Window.Content scrollable>
         <Section>
           <Section title="Controls:">
@@ -21,7 +24,7 @@ export const GaussDispenser = (props, context) => {
               content="Retrieve ammunition"
               icon="download"
               selected={data.ready}
-              disabled={!!data.ready}
+              disabled={!data.ready}
               onClick={() => act('dispense')} />
           </Section>
           <Section title="Ammunition retrieval status:">

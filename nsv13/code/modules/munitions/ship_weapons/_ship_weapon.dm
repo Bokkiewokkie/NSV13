@@ -8,10 +8,6 @@
 #define STATE_FED 3
 #define STATE_CHAMBERED 4
 #define STATE_FIRING 5
-
-/obj/item/ship_weapon/ammunition
-	var/projectile_type = null //What does the projectile look like on the overmap?
-
 /**
  * Ship-to-ship weapons
  * To add a weapon type:
@@ -55,7 +51,7 @@
 	var/chamber_delay_rapid = 2
 	var/chamber_delay = 10
 
-	var/firing_sound = 'nsv13/sound/effects/ship/mac_fire.ogg'
+	var/firing_sound = 'nsv13/sound/effects/ship/tri_mount_fire.ogg'
 	var/fire_animation_length = 5
 	var/fire_mode
 
@@ -93,7 +89,8 @@
  */
 /obj/machinery/ship_weapon/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/PostInitialize), 5 SECONDS)
+	PostInitialize()
+	addtimer(CALLBACK(src, .proc/get_ship), 15 SECONDS) //This takes a minute to load...
 
 /**
 *
@@ -102,9 +99,8 @@
 */
 
 /obj/machinery/ship_weapon/proc/PostInitialize()
-	get_ship(error_log=FALSE)
 	if(maintainable)
-		maint_req = rand(15,25) //Setting initial number of cycles until maintenance is required
+		maint_req = rand(20,25) //Setting initial number of cycles until maintenance is required
 		create_reagents(50)
 	icon_state_list = icon_states(icon)
 
@@ -142,6 +138,11 @@
 /obj/machinery/ship_weapon/attackby(obj/item/I, mob/user)
 	if(!linked)
 		get_ship()
+	if(islist(ammo_type))
+		for(var/at in ammo_type)
+			if(istype(I, at))
+				load(I, user)
+				return TRUE
 
 	if(ammo_type && istype(I, ammo_type))
 		load(I, user)
@@ -152,7 +153,7 @@
 	else if(istype(I, /obj/item/reagent_containers))
 		oil(I, user)
 		return TRUE
-	..()
+	return ..()
 
 /**
  * Store ID in multitool buffer for linking to munitions consoles
@@ -180,6 +181,11 @@
  */
 /obj/machinery/ship_weapon/MouseDrop_T(obj/item/A, mob/user)
 	. = ..()
+	if(islist(ammo_type))
+		for(var/at in ammo_type)
+			if(istype(A, at))
+				load(A, user)
+				return TRUE
 	if(ammo_type && istype(A, ammo_type))
 		load(A, user)
 
@@ -190,46 +196,47 @@
  * Returns true if loaded successfully, false otherwise.
  */
 /obj/machinery/ship_weapon/proc/load(obj/A, mob/user)
-	if(ammo_type && istype(A, ammo_type))
-		if(ammo?.len < max_ammo) //Room for one more?
-			if(!loading) //Not already loading a round?
-				if(user)
-					to_chat(user, "<span class='notice'>You start to load [A] into [src]...</span>")
-				loading = TRUE
-
-				if(!user || do_after(user, load_delay, target = src))
-					if(!isturf(A.loc) && !ismob(A.loc)) //Fix double-loading torpedos
-						if(user)
-							loading = FALSE
-							to_chat(user, "<span class='warning'>The ammunition has to be next to the weapon!</span>")
-						return FALSE
-					loading = FALSE
-					A.forceMove(src)
-					ammo += A
-					if(load_sound)
-						playsound(src, load_sound, 100, 1)
-					state = STATE_LOADED
+	if(ammo?.len < max_ammo) //Room for one more?
+		if(!loading) //Not already loading a round?
+			if(user)
+				to_chat(user, "<span class='notice'>You start to load [A] into [src]...</span>")
+			loading = TRUE
+			if(!user || do_after(user, load_delay, target = src))
+				if(!isturf(A.loc) && !ismob(A.loc)) //Fix double-loading torpedos
 					if(user)
-						to_chat(user, "<span class='notice'>You load [A] into [src].</span>")
-
-					if(auto_load) //If we're automatic, get ready to fire
-						feed()
-						chamber()
-					loading = FALSE
-					return TRUE
-				//end if(!user || do_after(user, load_delay, target = src))
+						loading = FALSE
+						to_chat(user, "<span class='warning'>The ammunition has to be next to the weapon!</span>")
+					return FALSE
 				loading = FALSE
-			//end if(!loading)
-			else if(user)
-				to_chat(user, "<span class='notice'>You're already loading a round into [src]!.</span>")
-		//end if(ammo?.len < max_ammo)
+				A.forceMove(src)
+				ammo += A
+				if(load_sound)
+					playsound(src, load_sound, 100, 1)
+				state = STATE_LOADED
+				if(user)
+					to_chat(user, "<span class='notice'>You load [A] into [src].</span>")
+				if(auto_load) //If we're automatic, get ready to fire
+					feed()
+					chamber()
+				loading = FALSE
+				return TRUE
+			loading = FALSE
 		else if(user)
-			to_chat(user, "<span class='warning'>[src] is already fully loaded!</span>")
-	//end if(ammo_type && istype(I, ammo_type))
+			to_chat(user, "<span class='notice'>You're already loading a round into [src]!.</span>")
 	else if(user)
-		to_chat(user, "<span class='warning'>You can't load [A] into [src]!</span>")
+		to_chat(user, "<span class='warning'>[src] is already fully loaded!</span>")
 
 	return FALSE
+
+/**
+*Get the ammo / max ammo values for tactical consoles.
+
+*/
+/obj/machinery/ship_weapon/proc/get_max_ammo()
+	return max_ammo
+
+/obj/machinery/ship_weapon/proc/get_ammo()
+	return ammo.len
 
 /**
  * Transitions from STATE_NOTLOADED to STATE_LOADED.
@@ -356,9 +363,14 @@
 			LAZYREMOVE(weapon_type.weapons["loaded"] , src)
 
 /obj/machinery/ship_weapon/proc/lazyload()
-	for(var/I = 0; I < max_ammo; I++)
-		var/atom/BB = new ammo_type(src)
-		ammo += BB
+	if(magazine_type)
+		magazine = new magazine_type(src)
+		ammo = magazine.stored_ammo //Lets us handle magazines and single rounds the same way
+	else
+		var/ammoType = (islist(ammo_type)) ? ammo_type[1] : ammo_type
+		for(var/I = 0; I < max_ammo; I++)
+			var/atom/BB = new ammoType(src)
+			ammo += BB
 	safety = FALSE
 	chambered = ammo[1]
 	if(chamber_sound) //This got super annoying on gauss guns, so i've made it only work for the initial "ready to fire" warning.
@@ -468,8 +480,9 @@
 		playsound(src, firing_sound, 100, 1)
 	if(bang)
 		for(var/mob/living/M in get_hearers_in_view(10, get_turf(src))) //Burst unprotected eardrums
-			if(M.stat != DEAD && isliving(M)) //Don't make noise if they're dead
-				M.soundbang_act(1,200,10,15)
+			if(M.get_ear_protection() < 1) //checks for protection - why was this not here before???
+				if(M.stat != DEAD && isliving(M)) //Don't make noise if they're dead
+					M.soundbang_act(1,200,10,15)
 
 /**
  * Handles firing animations and sounds on the overmap.
@@ -486,7 +499,7 @@
  * Animates an overmap projectile matching whatever we're shooting.
  */
 /obj/machinery/ship_weapon/proc/animate_projectile(atom/target)
-	linked.fire_lateral_projectile(weapon_type.default_projectile_type, target)
+	return linked.fire_projectile(weapon_type.default_projectile_type, target, lateral=weapon_type.lateral)
 
 /**
  * Updates maintenance counter after firing if applicable.
@@ -515,9 +528,3 @@
 #undef MSTATE_UNSCREWED
 #undef MSTATE_UNBOLTED
 #undef MSTATE_PRIEDOUT
-
-#undef STATE_NOTLOADED
-#undef STATE_LOADED
-#undef STATE_FED
-#undef STATE_CHAMBERED
-#undef STATE_FIRING

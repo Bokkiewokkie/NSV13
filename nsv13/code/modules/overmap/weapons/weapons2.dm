@@ -13,11 +13,10 @@
 		if(gunner)
 			to_chat(gunner, "<span class='warning'>Weapon safety interlocks are active! Use the ship verbs tab to disable them!</span>")
 		return
+	if(next_firetime > world.time)
+		return
 	handle_cloak(CLOAK_TEMPORARY_LOSS)
 	last_target = target
-	if(next_firetime > world.time)
-		to_chat(pilot, "<span class='warning'>WARNING: Weapons cooldown in effect to prevent overheat.</span>")
-		return
 	if(ai_controlled) //Let the AI switch weapons according to range
 		ai_fire(target)
 		return	//end if(ai_controlled)
@@ -57,7 +56,9 @@
 		return FALSE
 	fire_delay = initial(fire_delay) + SW.fire_delay
 	fire_mode = what
-	relay(SW.overmap_select_sound)
+	if(world.time > switchsound_cooldown)
+		relay(SW.overmap_select_sound)
+		switchsound_cooldown = world.time + 5 SECONDS
 	if(gunner)
 		to_chat(gunner, SW.select_alert)
 	if(ai_controlled)
@@ -69,7 +70,7 @@
 		if(torpedoes <= 0)
 			return FALSE
 		torpedoes --
-		fire_projectile(torpedo_type, target, homing = TRUE, speed=3, explosive = TRUE)
+		fire_projectile(torpedo_type, target, homing = TRUE, speed=3, lateral = TRUE)
 		var/obj/structure/overmap/OM = target
 		if(istype(OM, /obj/structure/overmap) && OM.dradis)
 			OM.dradis?.relay_sound('nsv13/sound/effects/fighters/launchwarning.ogg')
@@ -82,7 +83,7 @@
 		if(missiles <= 0)
 			return FALSE
 		missiles --
-		fire_projectile(/obj/item/projectile/guided_munition/missile, target, homing = TRUE, speed=1, explosive = TRUE)
+		fire_projectile(/obj/item/projectile/guided_munition/missile, target, homing = TRUE, lateral = FALSE)
 		var/obj/structure/overmap/OM = target
 		if(istype(OM, /obj/structure/overmap) && OM.dradis)
 			OM.dradis?.relay_sound('nsv13/sound/effects/fighters/launchwarning.ogg')

@@ -3,14 +3,38 @@
 	icon = 'nsv13/icons/obj/munition_types.dmi'
 	icon_state = "standard"
 	desc = "A fairly standard torpedo which is designed to cause massive structural damage to a target. It is fitted with a basic homing mechanism to ensure it always hits the mark."
-	anchored = TRUE
 	density = TRUE
+	climbable = TRUE //No shenanigans
+	climb_time = 40
+	climb_stun = 5
+	w_class = WEIGHT_CLASS_GIGANTIC
+	move_resist = MOVE_FORCE_EXTREMELY_STRONG
+	interaction_flags_item = 0 // -INTERACT_ITEM_ATTACK_HAND_PICKUP
 	projectile_type = /obj/item/projectile/guided_munition/torpedo //What torpedo type we fire
 	pixel_x = -17
+	volatility = 3 //Very volatile.
+	explode_when_hit = TRUE //Yeah, this can't ever end well for you.
+	var/claimable_gulag_points = 75
 
-/obj/item/ship_weapon/ammunition/torpedo/CtrlClick(mob/user)
+/obj/item/ship_weapon/ammunition/torpedo/examine(mob/user)
 	. = ..()
+	if(claimable_gulag_points)
+		. += "<span class='notice'>It has [claimable_gulag_points] unclaimed gulag reward points!</span>"
+
+/obj/item/ship_weapon/ammunition/torpedo/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(istype(I, /obj/item/card/id/prisoner))
+		var/obj/item/card/id/prisoner/P = I
+		P.points += claimable_gulag_points
+		to_chat(user, "<span class='boldnotice'>You claim [claimable_gulag_points] from [src]... Your balance is now: [P.points]</span>")
+		//This one's been claimed!
+		claimable_gulag_points = 0
+
+/obj/item/card/id/prisoner
+
+/obj/item/ship_weapon/ammunition/torpedo/can_be_pulled(mob/user)
 	to_chat(user,"<span class='warning'>[src] is far too cumbersome to carry, and dragging it around might set it off! Load it onto a munitions trolley.</span>")
+	return FALSE
 
 /obj/item/ship_weapon/ammunition/torpedo/examine(mob/user)
 	. = ..()
@@ -18,16 +42,17 @@
 
 //High damage torp. Use this when youve exhausted their flak.
 /obj/item/ship_weapon/ammunition/torpedo/hull_shredder
-	name = "NTP-4 'BNKR' 430mm torpedo"
+	name = "NTP-4 'BNKR' 430mm Armour Pentetrating Torpedo"
 	icon = 'nsv13/icons/obj/munition_types.dmi'
 	icon_state = "hull_shredder"
-	desc = "A heavy torpedo which is packed with a high energy plasma charge, allowing it to impact a target with massive force."
+	desc = "A heavy torpedo which is enriched with depleted uranium, allowing it to penetrate heavy armour plates."
 	projectile_type = /obj/item/projectile/guided_munition/torpedo/shredder
 
 /obj/item/projectile/guided_munition/torpedo/shredder
 	icon_state = "torpedo_shredder"
 	name = "plasma charge"
 	damage = 175
+	armour_penetration = 20
 
 //A dud missile designed to exhaust flak
 /obj/item/ship_weapon/ammunition/torpedo/decoy
@@ -40,6 +65,8 @@
 /obj/item/projectile/guided_munition/torpedo/decoy
 	icon_state = "torpedo"
 	damage = 0
+	obj_integrity = 200
+	max_integrity = 200
 
 //The alpha torpedo
 /obj/item/ship_weapon/ammunition/torpedo/nuke
@@ -48,11 +75,12 @@
 	icon_state = "nuke"
 	desc = "The NTX-class IV nuclear torpedo carries a radiological payload which is capable of inflicting catastrophic damage against enemy ships, stations or dense population centers. These weapons are utterly without mercy and will annihilate indiscriminately, use with EXTREME caution."
 	projectile_type = /obj/item/projectile/guided_munition/torpedo/nuclear
+	volatility = 5
 
 /obj/item/projectile/guided_munition/torpedo/nuclear
 	icon_state = "torpedo_nuke"
 	name = "thermonuclear cruise missile"
-	damage = 500
+	damage = 600
 	impact_effect_type = /obj/effect/temp_visual/nuke_impact
 	shotdown_effect_type = /obj/effect/temp_visual/nuke_impact
 
@@ -140,11 +168,13 @@
 		return FALSE //You can't move a torp from the inside :b1:
 
 /obj/item/projectile/guided_munition/torpedo/post
+	name = "freight torpedo"
 	icon_state = "torpedo_post"
+	homing_turn_speed = 0
 	damage = 0
 
-/obj/item/projectile/guided_munition/torpedo/post/Initialize()
-	. = ..()
+/obj/item/projectile/guided_munition/torpedo/post/windup() // As we can not lock onto a target, this just causes the torp to do a 180.
+	return
 
 /obj/item/projectile/guided_munition/torpedo/post/proc/foo()
 	new /mob/living/carbon/human(src)
@@ -154,15 +184,14 @@
 			setup_collider()
 			fire(angle)
 
-/obj/item/projectile/guided_munition/torpedo/post/check_overmap_collisions()
-	collider2d.set_angle(Angle) //Turn the box collider
-	position._set(x * 32 + pixel_x, y * 32 + pixel_y)
-	collider2d._set(position.x, position.y)
-	for(var/obj/structure/overmap/OM in GLOB.overmap_objects)
-		if(OM.z == z && OM.collider2d)
-			if(src.collider2d.collides(OM.collider2d))
-				if(OM != overmap_firer)
-					deliver_freight(OM) //Bang.
+/obj/item/projectile/guided_munition/torpedo/post/check_faction(atom/movable/A)
+	var/obj/structure/overmap/OM = A
+	if(!istype(OM))
+		return TRUE
+	if(OM != overmap_firer)
+		deliver_freight(OM) //Bang.
+		qdel(src)
+		return TRUE
 
 /obj/structure/closet/supplypod/freight_pod
 	name = "Freight pod"
@@ -170,11 +199,14 @@
 
 /obj/item/projectile/guided_munition/torpedo/post/proc/deliver_freight(obj/structure/overmap/OM)
 	var/area/landingzone = null
+	for(var/atom/a in GetAllContents()) //Send the cargo signal to our contents
+		SEND_SIGNAL(OM, COMSIG_CARGO_DELIVERED, a)
 	if(OM.role == MAIN_OVERMAP)
 		landingzone = GLOB.areas_by_type[/area/quartermaster/warehouse]
 	else
-		if(!OM.linked_areas.len)
-			return FALSE
+		if(!OM.linked_areas.len) // The cargo is now lost. clean it up
+			qdel(src)
+			return
 		landingzone = pick(OM.linked_areas)
 	var/list/empty_turfs = list()
 	var/turf/LZ = null
@@ -186,17 +218,17 @@
 	if(empty_turfs?.len)
 		LZ = pick(empty_turfs)
 	var/obj/structure/closet/supplypod/freight_pod/toLaunch = new /obj/structure/closet/supplypod/freight_pod
-	var/shippingLane = GLOB.areas_by_type[/area/centcom/supplypod/flyMeToTheMoon]
+	var/shippingLane = GLOB.areas_by_type[/area/centcom/supplypod/supplypod_temp_holding]
 	toLaunch.forceMove(shippingLane)
 	for (var/atom/movable/O in contents)
 		O.forceMove(toLaunch) //forceMove any atom/moveable into the supplypod
-		new /obj/effect/DPtarget(LZ, toLaunch)
+		new /obj/effect/pod_landingzone(LZ, toLaunch)
 	qdel(src)
 
 /obj/item/projectile/guided_munition/torpedo/post/Destroy()
 	if(contents.len)
-		for(var/atom/X in contents)
-			qdel(X) //Shooting this torpedo down means death.
+		var/list/all_contents = GetAllContents() - src //Get all contents returns the torp itself. remove the torp from the list
+		QDEL_LIST(all_contents) //Delete all contents of the torp.
 	. = ..()
 
 //A probe that science builds to scan anomalies. This is a chad move.

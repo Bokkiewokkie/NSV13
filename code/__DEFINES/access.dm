@@ -30,7 +30,7 @@
 #define ACCESS_CARGO 31
 #define ACCESS_CONSTRUCTION 32
 #define ACCESS_CHEMISTRY 33
-#define ACCESS_BRIGPHYS 34 
+#define ACCESS_BRIGPHYS 34
 #define ACCESS_HYDROPONICS 35
 #define ACCESS_LIBRARY 37
 #define ACCESS_LAWYER 38
@@ -70,6 +70,11 @@
 #define ACCESS_FL 73 //NSV13 - FL tagged decorated fighter
 #define ACCESS_MINING_ENGINEERING 74
 #define ACCESS_MINING_BRIDGE 75
+#define ACCESS_SEC_RECORDS 77 //! Update security records //NSV13 - changed from 69
+#define ACCESS_PRISONER 78 //! Nsv13 - Genpop. This access is added to prisoner IDs that have served their time.
+
+/// Room and launching.
+#define ACCESS_AUX_BASE 76 //NSV13 - changed from 72 to 76 to deconflict
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
@@ -87,6 +92,11 @@
 	//The Syndicate
 #define ACCESS_SYNDICATE 150 //!General Syndicate Access. Includes Syndicate mechs and ruins.
 #define ACCESS_SYNDICATE_LEADER 151 //!Nuke Op Leader Access
+//Nsv13
+#define ACCESS_SYNDICATE_ENGINEERING 152 //! Syndicate engineering wing
+#define ACCESS_SYNDICATE_REQUISITIONS 153 //! Syndicate cargo division
+#define ACCESS_SYNDICATE_MARINE_ARMOURY 154 //!Syndicate armoury
+// /Nsv13
 
 	//Away Missions or Ruins
 	/*For generic away-mission/ruin access. Why would normal crew have access to a long-abandoned derelict
