@@ -508,24 +508,11 @@ GLOBAL_LIST_EMPTY(ai_goals)
 	taunts = list("Better crews have tried to cross the Rubicon, you will die like they did.", "Defense force, stand ready!", "Nanotrasen filth. Munitions, ready the guns. We’ll scrub the galaxy clean of you vermin.", "This shift just gets better and better. I’ll have your Captain’s head on my wall.")
 	fleet_trait = FLEET_TRAIT_DEFENSE
 
-/datum/fleet/tortuga
-	name = "Tortuga raiders"
-	audio_cues = list("https://www.youtube.com/watch?v=WMSoo4B2hFU")
-	taunts = list("Yar har! Fresh meat", "Unfurl the mainsails! We've got company", "Die landlubbers!")
-	size = FLEET_DIFFICULTY_HARD
-	fleet_trait = FLEET_TRAIT_DEFENSE
-
-/datum/fleet/nanotrasen/earth
-	name = "Earth Defense Force"
-	taunts = list("You're foolish to venture this deep into Solgov space! Main batteries stand ready.", "All hands, set condition 1 throughout the fleet, enemy vessel approaching.", "Defense force, stand ready!", "We shall protect our homeland!")
-	size = FLEET_DIFFICULTY_HARD
-	audio_cues = list("https://www.youtube.com/watch?v=k8-HHivlj8k")
-	fleet_trait = FLEET_TRAIT_DEFENSE
-
 /datum/fleet/earthbuster
 	name = "Syndicate Armada" //Fleet spawned if the players are too inactive. Set course...FOR EARTH.
 	destroyer_types = list(/obj/structure/overmap/syndicate/ai, /obj/structure/overmap/syndicate/ai/nuclear, /obj/structure/overmap/syndicate/ai/assault_cruiser, /obj/structure/overmap/syndicate/ai/gunboat, /obj/structure/overmap/syndicate/ai/submarine, /obj/structure/overmap/syndicate/ai/assault_cruiser/boarding_frigate)
 	size = FLEET_DIFFICULTY_VERY_HARD
+	allow_difficulty_scaling = FALSE
 	taunts = list("We're coming for Sol, and you can't stop us. All batteries fire at will.", "Lay down your arms now, you're outnumbered.", "All hands, assume assault formation. Begin bombardment.")
 	audio_cues = list("https://www.youtube.com/watch?v=k8-HHivlj8k")
 
