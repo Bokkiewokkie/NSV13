@@ -101,7 +101,7 @@
 	materials = list(/datum/material/iron = 2500, /datum/material/glass = 500, /datum/material/copper = 500)
 	build_path = /obj/item/ship_weapon/parts/missile/warhead
 	category = list("Advanced Munitions")
-	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS	
+	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS
 
 
 //Torp Parts
@@ -166,48 +166,7 @@
 	category = list("Advanced Munitions")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
-//Naval Cannons
-/datum/design/naval_shell
-	name = "Naval Artillery Round"
-	desc = "A high caliber round that can be fired out of a deck gun. (WARNING: Requires a trolley to move!)"
-	id = "naval_shell"
-	materials = list(/datum/material/iron = 10000, /datum/material/titanium=5000, /datum/material/copper=500)
-	build_path = /obj/item/ship_weapon/ammunition/naval_artillery
-	category = list("Advanced Munitions")
-	build_type = PROTOLATHE
-	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS
-
-/datum/design/naval_shell_ap
-	name = "Naval Artillery Round (Armour Piercing)"
-	desc = "A diamond tipped AP round that can be fired out of a deck gun. (WARNING: Requires a trolley to move!)"
-	id = "naval_shell_ap"
-	materials = list(/datum/material/iron = 10000, /datum/material/titanium=1000, /datum/material/diamond=2000)
-	build_path = /obj/item/ship_weapon/ammunition/naval_artillery/ap
-	category = list("Advanced Munitions")
-	build_type = PROTOLATHE
-	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS
-
-/datum/design/powder_bag
-	name = "Powder Bag"
-	desc = "A bag of explosives for use with deck guns."
-	id = "powder_bag"
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/powder_bag
-	category = list("Advanced Munitions")
-	build_type = PROTOLATHE
-	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS
-
-/datum/design/plasma_accelerant
-	name = "Plasma-Based Kinetic Accelerant"
-	desc = "A powerful powder charge for use in deck guns, which can propel a round to insane speeds."
-	id = "plasma_accelerant"
-	materials = list(/datum/material/iron = 500, /datum/material/plasma = 1500)
-	build_path = /obj/item/powder_bag/plasma
-	category = list("Advanced Munitions")
-	build_type = PROTOLATHE
-	departmental_flags = DEPARTMENTAL_FLAG_MUNITIONS
-
-//Railgun Because you can still get the funny from missions
+//Railgun rounds
 /datum/design/railgun_round
 	name = "M4 NTRS 400mm teflon coated tungsten railgun slug"
 	desc = "Allows you to construct railgun ammunition"

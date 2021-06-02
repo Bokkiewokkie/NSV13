@@ -664,6 +664,8 @@ Returns a faction datum by its name (case insensitive!)
 	alignment = "nanotrasen"
 	system_type = "planet_earth"
 	adjacency_list = list("Alpha Centauri", "Risa Station")
+	var/solar_siege_cycles_needed = 10	//See the starsystem controller for how many minutes is one cycle. Currently 3 minutes.
+	var/solar_siege_cycles_left = 10
 
 /datum/star_system/alpha_centauri
 	name = "Alpha Centauri"
@@ -759,7 +761,7 @@ Returns a faction datum by its name (case insensitive!)
 	system_type = "pirate" //Guranteed piratical action!
 	threat_level = THREAT_LEVEL_UNSAFE
 	adjacency_list = list("P9X-334", "Antares")
-	fleet_type = /datum/fleet/tortuga
+	fleet_type = /datum/fleet/pirate/tortuga
 
 /datum/star_system/p9x334
 	name = "P9X-334"
@@ -811,6 +813,7 @@ Returns a faction datum by its name (case insensitive!)
 	threat_level = THREAT_LEVEL_UNSAFE
 	adjacency_list = list("Solaris B", "Solaris C", "Vorash")
 
+/* No randy for now
 /datum/star_system/brasil/New()
 	. = ..()
 	addtimer(CALLBACK(src, .proc/generate_badlands), 10 SECONDS)
@@ -996,7 +999,7 @@ Returns a faction datum by its name (case insensitive!)
 #undef RNGSYSTEM_MAX_CONNECTIONS
 #undef RANDOM_CONNECTION_BASE_CHANCE
 #undef RANDOM_CONNECTION_REPEAT_PENALTY
-
+*/
 /datum/star_system/solarisB
 	name = "Solaris B"
 	x = 55

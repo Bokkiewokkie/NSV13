@@ -22,7 +22,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("chair", /obj/structure/chair, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("cannon ball", /obj/item/ship_weapon/ammunition/naval_artillery/cannonball, 20,time = 40, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
 	new/datum/stack_recipe_list("office chairs", list( \
 		new/datum/stack_recipe("dark office chair", /obj/structure/chair/office, 5, one_per_turf = TRUE, on_floor = TRUE), \
@@ -175,12 +174,6 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 		new/datum/stack_recipe("high security airlock assembly", /obj/structure/door_assembly/door_assembly_highsecurity, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("vault door assembly", /obj/structure/door_assembly/door_assembly_vault, 6, time = 50, one_per_turf = 1, on_floor = 1), \
 	)), \
-	//NSV13 start
-	new /datum/stack_recipe_list("ship weapon frames", list( \
-		new/datum/stack_recipe("naval artillery", /obj/structure/ship_weapon/mac_assembly/artillery_frame, 20, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
-		new/datum/stack_recipe("torpedo tube frame", /obj/structure/ship_weapon/torpedo_launcher_assembly, 4, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
-	)), \
-	//NSV13 end
 ))
 
 /obj/item/stack/sheet/plasteel

@@ -302,7 +302,7 @@
 /obj/machinery/ammo_sorter/Initialize()
 	. = ..()
 	for(var/obj/item/I in get_turf(src))
-		if(istype(I, /obj/item/ship_weapon/ammunition) || istype(I, /obj/item/powder_bag))
+		if(istype(I, /obj/item/ship_weapon/ammunition))
 			load(I)
 
 /obj/machinery/ammo_sorter/multitool_act(mob/living/user, obj/item/I)
@@ -331,7 +331,7 @@
 /obj/machinery/ammo_sorter/MouseDrop_T(atom/movable/A, mob/user)
 	. = ..()
 	//You can store any kind of ammo here for now.
-	if(istype(A, /obj/item/ship_weapon/ammunition) || istype(A, /obj/item/powder_bag))
+	if(istype(A, /obj/item/ship_weapon/ammunition))
 		to_chat(user, "<span class='notice'>You start to load [src] with [A]</span>")
 		if(do_after(user, 2 SECONDS , target = src))
 			load(A, user)
@@ -358,7 +358,7 @@
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 		loading = FALSE
 		return FALSE
-	if(istype(A, /obj/item/ship_weapon/ammunition) || istype(A, /obj/item/powder_bag))
+	if(istype(A, /obj/item/ship_weapon/ammunition))
 		playsound(src, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
 		flick("ammorack_dispense", src)
 		A.forceMove(src)

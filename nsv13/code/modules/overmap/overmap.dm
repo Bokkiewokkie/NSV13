@@ -372,14 +372,14 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 		weapon_types[FIRE_MODE_PDC] = new /datum/ship_weapon/light_cannon(src)
 	//Gauss is the true PDC replacement...
 	else
-		weapon_types[FIRE_MODE_50CAL] = new /datum/ship_weapon/fiftycal(src)
+		weapon_types[FIRE_MODE_GAUSS] = new /datum/ship_weapon/gauss(src)
 	if(mass >= MASS_SMALL || occupying_levels?.len)
 		weapon_types[FIRE_MODE_AMS] = new /datum/ship_weapon/vls(src)
 		weapon_types[FIRE_MODE_GAUSS] = new /datum/ship_weapon/gauss(src)
 	if(flak_battery_amount > 0)
 		weapon_types[FIRE_MODE_FLAK] = new /datum/ship_weapon/flak(src)
 	if(mass > MASS_MEDIUM || occupying_levels.len)
-		weapon_types[FIRE_MODE_MAC] = new /datum/ship_weapon/mac(src)
+		weapon_types[FIRE_MODE_RAILGUN] = new /datum/ship_weapon/railgun(src)
 	if(ai_controlled)
 		weapon_types[FIRE_MODE_MISSILE] = new/datum/ship_weapon/missile_launcher(src)
 		weapon_types[FIRE_MODE_TORPEDO] = new/datum/ship_weapon/torpedo_launcher(src)

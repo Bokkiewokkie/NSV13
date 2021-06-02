@@ -57,10 +57,6 @@
 	name = "AMS control console (computer)"
 	build_path = /obj/machinery/computer/ams
 
-/obj/item/circuitboard/computer/fiftycal
-	name = ".50 cal turret console (circuit)"
-	build_path = /obj/machinery/computer/fiftycal
-
 /obj/item/circuitboard/computer/ship/fighter_controller
 	name = "circuit board (fighter control computer)"
 	build_path = /obj/machinery/computer/ship/fighter_controller
@@ -72,27 +68,6 @@
 
 ////SHIP GUNS////
 
-//50 Cal. guns
-/obj/item/circuitboard/machine/fiftycal
-	name = ".50 cal turret (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/mineral/titanium = 20,
-		/obj/item/stack/sheet/mineral/copper = 10,
-		/obj/item/stack/sheet/iron = 30,
-		/obj/item/stack/cable_coil = 5)
-	build_path = /obj/machinery/ship_weapon/fiftycal
-
-/obj/item/circuitboard/machine/fiftycal/super
-	name = "super .50 cal turret (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/mineral/titanium = 40,
-		/obj/item/stack/sheet/mineral/copper = 40,
-		/obj/item/stack/sheet/mineral/diamond = 5,
-		/obj/item/stack/sheet/iron = 20,
-		/obj/item/stack/cable_coil = 5)
-	build_path = /obj/machinery/ship_weapon/fiftycal/super
-
-//PDC and flak boards, currently not used
 #define PATH_PDC /obj/machinery/ship_weapon/pdc_mount
 #define PATH_FLAK  /obj/machinery/ship_weapon/pdc_mount/flak
 
@@ -143,57 +118,6 @@
 
 #undef PATH_PDC
 #undef PATH_FLAK
-
-//Deck Gun
-/obj/item/circuitboard/computer/deckgun
-	name = "Deck gun loading computer (circuit)"
-	build_path = /obj/machinery/computer/deckgun
-
-/obj/item/circuitboard/machine/deck_gun
-	name = "Deck gun core (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/mineral/titanium = 10,
-		/obj/item/stack/cable_coil = 5)
-	build_path = /obj/machinery/deck_turret
-
-/obj/item/circuitboard/machine/deck_gun/powder
-	name = "Deck gun powder gate (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/iron = 20,
-		/obj/item/stack/sheet/mineral/copper = 20,
-		/obj/item/stack/cable_coil = 5)
-	build_path = /obj/machinery/deck_turret/powder_gate
-
-/obj/item/circuitboard/machine/deck_gun/payload
-	name = "Deck gun payload gate (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/iron = 20,
-		/obj/item/stack/sheet/mineral/titanium = 5,
-		/obj/item/stack/sheet/mineral/copper = 10,
-		/obj/item/ship_weapon/parts/railgun_rail = 1,
-		/obj/item/ship_weapon/parts/loading_tray=1,
-		/obj/item/stack/cable_coil = 10)
-	build_path = /obj/machinery/deck_turret/payload_gate
-
-//Upgrades
-/obj/item/circuitboard/machine/deck_gun/autoelevator
-	name = "Deck gun auto-elevator (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/mineral/titanium = 40,
-		/obj/item/stack/sheet/mineral/copper = 20,
-		/obj/item/stack/sheet/mineral/diamond = 5,
-		/obj/item/stack/cable_coil = 10)
-	build_path = /obj/machinery/deck_turret/autoelevator
-
-/obj/item/circuitboard/machine/deck_gun/autorepair
-	name = "Deck gun auto-repair module (circuitboard)"
-	req_components = list(
-		/obj/item/stack/sheet/mineral/titanium = 40,
-		/obj/item/stack/sheet/mineral/copper = 20,
-		/obj/item/stack/sheet/mineral/diamond = 2,
-		/obj/item/stack/sheet/mineral/uranium = 10,
-		/obj/item/stack/cable_coil = 10)
-	build_path = /obj/machinery/deck_turret/autorepair
 
 //Missile factory
 /obj/item/circuitboard/machine/missile_builder

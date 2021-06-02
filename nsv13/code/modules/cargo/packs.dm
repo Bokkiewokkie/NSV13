@@ -4,64 +4,30 @@
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
 /datum/supply_pack/munitions/railgun
-	name = "Naval Artillery Shells (x10)"
-	desc = "A set of naval artillery shells to be fired by the eponymous weapon. Must be armed before firing. WARNING: HIGHLY EXPLOSIVE."
+	name = "Railgun Rounds (x10)"
+	desc = "A set of railgun rounds to be fired by the eponymous weapon."
 	cost = 2000
-	contains = list(/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery,
-					/obj/item/ship_weapon/ammunition/naval_artillery)
-	crate_name = "Naval Artillery Shells"
+	contains = list(/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo,
+					/obj/item/ship_weapon/ammunition/railgun_ammo)
+	crate_name = "Railgun Rounds"
 
-/datum/supply_pack/munitions/cannonshot
-	name = "Cannonballs (x10)"
-	desc = "For munitions teams on a budget, cannonballs serve as a cheap but still somewhat effective ammunition for Naval Artillery. Made from the finest cutlery the NT fleet has to offer."
+/datum/supply_pack/munitions/pdc
+	name = ".30 Cal PDC rounds (x5)"
+	desc = "5 boxes of .30 Cal rounds, ideal for harassing small targets."
 	cost = 1000
-	contains = list(/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball,
-					/obj/item/ship_weapon/ammunition/naval_artillery/cannonball)
-	crate_type = /obj/structure/closet/crate/wooden
-	crate_name = "Captain Plasmasalt's finest cannonshot"
-
-/datum/supply_pack/munitions/gunpowder
-	name = "Powder bags (x10)"
-	desc = "Naval Gunpowder bags for use in artillery weapons, WARNING: Volatile."
-	cost = 1000
-	contains = list(/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag,
-					/obj/item/powder_bag)
-	crate_type = /obj/structure/closet/crate/wooden
-	crate_name = "Captain Plasmasalt's finest gunpowder"
-
-/datum/supply_pack/munitions/fiftycal
-	name = ".50 cal deck gun rounds (x5)"
-	desc = "5 boxes of deck gun rounds, ideal for harassing small targets."
-	cost = 1000
-	contains = list(/obj/item/ammo_box/magazine/pdc/fiftycal,
-					/obj/item/ammo_box/magazine/pdc/fiftycal,
-					/obj/item/ammo_box/magazine/pdc/fiftycal,
-					/obj/item/ammo_box/magazine/pdc/fiftycal,
-					/obj/item/ammo_box/magazine/pdc/fiftycal)
+	contains = list(/obj/item/ammo_box/magazine/pdc,
+					/obj/item/ammo_box/magazine/pdc,
+					/obj/item/ammo_box/magazine/pdc,
+					/obj/item/ammo_box/magazine/pdc,
+					/obj/item/ammo_box/magazine/pdc)
 	crate_name = "PDC ammunition crate"
 
 /datum/supply_pack/munitions/trolley

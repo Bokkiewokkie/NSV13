@@ -6,9 +6,7 @@
 	anchored = FALSE
 	density = TRUE
 	layer = 3
-	var/static/list/allowed = typecacheof(list(
-		/obj/item/ship_weapon/ammunition,
-		/obj/item/powder_bag))
+	var/static/list/allowed = typecacheof(list(/obj/item/ship_weapon/ammunition))
 	var/amount = 0 //Current number of munitions we have loaded
 	var/max_capacity = 6//Maximum number of munitions we can load at once
 	var/loading = FALSE //stop you loading the same torp over and over

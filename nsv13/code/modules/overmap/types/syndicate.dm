@@ -32,12 +32,12 @@
 
 /obj/structure/overmap/syndicate/pvp/apply_weapons()
 	weapon_types[FIRE_MODE_TORPEDO] = new/datum/ship_weapon/torpedo_launcher(src)
-	weapon_types[FIRE_MODE_50CAL] = new /datum/ship_weapon/fiftycal(src)
+	weapon_types[FIRE_MODE_PDC] = new /datum/ship_weapon/pdc_mount(src)
 	weapon_types[FIRE_MODE_AMS] = new /datum/ship_weapon/vls(src)
 	weapon_types[FIRE_MODE_GAUSS] = new /datum/ship_weapon/gauss(src)
 	if(flak_battery_amount > 0)
 		weapon_types[FIRE_MODE_FLAK] = new /datum/ship_weapon/flak(src)
-	weapon_types[FIRE_MODE_MAC] = new /datum/ship_weapon/mac(src)
+	weapon_types[FIRE_MODE_RAILGUN] = new /datum/ship_weapon/railgun(src)
 
 /obj/structure/overmap/syndicate/pvp/hulk //Larger PVP ship for larger pops.
 	name = "SSV Hulk"

@@ -71,18 +71,19 @@
 /datum/trader_item/ship_repair/on_purchase(obj/structure/overmap/OM)
 	OM.repair_all_quadrants(repair_amount, failure_chance)
 
-/datum/trader_item/mac
-	name = "Magnetic Accelerator Cannon Kit"
-	desc = "Everything you need to build the big MAC."
-	price = 10000
+
+/datum/trader_item/railgun
+	name = "Railgun Kit"
+	desc = "Everything you need to build a ship to ship railgun."
+	price = 6000
 	stock = 1
 	unlock_path = /obj/structure/closet/crate/secure/weapon/trader_arms
 
 /obj/structure/closet/crate/secure/weapon/trader_arms
-	name = "MAC Construction Kit"
-	var/list/preset_contents = list(
-		/obj/structure/ship_weapon/mac_assembly,\
-		/obj/item/ship_weapon/parts/mac_barrel,\
+	name = "Railgun Construction Kit"
+	preset_contents = list(
+		/obj/structure/ship_weapon/railgun_assembly,\
+		/obj/item/ship_weapon/parts/railgun_rail,\
 		/obj/item/ship_weapon/parts/firing_electronics,\
 		/obj/item/ship_weapon/parts/loading_tray,\
 	)
@@ -91,22 +92,6 @@
 	. = ..()
 	for(var/X in preset_contents)
 		new X(src)
-
-/datum/trader_item/railgun
-	name = "Railgun Kit"
-	desc = "Everything you need to build a ship to ship railgun."
-	price = 6000
-	stock = 1
-	unlock_path = /obj/structure/closet/crate/secure/weapon/trader_arms/railgun
-
-/obj/structure/closet/crate/secure/weapon/trader_arms/railgun
-	name = "Railgun Construction Kit"
-	preset_contents = list(
-		/obj/structure/ship_weapon/railgun_assembly,\
-		/obj/item/ship_weapon/parts/railgun_rail,\
-		/obj/item/ship_weapon/parts/firing_electronics,\
-		/obj/item/ship_weapon/parts/loading_tray,\
-	)
 
 /datum/trader_item/torpedo
 	name = "Standard Torpedo"
