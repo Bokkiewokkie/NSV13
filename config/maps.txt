@@ -22,6 +22,10 @@ map Atlas
 
 endmap
 
+map FOBSquared
+
+endmap
+
 map gladius
 	voteweight 1.5
 endmap
