@@ -34,6 +34,12 @@
 	suffix = "gladius"
 	name = "arrival shuttle (Gladius)"
 
+/datum/map_template/shuttle/arrival/NSV_arrival_FOB
+	suffix = "FOB squared"
+	name = "\[NSV\] arrival shuttle (FOB)"
+
+//Emergency
+
 /datum/map_template/shuttle/emergency/atlas
 	suffix = "atlas"
 	name = "Danube Class Yacht"
@@ -45,3 +51,5 @@
 	port_id = "elevator"
 	suffix = "hammurabi"
 	name = "Hammurabi mining elevator"
+
+
