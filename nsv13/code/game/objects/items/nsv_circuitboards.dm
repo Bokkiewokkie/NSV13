@@ -57,6 +57,10 @@
 	name = "AMS control console (computer)"
 	build_path = /obj/machinery/computer/ams
 
+/obj/item/circuitboard/computer/fiftycal
+	name = "PDC turret console (circuit)"
+	build_path = /obj/machinery/computer/fiftycal
+
 /obj/item/circuitboard/computer/ship/fighter_controller
 	name = "circuit board (fighter control computer)"
 	build_path = /obj/machinery/computer/ship/fighter_controller
@@ -68,6 +72,27 @@
 
 ////SHIP GUNS////
 
+//50 Cal. guns
+/obj/item/circuitboard/machine/fiftycal
+	name = "PDC turret (circuitboard)"
+	req_components = list(
+		/obj/item/stack/sheet/mineral/titanium = 20,
+		/obj/item/stack/sheet/mineral/copper = 10,
+		/obj/item/stack/sheet/iron = 30,
+		/obj/item/stack/cable_coil = 5)
+	build_path = /obj/machinery/ship_weapon/fiftycal
+
+/obj/item/circuitboard/machine/fiftycal/super
+	name = "RPDC (circuitboard)"
+	req_components = list(
+		/obj/item/stack/sheet/mineral/titanium = 40,
+		/obj/item/stack/sheet/mineral/copper = 40,
+		/obj/item/stack/sheet/mineral/diamond = 5,
+		/obj/item/stack/sheet/iron = 20,
+		/obj/item/stack/cable_coil = 5)
+	build_path = /obj/machinery/ship_weapon/fiftycal/super
+
+//PDC and flak boards, currently not used
 #define PATH_PDC /obj/machinery/ship_weapon/pdc_mount
 #define PATH_FLAK  /obj/machinery/ship_weapon/pdc_mount/flak
 
