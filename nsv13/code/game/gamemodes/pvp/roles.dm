@@ -437,7 +437,7 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 /mob/proc/get_stat_tab_faction()
 	var/list/tab_data = list()
 	for(var/datum/faction/F in SSstar_system.factions)
-		if (F) //No nulls!
+		if(F && listfaction) //No nulls! //Only show things that we want to show
 			tab_data["[F?.name]"] = list(
 				text = "[F?.tickets]",
 				type = STAT_TEXT
