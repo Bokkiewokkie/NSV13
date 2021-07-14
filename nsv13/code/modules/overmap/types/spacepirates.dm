@@ -12,10 +12,12 @@
 	mass = MASS_SMALL
 	max_integrity = 400
 	integrity_failure = 400
-	armor = list("overmap_light" = 30, "overmap_heavy" = 10)
+	armor = list("overmap_light" = 80, "overmap_heavy" = 10)
+	bound_height = 64
+	bound_width = 64
 	ai_controlled = TRUE
 	ai_behaviour = AI_AGGRESSIVE
-	ai_trait = AI_TRAIT_ANTI_FIGHTER //You didn't expect identical tactics, did you?
+	ai_flags = AI_FLAG_ANTI_FIGHTER //You didn't expect identical tactics, did you?
 	combat_dice_type = /datum/combat_dice/frigate
 
 /obj/structure/overmap/spacepirate/ai/Initialize()
@@ -71,7 +73,7 @@
 			flak_battery_amount = 1
 
 /obj/structure/overmap/spacepirate/ai/boarding //our boarding capable variant (we want to control how many of these there are)
-	ai_trait = AI_TRAIT_BOARDER
+	ai_flags = AI_FLAG_BOARDER
 
 /obj/structure/overmap/spacepirate/ai/nt_missile
 	name = "Space Pirate Missile Boat"
@@ -81,10 +83,12 @@
 	mass = MASS_SMALL
 	sprite_size = 48
 	damage_states = FALSE
+	bound_height = 96
+	bound_width = 96
 	max_integrity = 1000
 	integrity_failure = 1000
-	armor = list("overmap_light" = 60, "overmap_heavy" = 10)
-	ai_trait = AI_TRAIT_DESTROYER
+	armor = list("overmap_light" = 90, "overmap_heavy" = 15)
+	ai_flags = AI_FLAG_DESTROYER
 	torpedoes = 20
 	missiles = 20
 
@@ -100,13 +104,13 @@
 	mass = MASS_MEDIUM
 	sprite_size = 96
 	damage_states = FALSE
-	bound_height = 96
-	bound_width = 96
+	bound_height = 128
+	bound_width = 128
 	max_integrity = 750
 	integrity_failure = 750
 	shots_left = 20
-	armor = list("overmap_light" = 50, "overmap_heavy" = 20)
-	ai_trait = AI_TRAIT_BATTLESHIP
+	armor = list("overmap_light" = 90, "overmap_heavy" = 25)
+	ai_flags = AI_FLAG_BATTLESHIP
 	combat_dice_type = /datum/combat_dice/destroyer
 
 /obj/structure/overmap/spacepirate/ai/syndie_gunboat/apply_weapons() //Dakka+
@@ -127,15 +131,15 @@
 	mass = MASS_LARGE
 	sprite_size = 128
 	damage_states = FALSE
-	bound_width = 128
-	bound_height = 128
+	bound_width = 160
+	bound_height = 160
 	max_integrity = 10000
 	integrity_failure = 10000
 	shots_left = 35
 	torpedoes = 35
-	armor = list("overmap_light" = 90, "overmap_heavy" = 50)
+	armor = list("overmap_light" = 99, "overmap_heavy" = 50)
 	can_resupply = TRUE
-	ai_trait = AI_TRAIT_SUPPLY
+	ai_flags = AI_FLAG_SUPPLY | AI_FLAG_ELITE
 	combat_dice_type = /datum/combat_dice/flagship
 
 /obj/structure/overmap/spacepirate/ai/dreadnought/apply_weapons()

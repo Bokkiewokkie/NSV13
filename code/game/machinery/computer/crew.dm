@@ -28,13 +28,13 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 /datum/crewmonitor/New()
 	. = ..()
-
+ 	//Nsv13 - Crayon eaters & MPs
 	var/list/jobs = new/list()
 	jobs["Captain"] = 00
 	jobs["Head of Personnel"] = 50
 	jobs["Head of Security"] = 10
 	jobs["Warden"] = 11
-	jobs["Security Officer"] = 12
+	jobs["Military Police"] = 12
 	jobs["Detective"] = 13
 	jobs["Brig Physician"] = 14
 	jobs["Deputy"] = 16
@@ -75,18 +75,21 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	jobs["Security Response Officer"] = 221
 	jobs["Engineer Response Officer"] = 222
 	jobs["Medical Response Officer"] = 223
-	jobs["Assistant"] = 999 //Unknowns/custom jobs should appear after civilians, and before assistants
+	jobs["Midshipman"] = 999 //Unknowns/custom jobs should appear after civilians, and before assistants  //Nsv13 - Crayon eaters
 
 	src.jobs = jobs
 
 /datum/crewmonitor/Destroy()
 	return ..()
 
-/datum/crewmonitor/ui_interact(mob/user, ui_key = "crew", datum/tgui/ui = null, force_open = FALSE, \
-							datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+
+/datum/crewmonitor/ui_state(mob/user)
+	return GLOB.default_state
+
+/datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, ui_key, "CrewConsole", "crew monitor", 800, 600 , master_ui, state)
+		ui = new(user, src, "CrewConsole")
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)

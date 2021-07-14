@@ -6,7 +6,11 @@ import { Window } from '../layouts';
 export const FighterControls = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window resizable theme="hackerman">
+    <Window
+      resizable
+      theme="hackerman"
+      width={497}
+      height={450}>
       <Window.Content scrollable>
         <Section
           title="Alerts:">
@@ -90,6 +94,23 @@ export const FighterControls = (props, context) => {
               bad: [-Infinity, 0.15],
             }} />
         </Section>
+        {!!data.ftl_capable && (
+          <Section title="FTL Drive:" buttons={
+            <Button
+              content={data.ftl_active ? "Stop Spooling" : "Begin Spooling"}
+              icon="server"
+              onClick={() => act('toggle_ftl')} />
+          }>
+            <ProgressBar
+              value={(data.ftl_spool_progress / data.ftl_spool_time * 100) * 0.01}
+              ranges={{
+                good: [0.9, Infinity],
+                average: [0.15, 0.9],
+                bad: [-Infinity, 0.15],
+              }} />
+          </Section>
+
+        )}
         <Section title="Controls:">
           <Button
             width="150px"

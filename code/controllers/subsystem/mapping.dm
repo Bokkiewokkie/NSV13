@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shuttle_templates = list()
 	var/list/shelter_templates = list()
 	var/list/random_room_templates = list()
+	var/list/boarding_templates = list() //NSV13 - boarding maps
 
 	var/list/areas_in_z = list()
 
@@ -134,7 +135,7 @@ SUBSYSTEM_DEF(mapping)
 		qdel(T, TRUE)
 
 /* Nuke threats, for making the blue tiles on the station go RED
-   Used by the AI doomsday and the self destruct nuke.
+   Used by the AI doomsday and the self-destruct nuke.
 */
 
 /datum/controller/subsystem/mapping/proc/add_nuke_threat(datum/nuke)
@@ -164,6 +165,7 @@ SUBSYSTEM_DEF(mapping)
 	shuttle_templates = SSmapping.shuttle_templates
 	random_room_templates = SSmapping.random_room_templates
 	shelter_templates = SSmapping.shelter_templates
+	boarding_templates = SSmapping.boarding_templates //NSV13 - boarding maps
 	unused_turfs = SSmapping.unused_turfs
 	turf_reservations = SSmapping.turf_reservations
 	used_turfs = SSmapping.used_turfs
@@ -354,6 +356,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
 	preloadShelterTemplates()
+	preloadBoardingTemplates() //NSV13 - boarding maps
 	preloadRandomRoomTemplates()
 
 /datum/controller/subsystem/mapping/proc/preloadRandomRoomTemplates()
@@ -389,7 +392,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			space_ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
-	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")
+	var/list/unbuyable = generateMapList("[global.config.directory]/shuttles_unbuyable.txt")
+	var/list/illegal = generateMapList("[global.config.directory]/shuttles_illegal.txt")
 
 	for(var/item in subtypesof(/datum/map_template/shuttle))
 		var/datum/map_template/shuttle/shuttle_type = item
@@ -399,6 +403,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/datum/map_template/shuttle/S = new shuttle_type()
 		if(unbuyable.Find(S.mappath))
 			S.can_be_bought = FALSE
+		if(illegal.Find(S.mappath))
+			S.illegal_shuttle = TRUE
 
 		shuttle_templates[S.shuttle_id] = S
 		map_templates[S.shuttle_id] = S
@@ -412,6 +418,16 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		shelter_templates[S.shelter_id] = S
 		map_templates[S.shelter_id] = S
+
+/datum/controller/subsystem/mapping/proc/preloadBoardingTemplates() //NSV13 - boarding maps
+	for(var/item in subtypesof(/datum/map_template/dropship))
+		var/datum/map_template/dropship/dropship_type = item
+		if(!(initial(dropship_type.mappath)))
+			continue
+		var/datum/map_template/dropship/D = new dropship_type()
+
+		boarding_templates[item] = D
+		map_templates[item] = D
 
 //Manual loading of away missions.
 /client/proc/admin_away()

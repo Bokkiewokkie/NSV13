@@ -34,6 +34,10 @@
 		return
 	if(!cargo_holder)
 		return
+	//Nsv13 - No, just no :)
+	if(istype(target, /obj/structure/overmap) || istype(target, /obj/vehicle) || istype(target, /obj/mecha))
+		return
+
 	if(isobj(target))
 		var/obj/O = target
 		if(istype(O, /obj/machinery/door/firedoor))
@@ -175,21 +179,25 @@
 	icon_state = "mecha_exting"
 	equip_cooldown = 5
 	energy_drain = 0
+	var/ext_chem = /datum/reagent/water
+	var/ext_tank_type = /obj/structure/reagent_dispensers/watertank
+	var/ext_range = 3
+	var/precise = FALSE
 	range = MECHA_MELEE|MECHA_RANGED
 
 /obj/item/mecha_parts/mecha_equipment/extinguisher/Initialize()
 	. = ..()
 	create_reagents(1000)
-	reagents.add_reagent(/datum/reagent/water, 1000)
+	reagents.add_reagent(ext_chem, 1000)
 
 /obj/item/mecha_parts/mecha_equipment/extinguisher/action(atom/target) //copypasted from extinguisher. TODO: Rewrite from scratch.
-	if(!action_checks(target) || get_dist(chassis, target)>3)
+	if(!action_checks(target) || get_dist(chassis, target) > ext_range)
 		return
 
-	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
-		var/obj/structure/reagent_dispensers/watertank/WT = target
-		WT.reagents.trans_to(src, 1000)
-		occupant_message("<span class='notice'>Extinguisher refilled.</span>")
+	if(istype(target, ext_tank_type) && get_dist(chassis,target) <= 1)
+		var/obj/structure/reagent_dispensers/R = target
+		R.reagents.trans_to(src, 1000)
+		occupant_message("<span class='notice'>[src] has been refilled.</span>")
 		playsound(chassis, 'sound/effects/refill.ogg', 50, 1, -6)
 	else
 		if(reagents.total_volume > 0)
@@ -200,12 +208,18 @@
 			var/turf/T2 = get_step(T,turn(direction, -90))
 
 			var/list/the_targets = list(T,T1,T2)
+			if(precise)
+				var/turf/T3 = get_step(T1, turn(direction, 90))
+				var/turf/T4 = get_step(T2,turn(direction, -90))
+				the_targets.Add(T3,T4)
 			spawn(0)
-				for(var/a=0, a<5, a++)
+				for(var/a=0, a < 5, a++)
 					var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(get_turf(chassis))
 					if(!W)
 						return
 					var/turf/my_target = pick(the_targets)
+					if(precise)
+						the_targets -= my_target
 					var/datum/reagents/R = new/datum/reagents(5)
 					W.reagents = R
 					R.my_atom = W
@@ -233,8 +247,6 @@
 		if(istype(M))
 			return 1
 	return 0
-
-
 
 /obj/item/mecha_parts/mecha_equipment/rcd
 	name = "mounted RCD"

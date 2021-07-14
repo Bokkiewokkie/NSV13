@@ -6,7 +6,7 @@
 	name = "incursion"
 	config_tag = "incursion"
 	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Security Officer", "Warden", "Detective","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Brig Physician")
+	protected_jobs = list("Military Police", "Warden", "Detective","Captain", "Executive Officer", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Master At Arms") //NSV13 - renamed HoP to XO, added MAA  //Nsv13 - Crayon eaters & MPs
 	antag_flag = ROLE_INCURSION
 	false_report_weight = 10
 	enemy_minimum_age = 0
@@ -28,7 +28,7 @@
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_jobs += protected_jobs
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Assistant"
+		restricted_jobs += "Midshipman" //Nsv13 - Crayon eaters
 
 	var/list/datum/mind/possible_traitors = get_players_for_role(ROLE_INCURSION)
 
@@ -70,7 +70,7 @@
 /datum/game_mode/proc/update_incursion_icons_added(datum/mind/incursion_mind)
 	var/datum/atom_hud/antag/incursionhud = GLOB.huds[ANTAG_HUD_INCURSION]
 	incursionhud.join_hud(incursion_mind.current)
-	set_antag_hud(incursion_mind.current, "traitor")
+	set_antag_hud(incursion_mind.current, "incursion")
 
 /datum/game_mode/proc/update_incursion_icons_removed(datum/mind/incursion_mind)
 	var/datum/atom_hud/antag/incursionhud = GLOB.huds[ANTAG_HUD_INCURSION]

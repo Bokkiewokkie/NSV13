@@ -38,7 +38,7 @@
 	report_type = "cult"
 	antag_flag = ROLE_CULTIST
 	false_report_weight = 1
-	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Brig Physician")
+	restricted_jobs = list("Chaplain","AI", "Cyborg", "Military Police", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel") //Nsv13 - Crayon eaters & MPs
 	protected_jobs = list()
 	required_players = 29
 	required_enemies = 4
@@ -51,6 +51,7 @@
 	<span class='notice'>Crew</span>: Prevent the cult from expanding and drive it out."
 
 	title_icon = "cult"
+
 
 	var/finished = 0
 
@@ -67,7 +68,7 @@
 		restricted_jobs += protected_jobs
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Assistant"
+		restricted_jobs += "Midshipman" //Nsv13 - Crayon eaters
 
 	if(CONFIG_GET(flag/protect_heads_from_antagonist))
 		restricted_jobs += GLOB.command_positions

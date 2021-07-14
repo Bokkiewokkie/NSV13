@@ -12,6 +12,7 @@ you build.
 	name = "Astrometrics computer"
 	desc = "A computer which is capable of interfacing with subspace sensor arrays to gather intel on starsystems. It is capable of performing rudimentary, long range analysis on anomalies, however a probe torpedo will need to be constructed and fired at the anomaly to fully collect its available research."
 	req_access = list(ACCESS_RESEARCH)
+	circuit = /obj/item/circuitboard/computer/astrometrics
 	var/max_range = 40 //In light years, the range at which we can scan systems for data. This is quite short.
 	var/scan_progress = 0
 	var/scan_goal = 2 MINUTES
@@ -30,12 +31,12 @@ you build.
 	radio.recalculateChannels()
 	linked_techweb = SSresearch.science_tech
 
-/obj/machinery/computer/ship/navigation/astrometrics/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state) // Remember to use the appropriate state.
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/computer/ship/navigation/astrometrics/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/starmap)
 		assets.send(user)
-		ui = new(user, src, ui_key, "Astrometrics", name, 800, 660, master_ui, state)
+		ui = new(user, src, "Astrometrics")
 		ui.open()
 
 /**
@@ -52,7 +53,8 @@ Clean override of the navigation computer to provide scan functionality.
 		data["scan_target"] = null
 	if(screen == 2) // Here's where the magic happens.
 		data["star_id"] = "\ref[selected_system]"
-		data["star_name"] = selected_system.name
+		var/list/syst = selected_system.system_type
+		// data["star_name"] = syst[ "tag" ]
 		data["alignment"] = capitalize(selected_system.alignment)
 		data["scanned"] = FALSE
 		if(info["current_system"])
@@ -61,6 +63,11 @@ Clean override of the navigation computer to provide scan functionality.
 		data["anomalies"] = selected_system.get_info()
 		if(LAZYFIND(scanned, selected_system.name)) //If we've scanned this one before, get me the list of its anomalies.
 			data["scanned"] = TRUE
+		if ( data["scanned"] )
+			data["system_type"] = syst ? syst[ "label" ] : "ERROR"	//the list /should/ always be initialized when players get to press the button, but alas never trust it.
+		else 
+			data["system_type"] = "Unknown (not scanned)"
+
 	data["can_scan"] = is_in_range(current_system, selected_system)
 	data["can_cancel"] = (scan_target) ? TRUE : FALSE
 	data["scan_progress"] = scan_progress

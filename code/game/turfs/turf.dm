@@ -1,3 +1,4 @@
+GLOBAL_LIST_EMPTY(station_turfs)
 /turf
 	icon = 'icons/turf/floors.dmi'
 	level = 1
@@ -32,6 +33,7 @@
 
 	var/explosion_level = 0	//for preventing explosion dodging
 	var/explosion_id = 0
+	var/list/explosion_throw_details
 
 	var/requires_activation	//add to air processing after initialize?
 	var/changing_turf = FALSE
@@ -126,6 +128,8 @@
 	flags_1 &= ~INITIALIZED_1
 	requires_activation = FALSE
 	..()
+	
+	vis_contents.Cut()
 
 /turf/attack_hand(mob/user)
 	. = ..()
@@ -177,16 +181,22 @@
 /turf/proc/can_zFall(atom/movable/A, levels = 1, turf/target)
 	return zPassOut(A, DOWN, target) && target.zPassIn(A, DOWN, src)
 
-/turf/proc/zFall(atom/movable/A, levels = 1, force = FALSE)
+/turf/proc/zFall(atom/movable/A, levels = 1, force = FALSE, turf/oldloc = null)
 	var/turf/target = get_step_multiz(src, DOWN)
 	if(!target || (!isobj(A) && !ismob(A)))
 		return FALSE
 	if(!force && (!can_zFall(A, levels, target) || !A.can_zFall(src, levels, target, DOWN)))
 		return FALSE
-	A.zfalling = TRUE
-	A.forceMove(target)
-	A.zfalling = FALSE
-	target.zImpact(A, levels, src)
+	if(!A.zfalling)
+		A.zfalling = TRUE
+		if(A.pulling && oldloc)
+			A.pulling.moving_from_pull = A
+			A.pulling.Move(oldloc)
+			A.pulling.moving_from_pull = null
+		if(!A.Move(target))
+			A.doMove(target)
+		. = target.zImpact(A, levels, src)
+		A.zfalling = FALSE
 	return TRUE
 
 /turf/attackby(obj/item/C, mob/user, params)
@@ -262,17 +272,14 @@
 		if(QDELETED(mover))
 			return FALSE		//We were deleted.
 
-/turf/Entered(atom/movable/AM)
+/turf/Entered(atom/movable/AM, turf/oldloc)
 	..()
-	if(explosion_level && AM.ex_check(explosion_id))
-		AM.ex_act(explosion_level)
-
 	// If an opaque movable atom moves around we need to potentially update visibility.
 	if (AM.opacity)
 		has_opaque_atom = TRUE // Make sure to do this before reconsider_lights(), incase we're on instant updates. Guaranteed to be on in this case.
 		reconsider_lights()
 
-/turf/open/Entered(atom/movable/AM)
+/turf/open/Entered(atom/movable/AM, turf/oldloc)
 	..()
 	//melting
 	if(isobj(AM) && air && air.return_temperature() > T0C)
@@ -280,7 +287,7 @@
 		if(O.obj_flags & FROZEN)
 			O.make_unfrozen()
 	if(!AM.zfalling)
-		zFall(AM)
+		zFall(AM, oldloc=oldloc)
 
 /turf/proc/is_plasteel_floor()
 	return FALSE
@@ -440,15 +447,20 @@
 	else
 		affecting_level = 1
 
-	for(var/V in contents)
-		var/atom/A = V
-		if(!QDELETED(A) && A.level >= affecting_level)
-			if(ismovableatom(A))
-				var/atom/movable/AM = A
-				if(!AM.ex_check(explosion_id))
+	for(var/thing in contents)
+		var/atom/atom_thing = thing
+		if(!QDELETED(atom_thing) && atom_thing.level >= affecting_level)
+			if(ismovableatom(atom_thing))
+				var/atom/movable/movable_thing = atom_thing
+				if(!movable_thing.ex_check(explosion_id))
 					continue
-			A.ex_act(severity, target)
-			CHECK_TICK
+				switch(severity)
+					if(EXPLODE_DEVASTATE)
+						SSexplosions.high_mov_atom += movable_thing
+					if(EXPLODE_HEAVY)
+						SSexplosions.med_mov_atom += movable_thing
+					if(EXPLODE_LIGHT)
+						SSexplosions.low_mov_atom += movable_thing
 
 /turf/narsie_act(force, ignore_mobs, probability = 20)
 	. = (prob(probability) || force)

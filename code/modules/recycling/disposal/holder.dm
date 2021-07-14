@@ -22,6 +22,8 @@
 
 // initialize a holder from the contents of a disposal unit
 /obj/structure/disposalholder/proc/init(obj/machinery/disposal/D)
+	if(!istype(D))
+		return
 	gas = D.air_contents// transfer gas resv. into holder object
 
 	//Check for any living mobs trigger hasmob.
@@ -117,8 +119,8 @@
 /obj/structure/disposalholder/relaymove(mob/user)
 	if(user.incapacitated())
 		return
-	for(var/mob/M in range(5, get_turf(src)))
-		M.show_message("<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>", 2)
+	for(var/mob/M as() in hearers(5, get_turf(src)))
+		M.show_message("<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>", MSG_AUDIBLE)
 	var/obj/structure/disposalpipe/pipe = loc
 	pipe.take_damage(10)
 	playsound(src.loc, 'sound/effects/clang.ogg', 50, 0, 0)

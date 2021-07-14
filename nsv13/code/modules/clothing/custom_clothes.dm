@@ -229,11 +229,36 @@
 	item_color = "pilot"
 	item_state = "bl_suit"
 
+/obj/item/clothing/under/ship/pilot/transport
+	name = "Pilot's transport jumpsuit"
+	desc = "A comfortable lightweight jumpsuit for non-combat positions."
+	icon_state = "transport_pilot"
+	item_color = "transport_pilot"
+	item_state = "transport_pilot"
+
 /obj/item/clothing/head/beret/ship/pilot
 	name = "pilot's beret"
 	desc = "In parts a fashion statement and a hard hat, this beret has been specially reinforced to protect its wearer against workplace accidents."
 	icon_state = "pilot"
 	armor = list("melee" = 15, "bullet" = 0, "laser" = 0, "energy" = 5, "bomb" = 10, "bio" = 0, "rad" = 5, "fire" = 30, "acid" = 5)
+
+/obj/item/clothing/head/ship/rising_sun
+	name = "headband of the rising sun"
+	desc = "DEATH BEFORE DISHONOR! BANZAAAAAI!"
+	icon_state = "sun"
+	item_state = "sun"
+	dynamic_hair_suffix = ""
+
+/obj/item/clothing/head/helmet/transport_pilot
+	name = "Transport Pilot's Helmet"
+	desc = "A large helmet made for protecting the head and ears."
+	icon = 'nsv13/icons/obj/clothing/hats.dmi'
+	alternate_worn_icon = 'nsv13/icons/mob/head.dmi'
+	icon_state = "transport_pilot"
+	item_color = null
+	flags_inv = HIDEEARS|HIDEHAIR
+	bang_protect = 1
+	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 5, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/peacekeeper //Ironic type path. We're inheriting the "dual mode" behaviour from the syndie hardsuit.
 	name = "SG-1 Mjolnir Helmet"
@@ -264,11 +289,10 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	var/mob/listeningTo
 	var/stomp_cooldown_time = 0.3 SECONDS
 	var/current_cooldown = 0
 
-/obj/item/clothing/suit/space/hardsuit/syndi/peacekeeper/proc/on_mob_move()
+/obj/item/clothing/suit/space/hardsuit/syndi/peacekeeper/on_mob_move()
 	var/mob/living/carbon/human/H = loc
 	if(!istype(H) || H.wear_suit != src)
 		return
@@ -279,7 +303,7 @@
 
 /obj/item/clothing/suit/space/hardsuit/syndi/peacekeeper/equipped(mob/user, slot)
 	. = ..()
-	if(slot != SLOT_WEAR_SUIT)
+	if(slot != ITEM_SLOT_OCLOTHING)
 		if(listeningTo)
 			UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
 		return
@@ -325,11 +349,6 @@
 	item_state = "syndicate-space"
 	item_color = "syndicate-space"
 
-/obj/machinery/suit_storage_unit/syndicate/odst
-	suit_type = /obj/item/clothing/suit/space/syndicate/odst
-	mask_type = /obj/item/clothing/mask/gas/sechailer
-	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/odst
-
 /obj/item/storage/belt/utility/syndicate
 	name = "syndicate utility belt"
 	desc = "A large, black belt which facilitates tool storage."
@@ -363,13 +382,14 @@
 /obj/item/clothing/shoes/clown_shoes/delinquent
 	name = "Delinquent's shoes"
 	icon = 'nsv13/icons/obj/clothing/shoes.dmi'
+	icon_state = "clown_shoes"
 	alternate_worn_icon = 'nsv13/icons/mob/feet.dmi'
 	desc = "A set of pristine white sneakers. Good grief."
 
 /obj/item/clothing/suit/ship/delinquent
 	name = "Delinquent's jacket"
 	desc = "A modified and probably stolen Nanotrasen academy jacket, adorned with countless badges and references. Good grief."
-	icon_state = "clown"
+	icon_state = "clown_suit"
 	actions_types = list(/datum/action/item_action/menacing_pose)
 
 /datum/action/item_action/menacing_pose
@@ -412,8 +432,8 @@
 /obj/item/clothing/under/ship/delinquent
 	name = "Delinquent's uniform"
 	desc = "An extremely smart looking uniform consisting of a shirt, jumper and pants. Good grief."
-	icon_state = "clown"
-	item_color = "clown"
+	icon_state = "clown_uniform"
+	item_color = "clown_uniform"
 	item_state = "bl_suit"
 
 /obj/effect/temp_visual/menacing
@@ -454,10 +474,12 @@
 	icon_state = "decktech_helmet"
 	item_state = "decktech_helmet"
 	actions_types = list(/datum/action/item_action/toggle)
-	visor_flags_inv = HIDEEARS|HIDEEYES
-	visor_flags_cover = HEADCOVERSEYES
-	flash_protect = 2
 	tint = 2
+	flash_protect = 2
+	flags_inv = HIDEHAIR|HIDEEYES
+	flags_cover = HEADCOVERSEYES
+	visor_flags_inv = HIDEEYES
+	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 
 /obj/item/clothing/head/helmet/decktech/attack_self(mob/user)
 	weldingvisortoggle(user)
