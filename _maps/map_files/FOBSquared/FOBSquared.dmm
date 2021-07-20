@@ -159,7 +159,7 @@
 "kO" = (/turf/closed/wall/mineral/titanium,/area/mine/eva)
 "kS" = (/obj/machinery/door/firedoor/window,/obj/effect/spawner/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,/turf/open/floor/plating/airless,/area/maintenance/department/engine)
 "kY" = (/obj/machinery/atmospherics/pipe/simple/cyan/visible{dir = 6},/obj/machinery/firealarm/directional/west,/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{dir = 5},/turf/open/floor/plasteel/dark,/area/maintenance/department/engine)
-"le" = (/obj/machinery/atmospherics/components/binary/pump/on{dir = 8},/obj/structure/cable/yellow{icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{dir = 10},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,/turf/open/floor/plasteel/dark,/area/maintenance/department/engine)
+"le" = (/obj/machinery/atmospherics/components/binary/pump/on{dir = 8; target_pressure = 4500},/obj/structure/cable/yellow{icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{dir = 10},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,/turf/open/floor/plasteel/dark,/area/maintenance/department/engine)
 "lf" = (/obj/effect/spawner/structure/window/shuttle,/obj/machinery/door/firedoor/window,/turf/open/floor/plating,/area/maintenance/department/science/central)
 "li" = (/obj/machinery/atmospherics/pipe/simple/cyan/visible{dir = 4},/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1{dir = 6},/turf/open/floor/plasteel/dark,/area/maintenance/department/engine)
 "lj" = (/obj/machinery/computer/ship/dradis{dir = 8},/turf/open/floor/plasteel/dark,/area/maintenance/department/bridge)
