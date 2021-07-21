@@ -563,10 +563,6 @@
 	suffix = "omega"
 	name = "arrival shuttle (Omega)"
 
-/datum/map_template/shuttle/arrival/NSV_arrival_FOB //NSV13
-	suffix = "FOB Arrival"
-	name = "arrival shuttle (FOB NSV)"
-
 /datum/map_template/shuttle/aux_base/default
 	suffix = "default"
 	name = "auxilliary base (Default)"
