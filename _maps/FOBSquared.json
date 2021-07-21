@@ -5,7 +5,7 @@
 	"traits": [{"Up": 1, "Linkage": "Self"}, {"Down": -1, "Linkage": "Self"}],
     "space_ruin_levels": -1,
     "shuttles": {
-		"arrival": "NSV_arrival_FOB",
+		"arrival": "arrival_NSV_arrival_FOB",
         "cargo": "cargo_atlas",
         "ferry": "ferry_kilo",
         "emergency": "emergency_donut"},
