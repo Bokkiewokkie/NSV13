@@ -34,9 +34,9 @@
 	suffix = "gladius"
 	name = "arrival shuttle (Gladius)"
 
-/datum/map_template/shuttle/arrival/NSV_arrival_FOB
-	suffix = "NSV_arrival_FOB"
-	name = "arrival shuttle (NSV_arrival_FOB)"
+/datum/map_template/shuttle/arrival/FOBSquared
+	suffix = "FOBSquared"
+	name = "arrival shuttle (FOB)"
 
 //Emergency
 
