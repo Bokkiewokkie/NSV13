@@ -53,7 +53,7 @@
 	name = "Hammurabi mining elevator"
 
 /datum/map_template/shuttle/emergency/FOBSquared
-	prefix = "FOBSquared"
+	suffix = "FOBSquared"
 	name = "FOBSquared Emergency Shuttle"
 	description = "A streamlined small shuttle with advanced medical areas and the ability to seat aproximately 20 people."
 	credit_cost = 1000
