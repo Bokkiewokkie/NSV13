@@ -8,7 +8,7 @@
         "cargo": "cargo_atlas",
         "ferry": "ferry_kilo",
         "arrival": "arrival_FOBSquared",
-        "emergency": "emergency_donut"},
+        "emergency": "emergency_FOBSquared"},
     "mine_disable": 1,
     "ship_type": "/obj/structure/overmap/nanotrasen/light_cruiser/starter"
 }

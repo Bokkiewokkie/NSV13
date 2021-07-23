@@ -35,7 +35,6 @@
 /turf/template_noop,
 /area/shuttle/arrival)
 "q" = (
-/obj/machinery/door/airlock/shuttle,
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
@@ -47,6 +46,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/machinery/door/airlock/shuttle/glass,
 /turf/open/floor/pod/dark,
 /area/shuttle/arrival)
 "s" = (
@@ -86,13 +86,13 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/arrival)
 "N" = (
-/obj/machinery/door/airlock/shuttle,
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/machinery/door/airlock/shuttle/glass,
 /turf/open/floor/pod/dark,
 /area/shuttle/arrival)
 "S" = (
