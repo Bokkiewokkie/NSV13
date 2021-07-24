@@ -1984,6 +1984,7 @@
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/firedoor/window,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/multiz,
 /turf/open/floor/plating/airless,
 /area/maintenance/central)
 "qk" = (
