@@ -20,11 +20,11 @@
 	var/obj/machinery/mineral/processing_unit/machine = null
 	var/machinedir = EAST
 	speed_process = TRUE
-	var/link_id = null //NSV13
+	var/link_id = null
 
 /obj/machinery/mineral/processing_unit_console/Initialize()
 	. = ..()
-	if(link_id) //NSV13
+	if(link_id)
 		return INITIALIZE_HINT_LATELOAD
 	else
 		machine = locate(/obj/machinery/mineral/processing_unit, get_step(src, machinedir))
@@ -33,7 +33,7 @@
 		else
 			return INITIALIZE_HINT_QDEL
 
-/obj/machinery/mineral/processing_unit_console/LateInitialize() //NSV13
+/obj/machinery/mineral/processing_unit_console/LateInitialize()
 	if(link_id) //If mappers set an ID)
 		for(var/obj/machinery/mineral/processing_unit/PU in GLOB.machines)
 			if(PU.link_id == link_id)
@@ -70,7 +70,6 @@
 	if(href_list["set_on"])
 		machine.on = (href_list["set_on"] == "on")
 
-	//NSV13 points
 	if(href_list["redeem"])
 		var/mob/M = usr
 		var/obj/item/card/id/I = M.get_idcard(TRUE)
@@ -103,8 +102,8 @@
 	var/datum/material/selected_material = null
 	var/selected_alloy = null
 	var/datum/techweb/stored_research
-	var/link_id = null //NSV13
-	var/points = 0 //NSV13
+	var/link_id = null
+	var/points = 0
 
 /obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
@@ -128,7 +127,7 @@
 	if(!materials.has_space(material_amount))
 		unload_mineral(O)
 	else
-		points += O.points * O.amount //NSV13
+		points += O.points * O.amount
 		materials.insert_item(O)
 		qdel(O)
 		if(CONSOLE)
@@ -137,14 +136,12 @@
 /obj/machinery/mineral/processing_unit/proc/get_machine_data()
 	var/dat = "<b>Smelter control console</b><br><br>"
 
-	//NSV13 moved this up here
 	dat += "Machine is currently "
 	if (on)
 		dat += "<A href='?src=[REF(CONSOLE)];set_on=off'>On</A> "
 	else
 		dat += "<A href='?src=[REF(CONSOLE)];set_on=on'>Off</A> "
 
-	//NSV13 points
 	dat += "<br><br>"
 	dat += "Stored points: [points] "
 	dat += "<A href='?src=[REF(CONSOLE)];redeem=1'><b>Redeem</b></A> "

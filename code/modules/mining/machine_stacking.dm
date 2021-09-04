@@ -9,18 +9,18 @@
 	circuit = /obj/item/circuitboard/machine/stacking_unit_console
 	var/obj/machinery/mineral/stacking_machine/machine
 	var/machinedir = SOUTHEAST
-	var/link_id = null //NSV13
+	var/link_id = null
 
 /obj/machinery/mineral/stacking_unit_console/Initialize()
 	. = ..()
-	if(link_id) //NSV13
+	if(link_id)
 		return INITIALIZE_HINT_LATELOAD
 	else
 		machine = locate(/obj/machinery/mineral/stacking_machine, get_step(src, machinedir))
 		if (machine)
 			machine.CONSOLE = src
 
-/obj/machinery/mineral/stacking_unit_console/LateInitialize() //NSV13
+/obj/machinery/mineral/stacking_unit_console/LateInitialize()
 	if(link_id) //If mappers set an ID)
 		for(var/obj/machinery/mineral/stacking_machine/SM in GLOB.machines)
 			if(SM.link_id == link_id)
@@ -92,7 +92,7 @@
 	var/stack_amt = 50 //amount to stack before releassing
 	var/datum/component/remote_materials/materials
 	var/force_connect = FALSE
-	var/link_id = null //NSV13
+	var/link_id = null
 
 /obj/machinery/mineral/stacking_machine/Initialize(mapload)
 	. = ..()
