@@ -59,6 +59,18 @@
 	if(href_list["set_on"])
 		machine.on = (href_list["set_on"] == "on")
 
+	//NSV13 points
+	if(href_list["redeem"])
+		var/mob/M = usr
+		var/obj/item/card/id/I = M.get_idcard(TRUE)
+		if(machine.points)
+			if(I?.mining_points += machine.points)
+				machine.points = 0
+			else
+				to_chat(usr, "<span class='warning'>No ID detected.</span>")
+		else
+			to_chat(usr, "<span class='warning'>No points to claim.</span>")
+
 	updateUsrDialog()
 	return
 
@@ -80,6 +92,8 @@
 	var/datum/material/selected_material = null
 	var/selected_alloy = null
 	var/datum/techweb/stored_research
+	var/link_id = null //NSV13
+	var/points = 0 //NSV13
 
 /obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
@@ -103,6 +117,7 @@
 	if(!materials.has_space(material_amount))
 		unload_mineral(O)
 	else
+		points += O.points * O.amount //NSV13
 		materials.insert_item(O)
 		qdel(O)
 		if(CONSOLE)
@@ -110,6 +125,20 @@
 
 /obj/machinery/mineral/processing_unit/proc/get_machine_data()
 	var/dat = "<b>Smelter control console</b><br><br>"
+
+	//NSV13 moved this up here
+	dat += "Machine is currently "
+	if (on)
+		dat += "<A href='?src=[REF(CONSOLE)];set_on=off'>On</A> "
+	else
+		dat += "<A href='?src=[REF(CONSOLE)];set_on=on'>Off</A> "
+
+	//NSV13 points
+	dat += "<br><br>"
+	dat += "Stored points: [points] "
+	dat += "<A href='?src=[REF(CONSOLE)];redeem=1'><b>Redeem</b></A> "
+	dat += "<br><br>"
+
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	for(var/datum/material/M in materials.materials)
 		var/amount = materials.materials[M]
@@ -131,14 +160,6 @@
 		else
 			dat += " <A href='?src=[REF(CONSOLE)];alloy=[D.id]'><b>Not Smelting</b></A> "
 		dat += "<br>"
-
-	dat += "<br><br>"
-	//On or off
-	dat += "Machine is currently "
-	if (on)
-		dat += "<A href='?src=[REF(CONSOLE)];set_on=off'>On</A> "
-	else
-		dat += "<A href='?src=[REF(CONSOLE)];set_on=on'>Off</A> "
 
 	return dat
 
