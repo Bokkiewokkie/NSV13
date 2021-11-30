@@ -884,6 +884,50 @@ Adding tasks is easy! Just define a datum for it.
 			shield_scan_target.relay_to_nearby('nsv13/sound/effects/ship/solgov_scan_alert.ogg', ignore_self=FALSE)
 			shield_scan_target.faction = shield_scan_target.name
 
+//Player fleet
+
+/datum/fleet/player
+
+	var/name = "[faction] Special Forces"
+	//Ai fleet type enum. Add your new one here. Use a define, or text if youre lazy.
+	taskforces = list("fighters" = list(), "battleships" = list())
+	fighter_types = list()
+	destroyer_types = list()
+	battleship_types = list()
+	supply_types = list()
+	all_ships = list()
+	lances = list()
+	size = FLEET_DIFFICULTY_NONE //No other ships spawn in this fleet
+	allow_difficulty_scaling = FALSE
+	instantiated = TRUE //Hard to not be on your own overmap level
+	plotted_course = FALSE //TODO: change fleet navigation
+	navigation_spec_alignments = list()
+	navigation_spec_alignment_type = ALIGNMENT_BLACKLIST
+	navigation_uses_wormholes = TRUE
+	allow_hidden_systems = FALSE
+	hide_movements = FALSE
+
+	alignment = "nanotrasen" //Make this change on init/new() depending on ship faction
+	
+	taunts = list() //make taunts sent to all ships with an overmap level in them
+	greetings = list()
+
+	recently_visited = list()
+	fleet_trait = FLEET_TRAIT_INVASION //Work out 
+	last_encounter_time = 0
+	
+	faction = null
+	faction_id = FACTION_ID_SYNDICATE
+	
+	reward = 1000 //Fair to say you win when the player fleet is killed
+
+	initial_move_delay = 10 MINUTES //See: change movement 
+	minimum_random_move_delay = 5 MINUTES
+	maximum_random_move_delay = 10 MINUTES
+	combat_move_delay = 10 MINUTES
+
+	shared_targets = list()
+
 /datum/fleet/New()
 	. = ..()
 	if(allow_difficulty_scaling)
