@@ -3666,7 +3666,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "akS" = (
 /obj/structure/bookcase/manuals/engineering,
@@ -5738,13 +5738,9 @@
 	},
 /area/chapel/main)
 "arh" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "sci_check";
-	name = "privacy shutter"
-	},
-/turf/open/floor/plating,
-/area/security/checkpoint/science/research)
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/plasteel/ship/padded,
+/area/gateway)
 "ari" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/item/ship_weapon/ammunition/torpedo/nuke,
@@ -6560,7 +6556,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "atT" = (
 /obj/machinery/telecomms/bus/preset_three,
@@ -8136,13 +8132,12 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory/security)
 "ayE" = (
-/obj/machinery/airalarm/directional/north,
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/item/clothing/head/wizard/fake,
 /obj/effect/decal/cleanable/ash/crematorium,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "ayF" = (
 /obj/effect/turf_decal/tile/red{
@@ -10027,7 +10022,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/toilet/restrooms)
 "aEA" = (
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "aEC" = (
 /obj/effect/turf_decal/tile/red,
@@ -13060,7 +13055,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "aNN" = (
 /obj/structure/rack,
@@ -14050,7 +14045,8 @@
 "aQX" = (
 /obj/structure/rack,
 /obj/item/hand_tele,
-/turf/open/floor/plasteel,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "aQY" = (
 /obj/structure/bookcase{
@@ -15909,7 +15905,7 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
 /obj/machinery/computer/ship/viewscreen,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "aWM" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
@@ -16216,7 +16212,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 6
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "aXK" = (
 /turf/closed/wall/r_wall/ship,
@@ -16397,7 +16393,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "aYz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -17501,11 +17497,9 @@
 /turf/open/floor/carpet/ship,
 /area/bridge)
 "bbN" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/carpet/ship,
-/area/bridge)
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/plasteel/ship/padded,
+/area/gateway)
 "bbO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 8
@@ -17804,13 +17798,11 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "bcG" = (
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/machinery/light,
-/turf/open/floor/plasteel/dark,
-/area/bridge)
+/turf/open/floor/wood,
+/area/crew_quarters/bar)
 "bcH" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/light{
@@ -18197,7 +18189,7 @@
 "bdX" = (
 /obj/machinery/bluespace_beacon,
 /obj/machinery/holopad,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "bdY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
@@ -20061,7 +20053,7 @@
 /obj/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "bjp" = (
 /obj/structure/disposalpipe/segment,
@@ -23890,7 +23882,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "dwg" = (
 /obj/machinery/light{
@@ -25166,7 +25158,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "esh" = (
 /obj/structure/disposalpipe/segment,
@@ -25645,7 +25637,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "eMi" = (
 /obj/structure/disposalpipe/segment{
@@ -27064,7 +27056,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "fKH" = (
 /obj/effect/turf_decal/tile/blue,
@@ -28201,11 +28193,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/door/airlock/ship/public/glass{
-	aiControlDisabled = "18";
-	name = "EVA Storage";
-	req_one_access_txt = "18;62"
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -28214,6 +28201,11 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/door/airlock/ship/public/glass{
+	aiControlDisabled = "18";
+	name = "EVA Storage";
+	req_one_access_txt = "18;62"
+	},
 /turf/open/floor/plasteel,
 /area/storage/eva)
 "gBv" = (
@@ -28850,7 +28842,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "hbZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -29639,7 +29631,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 10
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "hyu" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -30258,7 +30250,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "hTn" = (
 /obj/structure/rack,
@@ -31940,7 +31932,7 @@
 /area/ai_monitored/turret_protected/aisat/hallway/support_ship/aft)
 "jbp" = (
 /obj/machinery/teleport/hub,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "jbw" = (
 /obj/structure/cable{
@@ -32887,7 +32879,7 @@
 /area/science/lab)
 "jIa" = (
 /obj/structure/tank_dispenser/oxygen,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "jIv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -33262,7 +33254,7 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "jUU" = (
 /obj/machinery/light/small{
@@ -34578,7 +34570,7 @@
 /area/security/prison)
 "kPn" = (
 /obj/machinery/teleport/station,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "kPt" = (
 /obj/machinery/door/airlock/ship/hatch{
@@ -36073,7 +36065,7 @@
 	req_access_txt = "16;19"
 	},
 /obj/structure/closet/crate/rcd,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "lPa" = (
 /obj/structure/chair{
@@ -36976,7 +36968,7 @@
 /area/hallway/primary/aft)
 "mqX" = (
 /obj/machinery/computer/teleporter,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "mrj" = (
 /obj/item/ship_weapon/ammunition/missile,
@@ -42198,9 +42190,6 @@
 	pixel_x = 2;
 	pixel_y = 6
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
 "pQi" = (
@@ -42312,7 +42301,7 @@
 /area/security/prison)
 "pUg" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "pUD" = (
 /obj/machinery/portable_atmospherics/pump,
@@ -47958,7 +47947,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "tye" = (
 /obj/machinery/light,
@@ -48937,7 +48926,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship,
 /area/storage/eva)
 "uiM" = (
 /obj/structure/disposalpipe/segment{
@@ -49688,12 +49677,8 @@
 /turf/open/floor/plasteel/ship,
 /area/nsv/hanger/storage)
 "uHX" = (
-/obj/structure/table,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/crew_quarters/bar)
+/turf/open/floor/plasteel/ship,
+/area/storage/eva)
 "uIi" = (
 /obj/effect/spawner/lootdrop/grille_or_trash,
 /turf/open/floor/plating,
@@ -54429,7 +54414,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -32
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/ship/padded,
 /area/storage/eva)
 "xUi" = (
 /obj/machinery/camera/autoname{
@@ -65964,14 +65949,14 @@ awB
 vTt
 vTt
 vTt
-arh
+azT
 aDg
 aOv
 vno
 aEM
 azl
 wWE
-wWE
+bbN
 wWE
 wWE
 wWE
@@ -66221,7 +66206,7 @@ awB
 vTt
 vTt
 vTt
-arh
+azT
 aVu
 aHJ
 ash
@@ -66235,7 +66220,7 @@ dHw
 azl
 aQX
 fKy
-aEA
+uHX
 akR
 pUg
 avg
@@ -66478,7 +66463,7 @@ awB
 vTt
 vTt
 vTt
-arh
+azT
 efL
 aqc
 aHZ
@@ -66492,7 +66477,7 @@ wWE
 azl
 ayE
 fKy
-aEA
+uHX
 esg
 xTB
 avg
@@ -66735,13 +66720,13 @@ awB
 vTt
 vTt
 vTt
-arh
+azT
 pHG
 ajY
 voE
 hIz
 azl
-wWE
+arh
 bdK
 cDI
 bdK
@@ -102722,7 +102707,7 @@ aaa
 ajz
 aaa
 fxl
-uHX
+aVq
 rWn
 ape
 aYL
@@ -103236,7 +103221,7 @@ ajz
 ajz
 aaa
 nwV
-aYL
+bcG
 aBa
 atN
 aYL
@@ -113289,7 +113274,7 @@ rml
 vVl
 bbQ
 bbR
-bbN
+aLt
 sID
 poj
 bfO
@@ -114832,7 +114817,7 @@ aGJ
 bdS
 aGJ
 aGJ
-bcG
+bcF
 osz
 bfO
 aeX
