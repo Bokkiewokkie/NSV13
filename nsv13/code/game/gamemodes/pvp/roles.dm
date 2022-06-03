@@ -626,3 +626,92 @@ Singleton to handle conquest roles. This exists to populate the roles list and n
 	name = "Syndicate Camera Console"
 	network = list("syndicate") //I hate all of you
 	circuit = /obj/item/circuitboard/computer/security/syndicate
+
+//Syndicate jobs, like roles but better (TODO: clean up later)
+//Syndicate Captain
+/datum/job/syndicate_captain
+	title = "Syndicate Captain"
+	flag = SYNDICATE_CAPTAIN
+	department_head = list("Syndicate Admiralty")
+	department_flag = SYNDICATE
+	faction = "Station" //technically still the 'main ship'
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "Syndicate admirals and intergalatic law"
+	selection_color = "#ffbbaa"
+	chat_color = "#b01a00"
+	exp_requirements = 1200
+	exp_type = EXP_TYPE_COMMAND
+	exp_type_department = EXP_TYPE_COMMAND
+
+	outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/leader
+
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER, ACCESS_SYNDICATE_ENGINEERING, ACCESS_SYNDICATE_REQUISITIONS, ACCESS_SYNDICATE_MARINE_ARMOURY)
+	paycheck = PAYCHECK_COMMAND
+	paycheck_department = ACCOUNT_SYN
+	display_order = JOB_DISPLAY_ORDER_SYNDICATE_CAPTAIN
+	departments = DEPARTMENT_COMMAND
+
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/command
+	)
+
+/datum/job/syndicate_captain/announce(mob/living/carbon/human/H)
+	..()
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.real_name] on deck!"))
+
+//Syndicate Strategist/Admiral
+/datum/job/syndicate_strategist
+	title = "Syndicate Strategist"
+	flag = SYNDICATE_STRATEGIST
+	department_head = list("Syndicate High Command")
+	department_flag = SYNDICATE
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "Syndicate high command and intergalatic law"
+	selection_color = "#ffbbaa"
+	chat_color = "#b01a00"
+	exp_requirements = 1200
+	exp_type = EXP_TYPE_ADMIN
+	exp_type_department = EXP_TYPE_COMMAND
+
+	outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/strategist
+
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER, ACCESS_SYNDICATE_ENGINEERING, ACCESS_SYNDICATE_REQUISITIONS, ACCESS_SYNDICATE_MARINE_ARMOURY)
+	paycheck = PAYCHECK_COMMAND
+	paycheck_department = ACCOUNT_SYN
+	display_order = JOB_DISPLAY_ORDER_SYNDICATE_STRATEGIST
+	departments = DEPARTMENT_COMMAND
+
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/command
+	)
+/datum/outfit/syndicate/no_crystals/syndi_crew/requisitions
+//Syndicate Requisitions Officer
+/datum/job/syndicate_strategist
+	title = "Syndicate Requisitions Officer"
+	flag = SYNDICATE_CAPTAIN
+	department_head = list("Syndicate Admiralty")
+	department_flag = SYNDICATE
+	faction = "Station" //technically still the 'main ship'
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "Syndicate admirals and intergalatic law"
+	selection_color = "#ffbbaa"
+	chat_color = "#b01a00"
+	exp_requirements = 1200
+	exp_type = EXP_TYPE_COMMAND
+	exp_type_department = EXP_TYPE_COMMAND
+
+	outfit = /datum/outfit/syndicate/no_crystals/syndi_crew/strategist
+
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER, ACCESS_SYNDICATE_ENGINEERING, ACCESS_SYNDICATE_REQUISITIONS, ACCESS_SYNDICATE_MARINE_ARMOURY)
+	paycheck = PAYCHECK_COMMAND
+	paycheck_department = ACCOUNT_SYN
+	display_order = JOB_DISPLAY_ORDER_SYNDICATE_STRATEGIST
+	departments = DEPARTMENT_COMMAND
+
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/command
+	)
