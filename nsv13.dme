@@ -3596,6 +3596,7 @@
 #include "nsv13\code\game\turfs\wall.dm"
 #include "nsv13\code\game\turfs\window.dm"
 #include "nsv13\code\game\turfs\open\glass.dm"
+#include "nsv13\code\modules\admin\overmap.dm"
 #include "nsv13\code\modules\antagonists\bloodling.dm"
 #include "nsv13\code\modules\antagonists\simple_teamchat.dm"
 #include "nsv13\code\modules\antagonists\boarders\boarders.dm"

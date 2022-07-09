@@ -2,11 +2,12 @@
 
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, LabeledList, NumberInput, Section, Table, Input } from '../components';
+import { Button, Section, Table, Input } from '../components';
 import { Window } from '../layouts';
 import { createSearch } from 'common/string';
+import { map } from '../../tgui-bench/lib/benchmark';
 
-export const SystemManager = (props, context) => {
+export const StarSystemManager = (props, context) => {
   const { act, data } = useBackend(context);
 
   const [
@@ -19,7 +20,7 @@ export const SystemManager = (props, context) => {
   });
 
   const filterSearch = system => {
-    return Search(system.name);
+    return Search(system.name) + Search(system.name);
   };
 
   const makeFleetButton = fleet => {
@@ -58,6 +59,7 @@ export const SystemManager = (props, context) => {
             onClick={() => act('createObject', { sys_id: system.sys_id })} />
         </Fragment>
       }>
+        Owner: {system.owner}<br />
         Alignment: {system.alignment}<br />
         System Type: {system.system_type}<br />
         <br />
