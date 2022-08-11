@@ -299,7 +299,7 @@ Misc projectile types, effects, think of this as the special FX file.
 	damage = 20
 	spread = 90
 	flag = "overmap_medium"
-	
+
 /obj/item/projectile/bullet/prototype_bsa
 	icon_state = "proto_bsa"
 	name = "Prototype BSA Round"
@@ -513,3 +513,11 @@ Misc projectile types, effects, think of this as the special FX file.
 /obj/item/projectile/beam/laser/phaser
 	damage = 30
 	flag = "overmap_medium"
+
+/obj/item/projectile/beam/laser/blaster
+	icon = 'nsv13/icons/obj/projectiles_nsv.dmi'
+	icon_state = "purplelaser"
+	damage = 50
+	flag = "overmap_medium"
+	light_color = LIGHT_COLOR_PINK
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/torpedo

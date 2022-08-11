@@ -31,6 +31,16 @@
 	max_charge = 8000000 // Store 2 charges
 	power_modifier_cap = 5 //Allows you to do insanely powerful oneshot lasers. Maximum theoretical damage of 500.
 
+/obj/machinery/ship_weapon/energy/blaster
+	name = "blaster laser cannon"
+	icon_state = "blaster_cannon"
+	fire_mode = FIRE_MODE_PURPLE_LASER
+	energy_weapon_type = /datum/ship_weapon/blaster
+	charge_rate = 500000
+	charge_per_shot = 200000
+	max_charge = 2400000
+	power_modifier_cap = 4
+
 /obj/machinery/ship_weapon/energy/lazyload()
 	active = TRUE
 	power_modifier = 1
@@ -83,10 +93,10 @@
 	if(!safety)
 		if(src in weapon_type.weapons["loaded"])
 			return
-		LAZYADD(weapon_type.weapons["loaded"] , src)
+		weapon_type.weapons["loaded"] += src
 	else
 		if(src in weapon_type.weapons["loaded"])
-			LAZYREMOVE(weapon_type.weapons["loaded"] , src)
+			weapon_type.weapons["loaded"] -= src
 
 /obj/machinery/ship_weapon/energy/set_position(obj/structure/overmap/OM) //Use this to tell your ship what weapon category this belongs in
 	for(var/I = FIRE_MODE_ANTI_AIR; I <= MAX_POSSIBLE_FIREMODE; I++) //We should ALWAYS default to PDCs.

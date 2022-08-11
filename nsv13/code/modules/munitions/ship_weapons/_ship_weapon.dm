@@ -463,7 +463,7 @@
  *   from STATE_CHAMBERED if semi-auto and have ammo.
  * Returns projectile if successfully fired, FALSE otherwise.
  */
-/obj/machinery/ship_weapon/proc/fire(atom/target, shots = weapon_type.burst_size, manual = TRUE)
+/obj/machinery/ship_weapon/proc/fire(atom/target, shots = weapon_type.burst_size, manual = TRUE, shot_delay = weapon_type.burst_delay)
 	set waitfor = FALSE //As to not hold up any feedback messages.
 
 	// Energy weapons fire behavior
@@ -505,7 +505,7 @@
 			//Semi-automatic, chamber the next one
 			if(semi_auto)
 				chamber(rapidfire = TRUE)
-			sleep(0.75)
+			sleep(shot_delay)
 			after_fire()
 		return TRUE
 	return FALSE

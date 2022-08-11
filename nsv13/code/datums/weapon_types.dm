@@ -157,6 +157,20 @@
 	screen_shake = 1
 	ai_fire_delay = 3 SECONDS
 
+/datum/ship_weapon/blaster // purple laser
+	name = "Blaster Banks"
+	default_projectile_type = /obj/item/projectile/beam/laser/blaster
+	burst_size = 3
+	burst_delay = 0.2 SECONDS
+	fire_delay = 1 SECONDS
+	range_modifier = 15
+	weapon_class = WEAPON_CLASS_HEAVY
+	select_alert = "<span class='notice'>Laser blasters equipped...</span>"
+	failure_alert = "<span class='warning'>Access denied. Laser blasters recharging.</span>"
+	overmap_firing_sounds = list('nsv13/sound/effects/ship/phaser.ogg')
+	overmap_select_sound = 'nsv13/sound/effects/ship/phaser_select.ogg' //Sound effect provided by: "All Sounds" https://www.youtube.com/watch?v=EpaCJ75T3fo under creative commons. Trimmed by Kmc2000
+	ai_fire_delay = 3 SECONDS
+
 /datum/ship_weapon/phaser/valid_target(obj/structure/overmap/source, obj/structure/overmap/target, override_mass_check = FALSE)
 	if(!istype(source) || !istype(target))
 		return FALSE
