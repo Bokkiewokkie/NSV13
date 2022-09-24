@@ -78,6 +78,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
+/obj/item/soap/nanotrasen,
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo/crew_quarters)
 "ar" = (
@@ -90,6 +91,7 @@
 "at" = (
 /obj/machinery/shower,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/obj/structure/curtain,
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo/crew_quarters)
 "au" = (
@@ -125,10 +127,10 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo/crew_quarters)
 "ax" = (
-/obj/effect/spawner/structure/window/reinforced/ship,
-/obj/machinery/door/firedoor,
+/obj/structure/table,
+/obj/item/flashlight/lamp,
 /turf/open/floor/plating,
-/area/maintenance/nsv/mining_ship/aft)
+/area/maintenance/nsv/mining_ship/forward)
 "ay" = (
 /obj/structure/toilet{
 	dir = 4
@@ -309,10 +311,10 @@
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/central)
 "bk" = (
-/obj/machinery/door/firedoor,
-/obj/effect/spawner/structure/window/reinforced/ship,
+/obj/structure/table,
+/obj/item/paper_bin,
 /turf/open/floor/plating,
-/area/nostromo/crew_quarters)
+/area/maintenance/nsv/mining_ship/forward)
 "bl" = (
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo/mining)
@@ -407,10 +409,9 @@
 /turf/open/space/basic,
 /area/nostromo/hangar/starboard)
 "bA" = (
-/obj/machinery/door/firedoor,
-/obj/effect/spawner/structure/window/reinforced/ship,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
-/area/nostromo/mining)
+/area/maintenance/nsv/mining_ship/aft)
 "bB" = (
 /turf/open/floor/plasteel/techmaint{
 	initial_gas_mix = "TEMP=2.7"
@@ -463,7 +464,7 @@
 /area/nostromo/hangar/starboard)
 "bK" = (
 /obj/structure/chair/sofa/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/jukebox/shipwide,
 /turf/open/floor/carpet/ship,
@@ -533,7 +534,7 @@
 	},
 /area/nostromo/hangar/starboard)
 "bU" = (
-/obj/effect/spawner/structure/window/reinforced/ship,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
 "bV" = (
@@ -720,7 +721,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/structure/window/reinforced/ship,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
 "cy" = (
@@ -812,9 +813,6 @@
 /turf/open/floor/plasteel/ship/padded,
 /area/nostromo)
 "cO" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1030,7 +1028,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/ridged/steel,
-/area/maintenance/nsv/mining_ship/central)
+/area/nostromo/medbay)
 "du" = (
 /obj/machinery/door/airlock/ship/hatch{
 	name = "maintenance hatch"
@@ -1327,7 +1325,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/maintenance/nsv/mining_ship/forward)
+/area/nostromo)
 "ej" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -1473,13 +1471,10 @@
 /turf/open/floor/plating/airless,
 /area/nostromo/hangar/starboard)
 "eC" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/monotile/steel{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/nostromo/hangar/starboard)
+/obj/effect/spawner/lootdrop/grille_or_trash,
+/obj/structure/rack,
+/turf/open/floor/plating,
+/area/maintenance/nsv/mining_ship/forward)
 "eD" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -1489,16 +1484,11 @@
 	},
 /area/nostromo/hangar/starboard)
 "eE" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/monotile/steel{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/nostromo/hangar/starboard)
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/maintenance/nsv/mining_ship/forward)
 "eF" = (
-/obj/machinery/door/firedoor,
-/obj/effect/spawner/structure/window/reinforced/ship,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/nostromo/hangar/starboard)
 "eG" = (
@@ -1521,12 +1511,12 @@
 /turf/open/floor/plating/airless,
 /area/nostromo/maintenance/exterior)
 "eI" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/light{
-	dir = 8
+/obj/item/origami/paperplane,
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
 	},
-/turf/open/space/basic,
-/area/nostromo/hangar/starboard)
+/turf/open/floor/plating,
+/area/maintenance/nsv/mining_ship/forward)
 "eJ" = (
 /obj/structure/lattice,
 /obj/structure/cable/yellow{
@@ -1674,6 +1664,8 @@
 /turf/open/floor/carpet/ship,
 /area/nostromo/crew_quarters)
 "fe" = (
+/obj/structure/rack,
+/obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating{
 	icon_state = "platingdmg2"
 	},
@@ -1809,6 +1801,7 @@
 /area/nostromo/mining)
 "fr" = (
 /obj/effect/spawner/lootdrop/maintenance,
+/obj/structure/rack,
 /turf/open/floor/plasteel/ship/padded,
 /area/maintenance/nsv/mining_ship/central)
 "fs" = (
@@ -2592,7 +2585,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/ship/padded,
-/area/maintenance/nsv/mining_ship/central)
+/area/nostromo/engineering)
 "hi" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -2662,7 +2655,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/ship/padded,
-/area/maintenance/nsv/mining_ship/central)
+/area/nostromo/engineering/atmospherics)
 "ho" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/cable{
@@ -2860,6 +2853,9 @@
 "hJ" = (
 /obj/machinery/computer/ship/fighter_launcher{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/monotile/steel{
 	initial_gas_mix = "TEMP=2.7"
@@ -3118,6 +3114,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister,
 /obj/machinery/light/small,
+/obj/item/wrench,
 /turf/open/floor/plasteel/ship/padded,
 /area/nostromo/engineering/atmospherics)
 "il" = (
@@ -3321,6 +3318,8 @@
 /area/nostromo)
 "iM" = (
 /obj/structure/closet/secure_closet/freezer/kitchen/mining,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo/crew_quarters)
 "iN" = (
@@ -3661,6 +3660,9 @@
 /area/nostromo/crew_quarters)
 "jF" = (
 /obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
+	},
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/plasteel/techmaint,
 /area/nostromo/crew_quarters)
@@ -3973,6 +3975,8 @@
 /area/nostromo/crew_quarters)
 "ky" = (
 /obj/structure/closet/secure_closet/freezer/kitchen/mining,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
 /turf/open/floor/plasteel/ridged/steel,
 /area/nostromo/crew_quarters)
 "kz" = (
@@ -4035,7 +4039,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/hidden,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/maintenance/nsv/mining_ship/central)
+/area/nostromo/engineering/atmospherics)
 "kK" = (
 /obj/structure/fluff/support_beam,
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -4454,9 +4458,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/advanced_airlock_controller/directional/north,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
@@ -4697,8 +4698,9 @@
 /area/maintenance/nsv/mining_ship/aft)
 "vA" = (
 /obj/structure/cable/yellow{
-	icon_state = "1-4"
+	icon_state = "4-8"
 	},
+/obj/item/chair/stool,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
 "wp" = (
@@ -4743,6 +4745,7 @@
 "xV" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance,
+/obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
 "yb" = (
@@ -4815,6 +4818,13 @@
 /obj/effect/spawner/lootdrop/maintenance/three,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/central)
+"zw" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/item/stack/cable_coil/yellow,
+/turf/open/floor/plating/airless,
+/area/nostromo/maintenance/exterior)
 "zE" = (
 /obj/effect/spawner/lootdrop/grille_or_trash,
 /turf/open/floor/plating,
@@ -5102,6 +5112,12 @@
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/maintenance/nsv/mining_ship/aft)
+"Gy" = (
+/obj/item/ship_weapon/ammunition/torpedo/freight,
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nostromo/hangar/starboard)
 "GI" = (
 /obj/machinery/door/airlock/ship/external/glass{
 	req_one_access_txt = "31;48"
@@ -5136,6 +5152,10 @@
 "HJ" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
+/area/maintenance/nsv/mining_ship/forward)
+"Ie" = (
+/obj/machinery/light/small,
+/turf/open/floor/plating/airless,
 /area/maintenance/nsv/mining_ship/forward)
 "IU" = (
 /obj/machinery/camera{
@@ -5172,6 +5192,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/nsv/mining_ship/aft)
+"JW" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small,
+/turf/open/floor/plasteel/techmaint{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/nostromo/hangar/starboard)
 "KE" = (
 /turf/template_noop,
 /area/maintenance/nsv/mining_ship/aft)
@@ -5217,7 +5246,12 @@
 /turf/open/space/basic,
 /area/nostromo/hangar/starboard)
 "Lw" = (
-/obj/structure/closet/firecloset,
+/obj/structure/table,
+/obj/item/origami/papercrane{
+	pixel_x = -19;
+	pixel_y = 9
+	},
+/obj/item/origami/paperboat,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
 "LE" = (
@@ -5231,6 +5265,12 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/nostromo/hangar/starboard)
+"LP" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/nsv/mining_ship/aft)
 "MK" = (
 /obj/item/ammo_box/magazine/nsv/pdc,
 /obj/item/ammo_box/magazine/nsv/pdc,
@@ -5253,6 +5293,12 @@
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/maintenance/nsv/mining_ship/aft)
+"Ot" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/maintenance/nsv/mining_ship/forward)
 "OJ" = (
 /obj/structure/overmap/small_craft/transport/sabre/mining,
 /turf/open/floor/monotile/steel{
@@ -5359,9 +5405,7 @@
 /turf/open/floor/monotile/dark/airless,
 /area/nostromo/hangar/starboard)
 "Qp" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
+/obj/machinery/photocopier,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -5393,6 +5437,11 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
+"Rs" = (
+/obj/item/stack/conveyor,
+/obj/machinery/light,
+/turf/open/floor/plating/airless,
+/area/nostromo/hangar/starboard)
 "RK" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
@@ -5484,6 +5533,7 @@
 /area/nostromo/mining)
 "TY" = (
 /obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/light/small,
 /turf/open/floor/plasteel/techmaint{
 	initial_gas_mix = "TEMP=2.7"
 	},
@@ -5495,6 +5545,9 @@
 	name = "Conveyor belt access";
 	pixel_y = 32;
 	req_one_access_txt = "31;48"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/plating/airless,
 /area/nostromo/hangar/starboard)
@@ -5629,6 +5682,16 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/maintenance/nsv/mining_ship/forward)
+"Yv" = (
+/obj/structure/closet/crate/engineering,
+/obj/effect/spawner/lootdrop/maintenance/four,
+/obj/item/wirerod,
+/turf/open/floor/plasteel/ridged/steel,
+/area/nostromo/engineering/atmospherics)
+"YO" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/ridged/steel,
+/area/nostromo/mining)
 "Zo" = (
 /obj/effect/landmark/trader_drop_point,
 /turf/open/floor/plasteel/techmaint{
@@ -19914,12 +19977,12 @@ aa
 aa
 aa
 aa
-bk
-bk
-bk
-bk
-bk
-bk
+dF
+dF
+dF
+dF
+dF
+dF
 ap
 aq
 ay
@@ -19930,10 +19993,10 @@ aa
 aa
 aa
 aa
-bk
-bk
-bk
-bk
+dF
+dF
+dF
+dF
 aa
 aa
 aa
@@ -20171,7 +20234,7 @@ aa
 aa
 aa
 aa
-bk
+dF
 aW
 aW
 aW
@@ -20181,16 +20244,16 @@ ap
 at
 aV
 ap
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+dF
+dF
+dF
+dF
+dF
+dF
+dF
 iM
 ky
-bk
+dF
 aa
 aa
 aa
@@ -20428,7 +20491,7 @@ aa
 aa
 aa
 aa
-bk
+dF
 aW
 cV
 cY
@@ -20443,11 +20506,11 @@ dB
 dG
 fp
 gz
-bk
+dF
 iI
 iN
 iI
-bk
+dF
 aa
 aa
 aa
@@ -20685,7 +20748,7 @@ aa
 aa
 aa
 aa
-bk
+dF
 cy
 iN
 cZ
@@ -20704,7 +20767,7 @@ iC
 iI
 jE
 iI
-bk
+dF
 la
 la
 la
@@ -20942,7 +21005,7 @@ aa
 aa
 aa
 aa
-bk
+dF
 aW
 cV
 cY
@@ -21199,7 +21262,7 @@ aa
 la
 lb
 lb
-bk
+dF
 aW
 cW
 cY
@@ -21456,7 +21519,7 @@ la
 la
 lh
 bE
-bk
+dF
 aW
 aW
 aW
@@ -23791,7 +23854,7 @@ dS
 eg
 db
 ac
-mu
+LP
 jq
 GP
 ac
@@ -24032,19 +24095,19 @@ ha
 bW
 db
 eg
-bg
-bg
+dK
+dK
 dt
-bg
-bg
-bg
-bg
-bg
-bg
+dK
+dK
+dK
+dK
+dS
+dS
 hh
-bg
-bg
-bg
+dS
+dS
+dS
 eg
 db
 ac
@@ -24554,11 +24617,11 @@ bg
 Db
 fZ
 hK
-bg
+cT
 hn
-bg
-bg
-bg
+cT
+cT
+cT
 eg
 db
 ac
@@ -24811,7 +24874,7 @@ bg
 bg
 gk
 bg
-bg
+cT
 ho
 hE
 ii
@@ -25068,7 +25131,7 @@ fr
 bg
 gC
 dI
-bg
+cT
 hr
 hF
 ik
@@ -25313,7 +25376,7 @@ cC
 ac
 ac
 fQ
-cG
+bA
 bW
 CR
 ff
@@ -25565,7 +25628,7 @@ aa
 aa
 aa
 aa
-ax
+dq
 cD
 cH
 ac
@@ -25582,7 +25645,7 @@ bg
 bg
 he
 bg
-bg
+cT
 cT
 hH
 cT
@@ -25595,7 +25658,7 @@ kc
 ac
 fV
 kk
-ax
+dq
 aa
 aa
 aa
@@ -26099,7 +26162,7 @@ hb
 cT
 hA
 dL
-dL
+Yv
 cT
 eg
 db
@@ -27369,7 +27432,7 @@ ld
 aG
 aH
 dV
-zE
+eC
 aH
 db
 fE
@@ -28911,7 +28974,7 @@ lf
 aG
 bU
 dV
-eb
+eE
 cc
 cc
 hR
@@ -29167,8 +29230,8 @@ am
 lf
 aG
 aH
-dV
-eb
+dY
+eI
 cc
 Pi
 hS
@@ -29425,7 +29488,7 @@ lf
 aG
 aH
 Qp
-vA
+dV
 cc
 gD
 hT
@@ -29681,7 +29744,7 @@ am
 lf
 aG
 aH
-eb
+ax
 dV
 cc
 hQ
@@ -29938,7 +30001,7 @@ am
 lf
 aG
 aH
-eb
+bk
 dV
 cc
 cc
@@ -29955,9 +30018,9 @@ bp
 ab
 ab
 ab
-aH
+bW
 ei
-aH
+bW
 aH
 eb
 dV
@@ -30196,7 +30259,7 @@ lg
 aG
 aH
 Lw
-dV
+vA
 aH
 so
 eb
@@ -31484,21 +31547,21 @@ aG
 aG
 aG
 aH
-eY
+Ie
 aH
 aH
 kp
 aH
-bA
+ce
 lo
 ab
 dk
-bA
+ce
 aH
 ms
 aH
 aH
-eY
+Ot
 aH
 aG
 aG
@@ -31750,7 +31813,7 @@ qf
 Ts
 ab
 nx
-bl
+YO
 ab
 gV
 MK
@@ -32001,7 +32064,7 @@ aH
 eY
 aF
 pL
-hd
+JW
 ab
 bV
 lq
@@ -32260,11 +32323,11 @@ aF
 cl
 aP
 ab
-bA
+ce
 lr
 ab
 ek
-bA
+ce
 ab
 aP
 aO
@@ -32521,7 +32584,7 @@ cO
 ls
 hJ
 eK
-eC
+bs
 yF
 bS
 br
@@ -34060,7 +34123,7 @@ bB
 OO
 dh
 bs
-eT
+Gy
 Zo
 eT
 bs
@@ -34317,7 +34380,7 @@ bB
 OO
 dh
 bs
-eT
+Gy
 Zo
 eT
 bs
@@ -35344,11 +35407,11 @@ br
 br
 IU
 dh
-eE
+bs
 Bu
 bs
 Bu
-eE
+bs
 kQ
 sV
 br
@@ -35858,12 +35921,12 @@ aF
 aF
 aF
 TZ
-eI
+aM
 gV
 bB
 gV
-eI
-eB
+aM
+Rs
 aF
 aF
 aF
@@ -49995,7 +50058,7 @@ dU
 er
 eu
 ev
-eH
+zw
 ev
 dU
 er
