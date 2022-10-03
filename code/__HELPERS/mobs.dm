@@ -178,6 +178,13 @@ GLOBAL_LIST_INIT(skin_tones, sortList(list(
 	"african2"
 	)))
 
+/proc/random_origin(/datum/species/S)
+	var/list/available_origin = list()
+	for(var/option in GLOB.origins)
+		if(S.valid_origins[option])
+			available_origin += option
+	return available_origin
+
 GLOBAL_LIST_EMPTY(species_list)
 
 /proc/age2agedescription(age)
@@ -329,7 +336,7 @@ GLOBAL_LIST_EMPTY(species_list)
 				break
 	if (progress)
 		qdel(progbar)
-	
+
 	if(!QDELETED(target))
 		LAZYREMOVE(user.do_afters, target)
 		LAZYREMOVE(target.targeted_by, user)
