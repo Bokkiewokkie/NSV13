@@ -13,3 +13,5 @@
 /datum/config_entry/number/min_pop_kill_objectives
 	config_entry_value = 15
 	min_val = 0
+
+/datum/config_entry/number/space_fog_factor
