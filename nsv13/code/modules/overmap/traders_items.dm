@@ -39,10 +39,6 @@
 	faction = "syndicate"
 	supply_pod_type = /obj/structure/closet/supplypod/syndicate_odst
 
-/obj/structure/overmap/trader/independent
-	faction = "unaligned" //TODO: make this actually do something
-	supply_pod_type = /obj/structure/closet/supplypod
-
 /obj/structure/overmap/trader/proc/set_trader(datum/trader/bob) //The love story of alice and bob continues.
 	name = "[bob.name]"
 	ai_controlled = FALSE //Yep, not a whole lot we can do about that.

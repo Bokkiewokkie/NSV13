@@ -190,14 +190,6 @@
 	station_type = /obj/structure/overmap/trader
 	image = "https://cdn.discordapp.com/attachments/612668662977134592/859132739147792444/unknown.png"   //I don't wanna do this but I'm also not going to break the mold as to make it hopefully easier in future to fix.
 
-/datum/trader/shallowstone/independent
-	name = "Marvin's Mineral Emporium"
-	desc = "Ready to supply everyone with the finest stones and gems!"
-	shortname = "MME"
-	faction_type = FACTION_ID_UNALIGNED
-	greetings = list("Take a look around, our stores are open to anyone!",\
-	"How goes it fellow space dwellers? Care for some of the best ore in the Rosetta Cluster?")
-
 /datum/trader/minsky
 	name = "Minsky Heavy Engineering"
 	desc = "Corporate approved aftermarket shipyard."
@@ -259,7 +251,7 @@
 	data["greeting"] = greeting
 	data["desc"] = desc
 	data["image"] = image
-	data["theme"] = (faction_type == FACTION_ID_NT || faction_type == FACTION_ID_UNALIGNED) ? "ntos" : "syndicate"
+	data["theme"] = (faction_type == FACTION_ID_NT) ? "ntos" : "syndicate"
 	data["items_info"] = items_info
 	data["next_restock"] = "Stock: (Restocking in [round((next_restock-world.time)/600)] minutes)"
 	//Syndies use syndie budget, NT use NT cargo budget
