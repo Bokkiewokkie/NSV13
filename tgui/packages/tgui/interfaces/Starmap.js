@@ -87,16 +87,11 @@ export const drawStarmap = (props, context) => {
     );
   };
 
-  const drawFog = {
-   let fogStyle = {
-    background: (fog_factor ? 'radial-gradient(transparent -' + data.fog_factor + '%, #223F ' + data.fog_factor + '%)' : 'none')
-   };
-   return (
-     <div style={fogStyle} class="fog"/>
-   );
- };
+  let fogStyle = {
+    background: (data.fog_factor ? 'radial-gradient(transparent -' + data.fog_factor + '%, #223F ' + data.fog_factor + '%)' : 'none'),
+  };
+  const Fog = <div style={fogStyle} class="fog"/>
 
-  let Fog = drawFog;
   let SystemNodes = (data.star_systems).map(drawSystemNodes);
   let Connections = (data.lines).map(drawLines);
 
@@ -122,6 +117,7 @@ export const drawStarmap = (props, context) => {
         initial_focus_y={data.focus_y}
         initial_scale_factor={scale_factor}>
         <>
+          {Fog}
           {data.star_systems && SystemNodes}
           {data.lines && Connections}
           {!!travelling && (
