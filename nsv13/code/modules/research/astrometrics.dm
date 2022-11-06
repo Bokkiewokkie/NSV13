@@ -9,7 +9,7 @@ you build.
 */
 
 /obj/machinery/computer/ship/navigation/astrometrics
-	name = "Astrometrics computer"
+	name = "\improper Astrometrics computer"
 	desc = "A computer which is capable of interfacing with subspace sensor arrays to gather intel on starsystems. It is capable of performing rudimentary, long range analysis on anomalies, however a probe torpedo will need to be constructed and fired at the anomaly to fully collect its available research."
 	req_access = list(ACCESS_RESEARCH)
 	circuit = /obj/item/circuitboard/computer/astrometrics

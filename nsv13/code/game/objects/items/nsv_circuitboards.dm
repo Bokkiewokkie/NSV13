@@ -32,7 +32,7 @@
 	build_path = /obj/machinery/computer/secondary_ship_id_console
 
 /obj/item/circuitboard/computer/card/secondary_ship_id_console/syndicate
-	name = "circiut board (Syndicate ID console)"
+	name = "circuit board (Syndicate ID console)"
 	build_path = /obj/machinery/computer/secondary_ship_id_console/syndicate
 
 ////Security////
@@ -44,8 +44,12 @@
 ////Science////
 
 /obj/item/circuitboard/computer/astrometrics
-	name = "Astrometrics Computer (Computer Board)"
+	name = "\improper Astrometrics Computer (Computer Board)"
 	build_path = /obj/machinery/computer/ship/navigation/astrometrics
+
+/obj/item/circuitboard/machine/astrometrics_dish
+	name = "circuit board (Astrometrics scanning dish)"
+	build_path = /obj/machinery/astrometrics_dish
 
 ////Medical////
 /obj/item/circuitboard/machine/autoinject_printer
