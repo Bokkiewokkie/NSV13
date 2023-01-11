@@ -57,31 +57,8 @@
 
 /area/science/nsv/astronomy
 	name = "Astrometrics Lab"
+	icon = 'nsv13/icons/turf/custom_areas.dmi'
 	icon_state = "astrometrics"
-
-/area/nsv/engine/corridor
-	name = "Engineering Corridor"
-	icon_state = "aux_base_construction"
-
-/area/nsv/engine/engine_room/core
-	name = "Engine Core"
-	icon_state = "engine_core"
-
-/area/nsv/engine/engine_room/auxiliary
-	name = "Engine Auxiliary Equipment"
-	icon_state = "engine_foyer"
-
-/area/engine/atmos/port_atmos
-	name = "Port Atmospherics"
-	icon_state = "atmos"
-
-/area/engine/atmos/starboard_atmos
-	name = "Starboard Atmospherics"
-	icon_state = "atmos"
-
-/area/maintenance/nsv/ftlroom
-	name = "FTL Control Room"
-	icon_state = "ftl_room"
 
 /area/maintenance/nsv/turbolift/abandonedshaft
 	name = "Abandoned Elevator Shaft"
@@ -474,104 +451,6 @@
 	name = "Observation Lounge"
 	icon_state = "Sleep"
 
-/area/crew_quarters/nsv/officerquarters
-	name = "Bridge Officer's Quarters"
-	icon_state = "Sleep"
-
-/area/nsv/hanger/deck3/starboard
-	name = "Deck 3 Starboard Hanger Bay"
-	icon_state = "hallS"
-
-/area/nsv/hanger/notkmcstupidhanger/launchtube/left
-	name = "Launch Tubes 1 & 2"
-	icon_state = "hallP"
-
-/area/nsv/hanger/notkmcstupidhanger/launchtube/right
-	name = "Launch Tubes 3 & 4"
-	icon_state = "hallS"
-
-/area/nsv/hanger/notkmcstupidhanger/launchtube/left/airlock
-	name = "Hangar Airlock 1"
-
-/area/nsv/hanger/notkmcstupidhanger/launchtube/right/airlock
-	name = "Hangar Airlock 2"
-
-/area/nsv/hanger/notkmcstupidhanger/hangar
-	name = "Hangar Bay"
-	icon_state = "hallC"
-
-/area/nsv/hanger/notkmcstupidhanger/pilot
-	name = "Pilot Lounge"
-	icon_state = "shuttlered"
-
-/area/nsv/hanger/notkmcstupidhanger/atc
-	name = "Air Traffic Control"
-	icon_state = "shuttlered"
-
-/area/nsv/hanger/deck2/port
-	name = "Deck 2 Port Hanger Bay"
-	icon_state = "hallP"
-
-/area/nsv/hanger/deck2/starboard
-	name = "Deck 2 Starboard Hanger Bay"
-	icon_state = "hallS"
-
-/area/nsv/hanger/mining
-	name = "Mining Hangar Bay"
-	icon_state = "hallS"
-
-/area/nsv/weapons
-	name = "Weapons Bay"
-	icon_state = "weapons_bay"
-
-/area/nsv/weapons/ordnance
-	name = "Ordnance Handling Bay"
-	icon_state = "magazine"
-
-/area/nsv/weapons/gauss
-	name = "Gauss Bay"
-	icon_state = "gauss"
-
-/area/nsv/weapons/port
-	name = "Port Weapons Bay"
-	icon_state = "weapons_bay"
-
-/area/nsv/weapons/starboard
-	name = "Starboard Weapons Bay"
-	icon_state = "weapons_bay"
-
-/area/nsv/weapons/fore
-	name = "Fore Weapons Bay"
-	icon_state = "weapons_bay"
-
-/area/nsv/weapons/artillery
-	name = "Artillery Bay"
-	icon_state = "artillery"
-
-/area/nsv/weapons/access_corridor
-	name = "Munitions Access Corridor"
-	icon_state = "hallF"
-
-/area/nsv/magazine
-	name = "Ship's Magazine"
-	icon_state = "magazine"
-
-/area/nsv/magazine/port
-	name = "Port Magazine"
-	icon_state = "magazine"
-
-/area/nsv/magazine/starboard
-	name = "Starboard Magazine"
-	icon_state = "magazine"
-
-/area/nsv/briefingroom
-	name = "Briefing Room"
-	icon_state = "hallP"
-
-/area/nsv/crew_quarters/heads/maa
-	name = "Master At Arms' Office"
-	icon_state = "shuttlegrn"
-
 /area/nsv/squad
 	name = "Squad Equipment Room"
 	icon_state = "shuttlegrn"
@@ -614,53 +493,51 @@
 	name = "Mining Shuttle Starboard Airlock"
 	icon_state = "hallS"
 
+//FOB
 /area/nsv/shuttle/fob
 	has_gravity = STANDARD_GRAVITY //good luck trying to fit a gen here.
+	icon = 'nsv13/icons/turf/custom_areas.dmi'
+	icon_state = "fobshuttle"
 
 /area/nsv/shuttle/fob/bridge
 	name = "Mining Shuttle Bridge"
-	icon_state = "bridge"
+	icon_state = "fobshuttlebridge"
 
 /area/nsv/shuttle/fob/central
 	name = "Mining Shuttle"
-	icon_state = "hallC"
 
 /area/nsv/shuttle/fob/storage
 	name = "Mining Shuttle Equipment Storage"
-	icon_state = "storage"
 
 /area/nsv/shuttle/fob/atmospherics
 	name = "Mining Shuttle Maintenance"
-	icon_state = "atmos"
 
 /area/nsv/shuttle/fob/airlock/aft
 	name = "Mining Shuttle Aft Airlock"
-	icon_state = "hallA"
 
 /area/nsv/shuttle/fob/airlock/port
 	name = "Mining Shuttle Port Airlock"
-	icon_state = "hallP"
 
 /area/nsv/shuttle/fob/airlock/starboard
 	name = "Mining Shuttle Starboard Airlock"
-	icon_state = "hallS"
 
 /area/nsv/shuttle/fob/quarters
 	name = "Mining Shuttle Crew Quarters"
-	icon_state = "hallC"
 
 /area/nsv/shuttle/fob/lounge
 	name = "Mining Shuttle Lounge"
-	icon_state = "hallP"
 
+//Nostromo (main mining ship)
 /area/nostromo
 	name = "DMC Rocinante"
 	ambientsounds = list('nsv13/sound/ambience/leit_motif.ogg','nsv13/sound/ambience/wind.ogg','nsv13/sound/ambience/wind2.ogg','nsv13/sound/ambience/wind3.ogg','nsv13/sound/ambience/wind4.ogg','nsv13/sound/ambience/wind5.ogg','nsv13/sound/ambience/wind6.ogg')
-	icon_state = "mining"
+	icon = 'nsv13/icons/turf/custom_areas.dmi'
+	icon_state = "miningship"
 	has_gravity = TRUE
 
 /area/nostromo/maintenance/exterior
 	name = "Rocinante exterior"
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "space_near"
 
 /area/nostromo/maintenance/hangar
@@ -670,81 +547,50 @@
 /area/nostromo/medbay
 	name = "Rocinante sickbay"
 	ambient_buzz = 'nsv13/sound/ambience/medbay.ogg'
-	icon_state = "medbay"
 
 /area/nostromo/science
 	name = "Rocinante science"
 	ambient_buzz = 'nsv13/sound/ambience/computer_core.ogg'
-	icon_state = "toxlab"
 
 /area/nostromo/tcomms
 	name = "Rocinante TE/LE/COMM core"
 	ambient_buzz = 'nsv13/sound/ambience/computer_core.ogg'
-	icon_state = "tcomsatcham"
 
 /area/nostromo/bridge
 	name = "Rocinante flight deck"
 	ambient_buzz = 'nsv13/sound/ambience/bridge.ogg'
-	icon_state = "bridge"
 
 /area/nostromo/hangar/port
 	name = "Rocinante port hangar deck"
 	ambient_buzz = 'nsv13/sound/ambience/bridge.ogg'
-	icon_state = "hallP"
 
 /area/nostromo/hangar/starboard
 	name = "Rocinante starboard hangar deck"
 	ambient_buzz = 'nsv13/sound/ambience/bridge.ogg'
-	icon_state = "hallS"
 
 /area/nostromo/engineering
 	name = "Rocinante engineering"
 	ambient_buzz = 'nsv13/sound/ambience/bridge.ogg'
-	icon_state = "engine"
 
 /area/nostromo/engineering/atmospherics
 	name = "Rocinante engineering"
 	ambient_buzz = 'nsv13/sound/ambience/bridge.ogg'
-	icon_state = "atmos"
 
 /area/nostromo/galley
 	name = "Rocinante galley"
 	ambient_buzz = 'nsv13/sound/ambience/bridge.ogg'
-	icon_state = "kitchen"
 
 /area/nostromo/galley/coldroom
 	name = "Rocinante cold room"
-	icon_state = "kitchen_cold"
 
 /area/nostromo/crew_quarters
 	name = "Rocinante quarters"
-	icon_state = "Sleep"
 	mood_bonus = 3
 	mood_message = "<span class='nicegreen'>There's no place like the dorms!\n</span>"
 
 /area/nostromo/mining
 	name = "Rocinante mining dock"
-	icon_state = "mining"
 
 /area/nostromo/security
 	name = "Rocinante security"
-	icon_state = "security"
 	ambience_index = AMBIENCE_DANGER
-
-/area/engine/engineering/reactor_core
-	name = "Nuclear Reactor Core"
-	icon_state = "engine_core"
-
-/area/engine/engineering/reactor_control
-	name = "Reactor Control Room"
-	icon_state = "reactor_control"
-
-/area/engine/engineering/ftl_room
-	name = "FTL Drive Core"
-	icon_state = "ftl_room"
-
-/area/maintenance/nsv/bunker
-	name = "Nuclear Bunker"
-	icon_state = "bunker"
-	ambientsounds = list('nsv13/sound/ambience/leit_motif.ogg','nsv13/sound/ambience/wind.ogg','nsv13/sound/ambience/ship_damage/creak1.ogg','nsv13/sound/ambience/ship_damage/creak2.ogg','nsv13/sound/ambience/ship_damage/creak3.ogg','nsv13/sound/ambience/ship_damage/creak4.ogg','nsv13/sound/ambience/ship_damage/creak5.ogg','nsv13/sound/ambience/ship_damage/creak6.ogg','nsv13/sound/ambience/ship_damage/creak7.ogg')
-	light_color = "#e69602"
