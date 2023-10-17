@@ -181,6 +181,17 @@ Credit to TGMC for the interior sprites for all these!
 	icon = 'nsv13/icons/overmap/nanotrasen/carrier_mining.dmi'
 	req_one_access = list(ACCESS_CARGO, ACCESS_MINING, ACCESS_TRANSPORT_PILOT)
 	possible_interior_maps = list(/datum/map_template/dropship/sabre/mining)
+	components = list(/obj/item/fighter_component/fuel_tank/tier2,
+						/obj/item/fighter_component/avionics/mining,
+						/obj/item/fighter_component/apu,
+						/obj/item/fighter_component/armour_plating,
+						/obj/item/fighter_component/targeting_sensor,
+						/obj/item/fighter_component/engine,
+						/obj/item/fighter_component/docking_computer,
+						/obj/item/fighter_component/battery,
+						/obj/item/fighter_component/ftl,
+						/obj/item/fighter_component/primary/utility/refuel,
+						/obj/item/fighter_component/countermeasure_dispenser)
 
 /datum/map_template/dropship/sabre/mining
     name = "SU-437 Sabre Interior (Mining)"

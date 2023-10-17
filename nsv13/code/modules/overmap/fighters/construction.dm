@@ -1,23 +1,3 @@
-//Fluff components that are only used in building.
-/obj/item/fighter_component/avionics
-	name = "\improper Fighter Avionics"
-	desc = "Avionics for a fighter"
-	icon = 'nsv13/icons/obj/fighter_components.dmi'
-	icon_state = "avionics"
-	tier = null //Cannot be upgraded.
-
-/obj/item/fighter_component/apu
-	name = "\improper Fighter Auxiliary Power Unit"
-	desc = "An Auxiliary Power Unit for a fighter"
-	icon = 'nsv13/icons/obj/fighter_components.dmi'
-	icon_state = "apu"
-
-/obj/item/fighter_component/targeting_sensor
-	name = "\improper Fighter Targeting Sensors"
-	icon = 'icons/obj/crates.dmi'
-	icon_state = "weapon_crate"
-	tier = null //Cannot be upgraded.
-
 //Woe betide all ye who venture here.
 
 #define LBS_CHASSIS 						0
