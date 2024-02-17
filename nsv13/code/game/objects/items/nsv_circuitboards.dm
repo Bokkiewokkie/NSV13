@@ -44,12 +44,33 @@
 ////Science////
 
 /obj/item/circuitboard/computer/astrometrics
-	name = "\improper Astrometrics Computer (Computer Board)"
+	name = "computer board (Astrometrics Computer)"
 	build_path = /obj/machinery/computer/ship/navigation/astrometrics
 
 /obj/item/circuitboard/machine/astrometrics_dish
-	name = "circuit board (Astrometrics scanning dish)"
+	name = "circuit board (Astrometrics Scanning Dish)"
 	build_path = /obj/machinery/astrometrics_dish
+	req_components = list(
+		/obj/item/stock_parts/scanning_module = 2,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/capacitor = 1)
+
+/obj/item/circuitboard/machine/neutrino_detector
+	name = "circuit board (Neutrino Detector)"
+	build_path = /obj/machinery/astrometrics_dish/neutrino
+	req_components = list(
+		/obj/item/stock_parts/scanning_module = 3,
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stack/sheet/mineral/snow = 5,)
+
+/obj/item/circuitboard/machine/gravitic_interferometer
+	name = "circuit board (Gravitic Interferometer)"
+	build_path = /obj/machinery/astrometrics_dish/gravitic
+	req_components = list(
+		/obj/item/stock_parts/micro_laser = 2,
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/capacitor = 1)
 
 ////Medical////
 /obj/item/circuitboard/machine/autoinject_printer

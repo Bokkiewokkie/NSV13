@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(computer_beeps, list('nsv13/sound/effects/computer/beep.ogg','n
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/ship/LateInitialize()
+	. = ..()
 	has_overmap()
 
 /obj/machinery/computer/ship/proc/relay_sound(sound, message)
