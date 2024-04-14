@@ -225,8 +225,6 @@
 	SEND_SIGNAL(src, COMSIG_SHIP_DEPARTED) // Let missions know we have left the system
 	curr.remove_ship(src)
 	var/drive_speed = ftl_drive.get_jump_speed()
-	if(drive_speed <= 0) //Assumption: If we got into this proc with speed 0, we want it to jump anyways, as it should be caught before otherwise. Using very slow speed in this case.
-		drive_speed = 1 //Div-by-0s are not fun.
 	var/speed = (curr.dist(target_system) / (drive_speed * 10)) //TODO: FTL drive speed upgrades.
 	SSstar_system.ships[src]["to_time"] = world.time + speed MINUTES
 	SEND_SIGNAL(src, COMSIG_FTL_STATE_CHANGE)

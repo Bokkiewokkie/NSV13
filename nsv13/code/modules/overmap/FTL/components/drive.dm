@@ -379,7 +379,10 @@ Preset classes of FTL drive with pre-programmed behaviours
 		spoolup()
 
 /obj/machinery/computer/ship/ftl_core/proc/get_jump_speed()
-	return jump_speed_factor * (jump_speed_pylon * get_active_pylons())
+	. = jump_speed_factor * (jump_speed_pylon * get_active_pylons())
+	if(. <= 0) //Don't divide by zero later please thanks
+		. = 1 //This isn't good but you still want the ship to be able to move
+	return
 
 #undef FTL_COOLDOWN
 #undef MAX_PYLON_DISTANCE
