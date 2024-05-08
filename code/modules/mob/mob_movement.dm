@@ -533,17 +533,19 @@
 		return FALSE
 	var/turf/source = get_turf(src)
 	var/turf/target = get_step_multiz(src, dir)
-	if(isliving(src)) //NSV13 - let living things do the fancy animation
-		source.travel_z(src, target, (dir == UP))
-		return
 	if(!target)
 		if(feedback)
 			to_chat(src, "<span class='warning'>There's nothing in that direction!</span>")
 		return FALSE
+	to_chat(src, "foo")
 	if(!canZMove(dir, target))
 		if(feedback)
 			to_chat(src, "<span class='warning'>You couldn't move there!</span>")
 		return FALSE
+	to_chat(src, "bar")
+	if(isliving(src)) //NSV13 - let living things do the fancy animation
+		source.travel_z(src, target, (dir == UP))
+		return TRUE
 	forceMove(target)
 	return TRUE
 
