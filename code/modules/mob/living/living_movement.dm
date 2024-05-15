@@ -57,8 +57,8 @@
 	remove_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING)
 
 /mob/living/canZMove(dir, turf/target)
-	to_chat(src, "movement type [movement_type]: [(movement_type & (FLYING | FLOATING))]")
-	to_chat(src, "target [target] dir [dir]")
+	log_admin("movement type [movement_type]: [(movement_type & (FLYING | FLOATING))]")
+	log_admin("target [target] dir [dir]")
 	return can_zTravel(target, dir) && (movement_type & (FLYING | FLOATING)) //NSV13 - added floating so that you can push up and down stairs when gravity goes out
 
 /mob/living/zMove(dir, feedback = FALSE)

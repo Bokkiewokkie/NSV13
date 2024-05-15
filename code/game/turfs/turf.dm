@@ -218,6 +218,7 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 	if(!jaunting && ((upwards && !target.allow_z_travel) || (!upwards && !allow_z_travel)))
 		to_chat(user, "<span class='warning'>Something is blocking you!</span>")
 		return
+	log_admin("Do something")
 	user.visible_message("<span class='notice'>[user] begins floating [upwards ? "upwards" : "downwards"]!</span>", "<span class='notice'>You begin floating [upwards ? "upwards" : "downwards"].")
 	var/matrix/M = user.transform
 	//Animation is inverted due to immediately resetting user vars.
