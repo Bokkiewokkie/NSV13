@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		for(var/obj/O in contents)
 			if(O.obj_flags & BLOCK_Z_IN_UP)
 				return FALSE
-			log_admin("flags [O.obj_flags] for [O] are fine in!")
+			message_admins("flags [O.obj_flags] for [O] are fine in!")
 		return TRUE
 	return FALSE
 
@@ -122,7 +122,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		for(var/obj/O in contents)
 			if(O.obj_flags & BLOCK_Z_OUT_UP)
 				return FALSE
-			log_admin("flags [O.obj_flags] for [O] are fine out!")
+			message_admins("flags [O.obj_flags] for [O] are fine out!")
 		return TRUE
 	return FALSE
 

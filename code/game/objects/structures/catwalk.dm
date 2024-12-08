@@ -6,7 +6,7 @@
 	number_of_rods = 2
 	smooth = SMOOTH_TRUE
 	canSmoothWith = null
-	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
+	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP | BLOCK_Z_IN_UP | BLOCK_Z_IN_DOWN
 	flags_1 = PREVENT_CLICK_UNDER_1//NSV make it so prevent_click_under doesn't need density
 	//Negates the effect of space and openspace.
 	//Shouldn't be placed above anything else.

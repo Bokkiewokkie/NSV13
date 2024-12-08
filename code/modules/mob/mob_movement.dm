@@ -537,12 +537,12 @@
 		if(feedback)
 			to_chat(src, "<span class='warning'>There's nothing in that direction!</span>")
 		return FALSE
-	log_admin("foo")
+	message_admins("foo")
 	if(!canZMove(dir, target))
 		if(feedback)
 			to_chat(src, "<span class='warning'>You couldn't move there!</span>")
 		return FALSE
-	log_admin("bar")
+	message_admins("bar")
 	if(isliving(src)) //NSV13 - let living things do the fancy animation
 		source.travel_z(src, target, (dir == UP))
 		return TRUE
