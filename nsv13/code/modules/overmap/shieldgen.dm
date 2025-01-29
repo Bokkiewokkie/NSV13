@@ -188,7 +188,7 @@
 	desc = "A massively powerful device which is able to project energy shields around ships. This technology is highly experimental and requires a huge amount of power."
 	icon = 'nsv13/icons/obj/machinery/shieldgen.dmi'
 	icon_state = "shieldgen"
-	idle_power_usage = IDLE_POWER_USE; //This will change to match the requirements for projecting a shield.
+	idle_power_usage = IDLE_POWER_USE //This will change to match the requirements for projecting a shield.
 	pixel_x = -32
 	bound_height = 128
 	bound_width = 96
@@ -196,24 +196,21 @@
 	layer = HIGH_OBJ_LAYER
 	var/flux_rate = 0 //Flux that this shield generator is producing based on power usage.
 	var/power_input = 0 //Inputted power setting. Allows you to throttle the shieldgen to not eat all of your power at once.
-	var/list/shield = list("integrity"=0, "max_integrity"=0)
+	var/shield_integrity
+	var/max_shield_integrity
 	var/regenPriority = 50
 	var/maxHealthPriority = 50 //50/50 split
 	var/max_power_input = 1.5e+7 //15 MW theoretical maximum. This much power means your shield is going to be insanely good.
 	var/active = FALSE; //Are we projecting out our shields? This lets you offline the shields for a recharge period so that they become useful again. This function needs a rework as there is no penalty for shields collapsing, and recharge rate is linear.
 	var/obj/structure/cable/cable = null //Connected cable
-	var/mutable_appearance/c_screen
-
-/obj/machinery/shield_generator/update_icon()
-	cut_overlays()
 
 /obj/machinery/shield_generator/proc/absorb_hit(obj/item/projectile/proj)
 	var/damage = proj.damage
 	if(!active)
 		return SHIELD_NOEFFECT //If we don't have shields raised, then we won't tank the hit. This allows you to micro the shields back to health.
 
-	if(shield["integrity"] >= damage)
-		shield["integrity"] -= damage
+	if(shield_integrity >= damage)
+		shield_integrity -= damage
 		return SHIELD_ABSORB
 
 	return SHIELD_NOEFFECT
@@ -266,12 +263,26 @@
 		message_admins("WARNING: Shield generator in [get_area(src)] does not have a linked overmap!");
 		log_game("WARNING: Shield generator in [get_area(src)] does not have a linked overmap!");
 
+/obj/machinery/shield_generator/update_overlays()
+	. = ..()
+	if(machine_stat & NOPOWER || machine_stat & BROKEN) //Broken or powered down? No lights for you
+		return
 
+	. += mutable_appearance(icon, screen_on)
+	. += emissive_appearance(icon, screen_on)
+
+	var/strength = shield_integrity
+	 = 0
+	var/max_strength =  max_shield_integrity
+
+	if()
+		. += mutable_appearance(icon, charge_full_blank)
+		. += emissive_appearance(icon, charge_full_blank)
 
 /obj/machinery/shield_generator/proc/depower_shield()
 	c_screen.alpha = 0
-	shield["integrity"] = 0
-	shield["max_integrity"] = 0
+	shield_integrity = 0
+	max_shield_integrity = 0
 
 
 /obj/machinery/shield_generator/proc/try_use_power(amount) // Although the machine may physically be powered, it may not have enough power to sustain a shield.
@@ -285,11 +296,11 @@
 //Every tick, the shield generator updates its stats based on the amount of power it's being allowed to chug.
 /obj/machinery/shield_generator/process()
 	if(!powered() || power_input <= 0 || !try_use_power(power_input))
-		if(shield["integrity"] > 0) //If we lose power, the shield integrity steadily drains
-			shield["integrity"] -= 2
+		if(shield_integrity > 0) //If we lose power, the shield integrity steadily drains
+			shield_integrity -= 2
 			active = FALSE
 
-		if(shield["integrity"] <= 0) //Reset if no juice remaining
+		if(shield_integrity <= 0) //Reset if no juice remaining
 			depower_shield()
 
 		return FALSE
@@ -300,15 +311,15 @@
 	//Firstly, set the max health of the shield based off of the available input power, and the priority that the user set for generating a shield.
 	var/projectRate = max(((maxHealthPriority / 100) * flux_rate), 0)
 	flux_rate -= projectRate
-	shield["max_integrity"] = projectRate * 100 //1 flux/s => 100max HP for this tick.
+	max_shield_integrity = projectRate * 100 //1 flux/s => 100max HP for this tick.
 
 	//Now we handle whatever's left of the power allocation for regenerating the shield
 
 	var/regenRate = max(((regenPriority / 100) * flux_rate),0) //Times also works as of. Soo we're going, for example, 50% of flux_rate
 	flux_rate -= regenRate
-	shield["integrity"] += regenRate
-	if(shield["integrity"] > shield["max_integrity"])
-		shield["integrity"] = shield["max_integrity"]
+	shield_integrity += regenRate
+	if(shield_integrity > max_shield_integrity)
+		shield_integrity = max_shield_integrity
 
 /obj/machinery/shield_generator/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui);
@@ -325,8 +336,8 @@
 	var/list/data = list()
 	data["maxHealthPriority"] = maxHealthPriority
 	data["regenPriority"] = regenPriority
-	data["progress"] = shield["integrity"]
-	data["goal"] = shield["max_integrity"]
+	data["progress"] = shield_integrity
+	data["goal"] = max_shield_integrity
 	data["powerAlloc"] = power_input/1e+6
 	data["maxPower"] = max_power_input/1e+6
 	data["active"] = active
@@ -400,16 +411,13 @@
 Component that allows AI ships to model shields. Will continuously recharge over time.
 */
 /datum/component/overmap_shields
-	var/list/shield = list(
-		"integrity" = 0,
-		"max_integrity" = 100
-	)
 	//How good are these shields anyway?
-	var/max_integrity = 500
+	var/shield_integrity = 0
+	var/max_shield_integrity = 500
 	var/recharge_rate = 20
 	var/active = TRUE //This is really for adminbuse, or if we ever add EMP damage....
 
-/datum/component/overmap_shields/New(datum/P, start_integrity=0, max_integrity=100, recharge_rate=20)
+/datum/component/overmap_shields/New(datum/P, start_integrity=0, max_integrity=100, charge_rate=20)
 	. = ..()
 	if(!isovermap(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -419,26 +427,25 @@ Component that allows AI ships to model shields. Will continuously recharge over
 		return COMPONENT_INCOMPATIBLE
 	//Alright! Link up. We'll now protect that ship.
 	OM.shields = src
-	set_stats(start_integrity, max_integrity)
+	set_stats(start_integrity, max_integrity, charge_rate)
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/overmap_shields/process()
-	shield["integrity"] += recharge_rate
-	if(shield["integrity"] > max_integrity)
-		shield["integrity"] = max_integrity
+	shield_integrity += recharge_rate
+	if(shield_integrity > max_shield_integrity)
+		shield_integrity = max_shield_integrity
 
-/datum/component/overmap_shields/proc/set_stats(integrity=0, max_integrity=100, recharge_rate=20)
-	src.max_integrity = max_integrity
-	src.recharge_rate = recharge_rate
-	shield["integrity"] = integrity
-	shield["max_integrity"] = max_integrity
+/datum/component/overmap_shields/proc/set_stats(integrity=0, max_integrity=100, charge_rate=20)
+	recharge_rate = charge_rate
+	shield_integrity = integrity
+	max_shield_integrity = max_integrity
 
 /datum/component/overmap_shields/proc/absorb_hit(obj/item/projectile/proj)
 	var/damage = proj.damage
 	if(!active)
 		return SHIELD_NOEFFECT //If we don't have shields raised, then we won't tank the hit. This allows you to micro the shields back to health.
-	if(shield["integrity"] >= damage)
-		shield["integrity"] -= damage
+	if(shield_integrity >= damage)
+		shield_integrity -= damage
 		return SHIELD_ABSORB
 	return SHIELD_NOEFFECT
 
