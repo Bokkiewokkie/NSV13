@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 /obj/structure/overmap/asteroid
 	name = "Asteroid (Ferrous)"
 	desc = "A huge asteroid...IN SPACE"
-	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/icefield/asteroid_ice_32x.dmi'
+	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/asteroid_rock_32x.dmi'
 	icon_state = "1"
 	obj_integrity = 100
 	max_integrity = 100
@@ -73,26 +73,38 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 	overmap_deletion_traits = DELETE_UNOCCUPIED_ON_DEPARTURE | DAMAGE_DELETES_UNOCCUPIED | DAMAGE_STARTS_COUNTDOWN | FIGHTERS_ARE_OCCUPANTS
 	deletion_teleports_occupants = TRUE
 
+/obj/structure/overmap/asteroid/ice
+	name = "Ice Asteroid (Ferrous)"
+	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/icefield/asteroid_ice_32x.dmi'
+
 /obj/structure/overmap/asteroid/apply_weapons()
 	return FALSE //Lol, no.
 
 /obj/structure/overmap/asteroid/medium
 	name = "Asteroid (Non Ferrous)"
-	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/icefield/asteroid_ice_96x.dmi'
+	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/asteroid_rock_96x.dmi'
 	core_composition = list(/turf/closed/mineral/copper, /turf/closed/mineral/silver, /turf/closed/mineral/gold, /turf/closed/mineral/plasma)
 	required_tier = 2
 	bound_height = 96
 	bound_width = 96
 	mass = MASS_MEDIUM
 
+/obj/structure/overmap/asteroid/medium/ice
+	name = "Ice Asteroid (Non Ferrous)"
+	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/icefield/asteroid_ice_96x.dmi'
+
 /obj/structure/overmap/asteroid/large
 	name = "Asteroid (Exotic Composition)"
-	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/icefield/asteroid_ice_128x.dmi'
+	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/asteroid_rock_128x.dmi'
 	core_composition = list(/turf/closed/mineral/diamond, /turf/closed/mineral/uranium, /turf/closed/mineral/bscrystal)
 	required_tier = 3
 	bound_height = 128
 	bound_width = 128
 	mass = MASS_MEDIUM_LARGE
+
+/obj/structure/overmap/asteroid/large/ice
+	name = "Ice Asteroid (Exotic Composition)"
+	icon = 'nsv13/icons/overmap/stellarbodies/asteroidfield/icefield/asteroid_ice_128x.dmi'
 
 /obj/structure/overmap/asteroid/Initialize(mapload)
 	. = ..()

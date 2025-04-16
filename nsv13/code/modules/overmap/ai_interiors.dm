@@ -57,7 +57,7 @@
 						for(var/atom/X in O.contents)
 							qdel(X)
 					qdel(O)
-			for(var/mob/M in linked_area)
+			for(var/mob/M in mobs_in_ship)
 				if(isliving(M) && !M.client) //OK, this is unrealistic, but I don't want players getting deleted because of some brainlet helm operator.
 					qdel(M)
 			for(var/turf/T in linked_area)
@@ -65,6 +65,7 @@
 			qdel(linked_area)
 			return TRUE
 	return FALSE
+
 /obj/structure/closet/supplypod/syndicate_odst
 	name = "Syndicate drop pod"
 	desc = "A large pod which is used to launch syndicate drop troopers at enemy vessels. It's rare to see one of these and survive the encounter."
