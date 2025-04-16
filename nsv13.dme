@@ -3909,6 +3909,7 @@
 #include "nsv13\code\modules\collision\shape.dm"
 #include "nsv13\code\modules\crew_objectives\engineering_objectives.dm"
 #include "nsv13\code\modules\donator\donator_component.dm"
+#include "nsv13\code\modules\events\hallucination.dm"
 #include "nsv13\code\modules\events\weather\deadly_radiation_storm.dm"
 #include "nsv13\code\modules\events\weather\radioactive_sludge.dm"
 #include "nsv13\code\modules\food_and_drinks\drinks\custom_drinks.dm"
