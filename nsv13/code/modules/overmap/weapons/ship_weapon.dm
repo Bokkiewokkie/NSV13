@@ -1,5 +1,35 @@
 #define FIRE_INTERCEPTED 2 //For special_fire()
 
+#define VV_HK_ADD_WEAPON "ShipWeapon"
+
+/obj/structure/overmap/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_ADD_WEAPON, "Add Ship Weapon")
+
+/obj/structure/overmap/vv_do_topic(list/href_list)
+	set waitfor = FALSE
+	. = ..()
+	if(href_list[VV_HK_ADD_WEAPON])
+		if(!check_rights(R_ADMIN))
+			return
+		var/target_ghost
+		switch(alert(usr, "What kind of weapon are you adding?", "Weapon Selection", "Automatic", "Choose type", "Cancel"))
+			if("Cancel")
+				return
+			if("Automatic")
+				var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to pilot a [faction] [src]?", ROLE_GHOSTSHIP, /datum/role_preference/midround_ghost/ghost_ship, 20 SECONDS, POLL_IGNORE_GHOSTSHIP)
+				if(LAZYLEN(candidates))
+					var/mob/dead/observer/C = pick(candidates)
+					target_ghost = C
+				else
+					return
+			if("Choose")
+				target_ghost = input(usr, "Select player to pilot ghost ship:", "Select Player") as null|anything in GLOB.clients
+
+		ghost_ship(target_ghost)
+		message_admins("[key_name_admin(usr)] has ghost shipped [src]!")
+		log_admin("[key_name_admin(usr)] has ghost shipped [src]!")
+
 //These procs should *really* not be here
 /obj/structure/overmap/proc/add_weapon(obj/machinery/ship_weapon/weapon)
 	if(weapon_types[weapon.fire_mode])

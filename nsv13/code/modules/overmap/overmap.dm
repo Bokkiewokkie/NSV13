@@ -480,7 +480,7 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 		if(istype(SW) && (SW.allowed_roles & OVERMAP_USER_ROLE_GUNNER))
 			weapon_numkeys_map += firemode
 
-//Method to apply weapon types to a ship. Override to your liking, this just handles generic rules and behaviours
+///Method to apply weapon types to a ship. Override to your liking, this just handles generic rules and behaviours
 /obj/structure/overmap/proc/apply_weapons()
 	//Prevent fighters from getting access to the AMS.
 	if(mass <= MASS_TINY)
@@ -502,6 +502,13 @@ Proc to spool up a new Z-level for a player ship and assign it a treadmill.
 		weapon_types[FIRE_MODE_BROADSIDE] = new/datum/ship_weapon/broadside(src)
 	if(plasma_caster)
 		weapon_types[FIRE_MODE_PHORON] = new/datum/ship_weapon/plasma_caster(src)
+
+///Create a new ship weapon datum for this ship
+/obj/structure/overmap/proc/apply_weapon(position, path)
+	if(!isnum(position) || !ispath(path))
+		message_admins("Failed to create a ship_weapon datum without a correct position ([position]) or typepath ([path])!")
+		return
+	weapon_types[position] = new path(src)
 
 /obj/item/projectile/Destroy()
 	if(physics2d)
