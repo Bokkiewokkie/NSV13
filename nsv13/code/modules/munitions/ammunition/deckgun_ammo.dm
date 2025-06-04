@@ -17,6 +17,10 @@
 	var/armed = FALSE //Do it do the big boom?
 	var/speed = 0.5 //Needs powder to increase speed.
 
+/obj/item/ship_weapon/ammunition/naval_artillery/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+
 /obj/item/ship_weapon/ammunition/naval_artillery/armed //This is literally just for mail.
 	armed = TRUE
 
