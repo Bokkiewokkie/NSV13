@@ -23,6 +23,7 @@ you build.
 	var/obj/item/radio/radio //For engineering alerts.
 	var/radio_key = /obj/item/encryptionkey/headset_sci
 	var/channel = "Science"
+	var/list/scanners = list() //List of astrometrics equipment on the ship.
 
 /obj/machinery/computer/ship/navigation/astrometrics/Initialize(mapload)
 	. = ..()
@@ -133,7 +134,7 @@ Clean override of the navigation computer to provide scan functionality.
 	say("Scan of [scan_target] complete!")
 	playsound(src, 'nsv13/sound/voice/scanning_complete.wav', 100, FALSE)
 	radio.talk_into(src, "Scan of [scan_target] complete!", channel)
-	linked.scanned += scan_target
+	linked.scanned |= scan_target
 	SEND_SIGNAL(linked, COMSIG_ANOMALY_SCANNED)
 	if(istype(scan_target, /obj/effect/overmap_anomaly))
 		var/obj/effect/overmap_anomaly/OA = scan_target
