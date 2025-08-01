@@ -152,7 +152,7 @@
 	// Snowflake handling for PASSGLASS.
 	if(istype(mover) && (mover.pass_flags & PASSGLASS))
 		return !opacity
-	return (mover.pass_flags & PASSDOOR) //nsv13 - bloodling passdoor
+	return
 
 /// Helper method for bumpopen() and try_to_activate_door(). Don't override.
 /obj/machinery/door/proc/activate_door_base(mob/user, can_close_door)

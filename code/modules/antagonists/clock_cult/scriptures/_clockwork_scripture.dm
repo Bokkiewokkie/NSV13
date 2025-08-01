@@ -227,7 +227,7 @@
 /obj/effect/proc_holder/slab
 	var/datum/clockcult/scripture/slab/parent_scripture
 
-/obj/effect/proc_holder/slab/InterceptClickOn(mob/living/caller, params, atom/A)
+/obj/effect/proc_holder/slab/InterceptClickOn(mob/living/clicker, params, atom/A)
 	parent_scripture?.click_on(A)
 
 //==================================//

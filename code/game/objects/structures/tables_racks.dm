@@ -116,24 +116,24 @@
 	if(locate(/obj/structure/table) in get_turf(mover))
 		return TRUE
 
-/obj/structure/table/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+/obj/structure/table/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/passing_atom)
 	. = !density
-	if(isknpc(caller))
+	if(isknpc(passing_atom))
 		return TRUE
-	if(istype(caller))
-		. = . || (caller.pass_flags & PASSTABLE)
+	if(istype(passing_atom))
+		. = . || (passing_atom.pass_flags & PASSTABLE)
 
-/obj/structure/table/glass/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+/obj/structure/table/glass/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/passing_atom)
 	. = !density
-	if(istype(caller))
-		. = . || (caller.pass_flags & PASSTABLE)
+	if(istype(passing_atom))
+		. = . || (passing_atom.pass_flags & PASSTABLE)
 
-/obj/structure/table/glass/plasma/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller) //Unfortunately this is needed because of subtypes.
+/obj/structure/table/glass/plasma/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/passing_atom) //Unfortunately this is needed because of subtypes.
 	. = !density
-	if(isknpc(caller))
+	if(isknpc(passing_atom))
 		return TRUE
-	if(istype(caller))
-		. = . || (caller.pass_flags & PASSTABLE)
+	if(istype(passing_atom))
+		. = . || (passing_atom.pass_flags & PASSTABLE)
 //NSV13 end
 
 /obj/structure/table/proc/tableplace(mob/living/user, mob/living/pushed_mob)

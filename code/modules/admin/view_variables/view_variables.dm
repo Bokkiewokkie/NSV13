@@ -107,6 +107,7 @@
 				variable_html += thing.vv_get_var(varname)
 
 	var/html = {"
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>

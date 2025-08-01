@@ -1,7 +1,8 @@
 /atom/proc/investigate_log(message, subject)
 	if(!message || !subject || SSticker.current_state == GAME_STATE_FINISHED)
 		return
-	var/F = file("[GLOB.log_directory]/[subject].html")
+	var/filepath = "[GLOB.log_directory]/[subject].html"
+	var/F = file(filepath)
 	WRITE_FILE(F, "[time_stamp()] [REF(src)] ([x],[y],[z]) || [src] [message]<br>")
 
 /client/proc/investigate_show()
@@ -56,4 +57,7 @@
 	if(!fexists(F))
 		to_chat(src, "<span class='danger'>No [selected] logfile was found.</span>")
 		return
-	src << browse(F,"window=investigate[selected];size=800x300")
+
+	var/datum/browser/browser = new(usr, "investigate[selected]", "Investigation of [selected]", 800, 300)
+	browser.set_content(rustg_file_read(filepath))
+	browser.open()

@@ -10,7 +10,7 @@
 	icon_living = "evo1"
 	icon_dead = "deadling"
 	icon_state = "evo1"
-	pass_flags = PASSTABLE | PASSMOB | PASSDOOR
+	pass_flags = PASSTABLE | PASSMOB | PASSDOORS
 	mob_size = MOB_SIZE_TINY
 	density = FALSE
 	hud_type = /datum/hud/bloodling
