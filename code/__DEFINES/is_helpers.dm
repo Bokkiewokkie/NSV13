@@ -13,6 +13,18 @@
 
 #define isweakref(D) (istype(D, /datum/weakref))
 
+#define isimage(thing) (istype(thing, /image))
+
+GLOBAL_VAR_INIT(magic_appearance_detecting_image, new /image) // appearances are awful to detect safely, but this seems to be the best way ~ninjanomnom
+#define isappearance(thing) (!isimage(thing) && !ispath(thing) && istype(GLOB.magic_appearance_detecting_image, thing))
+
+// The filters list has the same ref type id as a filter, but isnt one and also isnt a list, so we have to check if the thing has Cut() instead
+GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
+#define isfilter(thing) (!islist(thing) && hascall(thing, "Cut") && TYPEID(thing) == GLOB.refid_filter)
+
+GLOBAL_DATUM_INIT(regex_rgb_text, /regex, regex(@"^#?(([0-9a-fA-F]{8})|([0-9a-fA-F]{6})|([0-9a-fA-F]{3}))$"))
+#define iscolortext(thing) (istext(thing) && GLOB.regex_rgb_text.Find(thing))
+
 // simple check whether or not a player is a guest using their key
 #define IS_GUEST_KEY(key)	(findtextEx(key, "Guest-", 1, 7))
 
