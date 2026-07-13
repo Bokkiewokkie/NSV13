@@ -83,10 +83,7 @@ export class Window extends Component {
         : config.status < UI_INTERACTIVE
     );
     return (
-      <Layout
-        className="Window"
-        theme={theme}
-        style={override_bg ? { 'background-color': `${override_bg} !important` } : null}>
+      <Layout className="Window" theme={theme} backgroundColor={override_bg}>
         <TitleBar
           className="Window__titleBar"
           title={!suspended && (title || decodeHtmlEntities(config.title))}

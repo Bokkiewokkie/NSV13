@@ -144,7 +144,10 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 	</style>\
 	</body>\
 	</html>"
-	usr << browse(dat, "window=lore_console[content.name];size=600x600")
+
+	var/datum/browser/browser = new(usr, "lore_console[content.name]", content.title, 600, 600)
+	browser.set_content(dat)
+	browser.open()
 	playsound(src, pick('nsv13/sound/effects/computer/buzz.ogg','nsv13/sound/effects/computer/buzz2.ogg'), 100, TRUE)
 	in_use = TRUE //Stops you from crashing the server with infinite sounds
 	icon_state = "terminal_scroll"
