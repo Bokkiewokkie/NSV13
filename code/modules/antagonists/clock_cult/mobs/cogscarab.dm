@@ -83,4 +83,3 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	log_game("[key_name(user)] has taken possession of \a [src] in [AREACOORD(src)].")
 	qdel(src)
 
-#undef CLOCKDRONE

@@ -1,49 +1,15 @@
 //client proc to enable and disable fullscreen
 /client/proc/toggle_fullscreen(value)
-	if(src.byond_version <= 515 || src.byond_build <=1630)
-		if(value)
-			// Delete the menu
-			winset(src, "mainwindow", "menu=\"\"")
-			// Switch to the cool status bar
-			winset(src, "mainwindow", "on-status=\".winset \\\"\[\[*]]=\\\"\\\" ? status_bar.text=\[\[*]] status_bar.is-visible=true : status_bar.is-visible=false\\\"\"")
-			winset(src, "status_bar_wide", "is-visible=false")
-			// Switch to fullscreen mode
-			winset(src, "mainwindow","titlebar=false")
-			winset(src, "mainwindow","can-resize=false")
-			// Set it to minimized first because otherwise it doesn't enter fullscreen properly
-			// This line is important, and the game won't properly enter fullscreen mode otherwise
-			winset(src, "mainwindow","is-minimized=true")
-			winset(src, "mainwindow","is-maximized=true")
-			// Set the main window's size
-			winset(src, null, "split.size=mainwindow.size")
-			// Fit the viewport
-			INVOKE_ASYNC(src, TYPE_VERB_REF(/src, fit_viewport))
-		else
-			// Restore the menu
-			winset(src, "mainwindow", "menu=\"menu\"")
-			// Switch to the lame status bar
-			winset(src, "mainwindow", "on-status=\".winset \\\"status_bar_wide.text = \[\[*]]\\\"\"")
-			winset(src, "status_bar", "is-visible=false")
-			winset(src, "status_bar_wide", "is-visible=true")
-			// Exit fullscreen mode
-			winset(src, "mainwindow","titlebar=true")
-			winset(src, "mainwindow","can-resize=true")
-			// Fix the mapsize, turning off statusbar doesn't update scaling
-			INVOKE_ASYNC(src, PROC_REF(fix_mapsize))
+	if(value)
+		winset(src, "mainwindow", "menu=;is-fullscreen=true")
+		winset(src, "status_bar_wide", "is-visible=false")
+		winset(src, "mainwindow", "on-status=\".winset \\\"\[\[*]]=\\\"\\\" ? status_bar.text=\[\[*]] status_bar.is-visible=true : status_bar.is-visible=false\\\"\"")
 	else
-		if(value)
-			winset(src, "mainwindow", "menu=;is-fullscreen=true")
-			winset(src, "status_bar_wide", "is-visible=false")
-			winset(src, "mainwindow", "on-status=\".winset \\\"\[\[*]]=\\\"\\\" ? status_bar.text=\[\[*]] status_bar.is-visible=true : status_bar.is-visible=false\\\"\"")
-		else
-			winset(src, "mainwindow", "menu=\"menu\";is-fullscreen=false")
-			winset(src, "status_bar_wide", "is-visible=true")
-			winset(src, "mainwindow", "on-status=\".winset \\\"status_bar_wide.text = \[\[*]]\\\"\"")
-			winset(src, "status_bar", "is-visible=false")
-		if(src.fully_created)
-			INVOKE_ASYNC(src, TYPE_VERB_REF(/src, fit_viewport))
-		else
-			addtimer(CALLBACK(src, TYPE_VERB_REF(/src, fit_viewport), 1 SECONDS))
+		winset(src, "mainwindow", "menu=\"menu\";is-fullscreen=false")
+		winset(src, "status_bar_wide", "is-visible=true")
+		winset(src, "mainwindow", "on-status=\".winset \\\"status_bar_wide.text = \[\[*]]\\\"\"")
+		winset(src, "status_bar", "is-visible=false")
+	src.attempt_auto_fit_viewport()
 
 /client/proc/fix_mapsize()
 	var/windowsize = winget(src, "split", "size")
