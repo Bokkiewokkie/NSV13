@@ -106,6 +106,11 @@ if grep -n -P '^/*var/' code/**/*.dm; then
     echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
     st=1
 fi;
+if grep "href[\s='\"\\\\]*\?" code/**/*.dm; then
+	echo
+	echo -e "${RED}ERROR: BYOND requires internal href links to begin with \"byond://\".${NC}"
+	st=1
+fi;
 if grep -n -i 'centcomm' code/**/*.dm; then
     echo
     echo -e "${RED}ERROR: Misspelling(s) of CentCom detected in code, please remove the extra M(s).${NC}"

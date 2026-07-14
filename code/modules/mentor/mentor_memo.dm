@@ -82,7 +82,7 @@
 				return
 			var/datum/DBQuery/query_memofind = SSdbcore.NewQuery(
 				"SELECT memotext FROM [format_table_name("mentor_memo")] WHERE ckey = :target_ckey",
-				list("target_ckey" = target_ckey)	
+				list("target_ckey" = target_ckey)
 			)
 			if(!query_memofind.Execute())
 				var/err = query_memofind.ErrorMsg()
@@ -133,7 +133,7 @@
 				var/last_editor = query_memoshow.item[4]
 				output += "<span class='memo'>Mentor memo by <span class='prefix'>[ckey]</span> on [timestamp]"
 				if(last_editor)
-					output += "<br><span class='memoedit'>Last edit by [last_editor] <A href='?_src_=holder;mentormemoeditlist=[ckey];[HrefToken(TRUE)]'>(Click here to see edit log)</A></span>"
+					output += "<br><span class='memoedit'>Last edit by [last_editor] <A href='byond://?_src_=holder;mentormemoeditlist=[ckey];[HrefToken(TRUE)]'>(Click here to see edit log)</A></span>"
 				output += "<br>[memotext]</span><br>"
 			if(!output)
 				to_chat(src, "No memos found in database.")
@@ -162,7 +162,7 @@
 				return
 			var/datum/DBQuery/query_memodel = SSdbcore.NewQuery(
 				"DELETE FROM [format_table_name("mentor_memo")] WHERE ckey = :target_ckey",
-				list("target_ckey" = target_ckey)	
+				list("target_ckey" = target_ckey)
 			)
 			if(!query_memodel.Execute())
 				var/err = query_memodel.ErrorMsg()

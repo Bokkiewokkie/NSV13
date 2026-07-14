@@ -62,9 +62,9 @@
 
 /datum/browser/proc/get_header()
 	var/file
-	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()["common.css"]]'>"
+	head_content += "<link rel='stylesheet' type='text/css' href='byond://[common_asset.get_url_mappings()["common.css"]]'>"
 	for (file in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'>"
+		head_content += "<link rel='stylesheet' type='text/css' href='byond://[SSassets.transport.get_asset_url(file)]'>"
 
 	for (file in scripts)
 		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script>"
@@ -345,11 +345,11 @@
 		var/setting = settings["mainsettings"][name]
 		if (setting["type"] == "datum")
 			if (setting["subtypesonly"])
-				dat += "<b>[setting["desc"]]:</b> <a href='?src=[REF(src)];setting=[name];task=input;subtypesonly=1;type=datum;path=[setting["path"]]'>[setting["value"]]</a><BR>"
+				dat += "<b>[setting["desc"]]:</b> <a href='byond://?src=[REF(src)];setting=[name];task=input;subtypesonly=1;type=datum;path=[setting["path"]]'>[setting["value"]]</a><BR>"
 			else
-				dat += "<b>[setting["desc"]]:</b> <a href='?src=[REF(src)];setting=[name];task=input;type=datum;path=[setting["path"]]'>[setting["value"]]</a><BR>"
+				dat += "<b>[setting["desc"]]:</b> <a href='byond://?src=[REF(src)];setting=[name];task=input;type=datum;path=[setting["path"]]'>[setting["value"]]</a><BR>"
 		else
-			dat += "<b>[setting["desc"]]:</b> <a href='?src=[REF(src)];setting=[name];task=input;type=[setting["type"]]'>[setting["value"]]</a><BR>"
+			dat += "<b>[setting["desc"]]:</b> <a href='byond://?src=[REF(src)];setting=[name];task=input;type=[setting["type"]]'>[setting["value"]]</a><BR>"
 
 	if (preview_icon)
 		dat += "<td valign='center'>"
@@ -360,7 +360,7 @@
 
 	dat += "</tr></table>"
 
-	dat += "<hr><center><a href='?src=[REF(src)];button=1'>Ok</a> "
+	dat += "<hr><center><a href='byond://?src=[REF(src)];button=1'>Ok</a> "
 
 	dat += "</center>"
 
