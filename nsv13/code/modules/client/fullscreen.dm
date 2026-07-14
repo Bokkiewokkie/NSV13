@@ -36,7 +36,7 @@
 			winset(src, "status_bar_wide", "is-visible=false")
 			winset(src, "mainwindow", "on-status=\".winset \\\"\[\[*]]=\\\"\\\" ? status_bar.text=\[\[*]] status_bar.is-visible=true : status_bar.is-visible=false\\\"\"")
 		else
-			winset(client, "mainwindow", "menu=\"menu\";is-fullscreen=false")
+			winset(src, "mainwindow", "menu=\"menu\";is-fullscreen=false")
 			winset(src, "status_bar_wide", "is-visible=true")
 			winset(src, "mainwindow", "on-status=\".winset \\\"status_bar_wide.text = \[\[*]]\\\"\"")
 			winset(src, "status_bar", "is-visible=false")

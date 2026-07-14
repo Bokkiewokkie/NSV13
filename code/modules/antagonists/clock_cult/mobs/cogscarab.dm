@@ -82,3 +82,5 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	message_admins("[ADMIN_LOOKUPFLW(user)] has taken possession of \a [src] in [AREACOORD(src)].")
 	log_game("[key_name(user)] has taken possession of \a [src] in [AREACOORD(src)].")
 	qdel(src)
+
+#undef CLOCKDRONE

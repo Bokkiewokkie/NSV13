@@ -53,7 +53,8 @@
 		browse_messages()
 		return
 
-	var/F = file("[GLOB.log_directory]/[selected].html")
+	var/filepath = "[GLOB.log_directory]/[selected].html"
+	var/F = file(filepath)
 	if(!fexists(F))
 		to_chat(src, "<span class='danger'>No [selected] logfile was found.</span>")
 		return
