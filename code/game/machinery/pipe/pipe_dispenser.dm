@@ -13,7 +13,7 @@
 
 /obj/machinery/pipedispenser/ui_interact(mob/user)
 	. = ..()
-	var/dat = "PIPING LAYER: <A href='byond://?src=[REF(src)];layer_down=1'>--</A><b>[piping_layer]</b><A href='byond://?src=[REF(src)];layer_up=1'>++</A><BR>"
+	var/dat = "<TT>PIPING LAYER: <A href='byond://?src=[REF(src)];layer_down=1'>--</A><b>[piping_layer]</b><A href='byond://?src=[REF(src)];layer_up=1'>++</A><BR>"
 
 	var/recipes = GLOB.atmos_pipe_recipes
 
@@ -25,9 +25,9 @@
 			var/datum/pipe_info/I = i
 			dat += I.Render(src)
 
-		dat += "</ul>"
+		dat += "</ul></TT>"
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=pipedispenser")
+	user << browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
 	onclose(user, "pipedispenser")
 	return
 
@@ -111,7 +111,7 @@
 
 /obj/machinery/pipedispenser/disposal/interact(mob/user)
 
-	var/dat = ""
+	var/dat = "<TT>"
 	var/recipes = GLOB.disposal_pipe_recipes
 
 	for(var/category in recipes)
@@ -122,9 +122,9 @@
 			var/datum/pipe_info/I = i
 			dat += I.Render(src)
 
-		dat += "</ul>"
+		dat += "</ul></TT>"
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=pipedispenser")
+	user << browse(browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
 	return
 
 
@@ -162,7 +162,7 @@
 
 /obj/machinery/pipedispenser/disposal/transit_tube/interact(mob/user)
 
-	var/dat = {"<B>Transit Tubes:</B><BR>
+	var/dat = {"<TT><B>Transit Tubes:</B><BR>
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_STRAIGHT]'>Straight Tube</A><BR>
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_STRAIGHT_CROSSING]'>Straight Tube with Crossing</A><BR>
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_CURVED]'>Curved Tube</A><BR>
@@ -173,9 +173,9 @@
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_STATION]'>Through Tube Station</A><BR>
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_TERMINUS]'>Terminus Tube Station</A><BR>
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_POD]'>Transit Tube Pod</A><BR>
-"}
+</TT>"}
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=pipedispenser")
+	user << browse(browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
 	return
 
 
