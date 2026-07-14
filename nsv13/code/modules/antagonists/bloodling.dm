@@ -492,7 +492,7 @@ Infestation! If given a human, it makes them a changeling thrall. If given any o
 
 /datum/action/bloodling/hide/Grant(mob/living/M)
 	. = ..()
-	M.pass_flags = PASSTABLE | PASSMOB | PASSDOOR //Tiny boi!
+	M.pass_flags = PASSTABLE | PASSMOB | PASSDOORS //Tiny boi!
 	M.mob_size = MOB_SIZE_TINY
 	M.ventcrawler = TRUE
 

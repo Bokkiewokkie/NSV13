@@ -15,11 +15,11 @@ GLOB.runtime_helper["procname"] = _proc;\
 GLOB.runtime_helper["error_type"] = _type;
 
 /// gives us the stack trace from CRASH() without ending the current proc.
-/proc/stack_trace(msg, _file, _line, _proc, _type)
+/proc/_stack_trace(msg, _file, _line, _proc, _type)
 	BUILD_STACK_TRACE_HELPER(msg, _file, _line, _proc, _type)
 	CRASH(msg)
 
-/datum/proc/stack_trace(msg, _file, _line, _proc, _type)
+/datum/proc/_stack_trace(msg, _file, _line, _proc, _type)
 	BUILD_STACK_TRACE_HELPER(msg, _file, _line, _proc, _type)
 	CRASH(msg)
 

@@ -124,7 +124,7 @@
 
 		dat += "</ul></TT>"
 
-	user << browse(browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
+	user << browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
 	return
 
 
@@ -175,7 +175,7 @@
 <A href='byond://?src=[REF(src)];tube=[TRANSIT_TUBE_POD]'>Transit Tube Pod</A><BR>
 </TT>"}
 
-	user << browse(browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
+	user << browse(HTML_SKELETON_TITLE("[src]", dat), "window=pipedispenser")
 	return
 
 

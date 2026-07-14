@@ -1,6 +1,6 @@
-//src proc to enable and disable fullscreen
+//client proc to enable and disable fullscreen
 /client/proc/toggle_fullscreen(value)
-	if(client.byond_version <= 515 || client.byond_build <=1630)
+	if(src.byond_version <= 515 || src.byond_build <=1630)
 		if(value)
 			// Delete the menu
 			winset(src, "mainwindow", "menu=\"\"")
@@ -17,7 +17,7 @@
 			// Set the main window's size
 			winset(src, null, "split.size=mainwindow.size")
 			// Fit the viewport
-			INVOKE_ASYNC(src, TYPE_VERB_REF(/client, fit_viewport))
+			INVOKE_ASYNC(src, TYPE_VERB_REF(/src, fit_viewport))
 		else
 			// Restore the menu
 			winset(src, "mainwindow", "menu=\"menu\"")
@@ -32,18 +32,18 @@
 			INVOKE_ASYNC(src, PROC_REF(fix_mapsize))
 	else
 		if(value)
-			winset(client, "mainwindow", "menu=;is-fullscreen=true")
-			winset(client, "status_bar_wide", "is-visible=false")
-			winset(client, "mainwindow", "on-status=\".winset \\\"\[\[*]]=\\\"\\\" ? status_bar.text=\[\[*]] status_bar.is-visible=true : status_bar.is-visible=false\\\"\"")
+			winset(src, "mainwindow", "menu=;is-fullscreen=true")
+			winset(src, "status_bar_wide", "is-visible=false")
+			winset(src, "mainwindow", "on-status=\".winset \\\"\[\[*]]=\\\"\\\" ? status_bar.text=\[\[*]] status_bar.is-visible=true : status_bar.is-visible=false\\\"\"")
 		else
-			winset(client, "mainwindow", "menu=;is-fullscreen=false")
-			winset(client, "status_bar_wide", "is-visible=true")
-			winset(client, "mainwindow", "on-status=\".winset \\\"status_bar_wide.text = \[\[*]]\\\"\"")
-			winset(client, "status_bar", "is-visible=false")
-		if(client.fully_created)
-			INVOKE_ASYNC(client, TYPE_VERB_REF(/client, fit_viewport))
+			winset(client, "mainwindow", "menu=\"menu\";is-fullscreen=false")
+			winset(src, "status_bar_wide", "is-visible=true")
+			winset(src, "mainwindow", "on-status=\".winset \\\"status_bar_wide.text = \[\[*]]\\\"\"")
+			winset(src, "status_bar", "is-visible=false")
+		if(src.fully_created)
+			INVOKE_ASYNC(src, TYPE_VERB_REF(/src, fit_viewport))
 		else
-			addtimer(CALLBACK(client, TYPE_VERB_REF(/client, fit_viewport), 1 SECONDS))
+			addtimer(CALLBACK(src, TYPE_VERB_REF(/src, fit_viewport), 1 SECONDS))
 
 /client/proc/fix_mapsize()
 	var/windowsize = winget(src, "split", "size")
