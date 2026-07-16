@@ -199,7 +199,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else if(old_group != namedata["group"])
 					old_group = namedata["group"]
 					dat += "<br>"
-				dat += "<a href ='?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [active_character.custom_names[custom_name_id]]</a> "
+				dat += "<a href ='byond://?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [active_character.custom_names[custom_name_id]]</a> "
 			dat += "<br><br>"
 
 			dat += "<b>Custom Job Preferences:</b><BR>"
@@ -222,14 +222,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Species:</b><BR><a href='byond://?_src_=prefs;preference=species;task=input'>[active_character.pref_species.name]</a><BR>"
 
-			dat += "<b>Underwear:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[active_character.underwear]</a><BR>"
+			dat += "<b>Underwear:</b><BR><a href ='byond://?_src_=prefs;preference=underwear;task=input'>[active_character.underwear]</a><BR>"
 			dat += "<b>Underwear Color:</b><BR><span style='border: 1px solid #161616; background-color: #[active_character.underwear_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=underwear_color;task=input'>Change</a><BR>"
-			dat += "<b>Undershirt:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[active_character.undershirt]</a><BR>"
-			dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>"
-			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><BR>"
-			dat += "<b>Jumpsuit:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[active_character.jumpsuit_style]</a><BR>"
-			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[active_character.uplink_spawn_loc == UPLINK_IMPLANT ? UPLINK_IMPLANT_WITH_PRICE : active_character.uplink_spawn_loc]</a><BR>"
-			dat += "<b>Lizard Hiss:</b><BR><a href ='?_src_=prefs;preference=lizard_hiss_style;task=input'>[active_character.lizard_hiss_style]</a><BR></td>" //NSV13
+			dat += "<b>Undershirt:</b><BR><a href ='byond://?_src_=prefs;preference=undershirt;task=input'>[active_character.undershirt]</a><BR>"
+			dat += "<b>Socks:</b><BR><a href ='byond://?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>"
+			dat += "<b>Backpack:</b><BR><a href ='byond://?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><BR>"
+			dat += "<b>Jumpsuit:</b><BR><a href ='byond://?_src_=prefs;preference=suit;task=input'>[active_character.jumpsuit_style]</a><BR>"
+			dat += "<b>Uplink Spawn Location:</b><BR><a href ='byond://?_src_=prefs;preference=uplink_loc;task=input'>[active_character.uplink_spawn_loc == UPLINK_IMPLANT ? UPLINK_IMPLANT_WITH_PRICE : active_character.uplink_spawn_loc]</a><BR>"
+			dat += "<b>Lizard Hiss:</b><BR><a href ='byond://?_src_=prefs;preference=lizard_hiss_style;task=input'>[active_character.lizard_hiss_style]</a><BR></td>" //NSV13
 
 			var/use_skintones = active_character.pref_species.use_skintones
 			if(use_skintones)
@@ -927,14 +927,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<h2>Admin Settings</h2>"
 
 				dat += "<b>Adminhelp Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_adminhelps'>[(toggles & PREFTOGGLE_SOUND_ADMINHELP)?"Enabled":"Disabled"]</a><br>"
-				dat += "<b>Prayer Sounds:</b> <a href = '?_src_=prefs;preference=hear_prayers'>[(toggles & PREFTOGGLE_SOUND_PRAYERS)?"Enabled":"Disabled"]</a><br>"
+				dat += "<b>Prayer Sounds:</b> <a href = 'byond://?_src_=prefs;preference=hear_prayers'>[(toggles & PREFTOGGLE_SOUND_PRAYERS)?"Enabled":"Disabled"]</a><br>"
 				dat += "<b>Announce Login:</b> <a href='byond://?_src_=prefs;preference=announce_login'>[(toggles & PREFTOGGLE_ANNOUNCE_LOGIN)?"Enabled":"Disabled"]</a><br>"
 				dat += "<br>"
-				dat += "<b>Combo HUD Lighting:</b> <a href = '?_src_=prefs;preference=combohud_lighting'>[(toggles & PREFTOGGLE_COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
+				dat += "<b>Combo HUD Lighting:</b> <a href = 'byond://?_src_=prefs;preference=combohud_lighting'>[(toggles & PREFTOGGLE_COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
 				dat += "<br>"
-				dat += "<b>Hide Dead Chat:</b> <a href = '?_src_=prefs;preference=toggle_dead_chat'>[(chat_toggles & CHAT_DEAD)?"Shown":"Hidden"]</a><br>"
-				dat += "<b>Hide Radio Messages:</b> <a href = '?_src_=prefs;preference=toggle_radio_chatter'>[(chat_toggles & CHAT_RADIO)?"Shown":"Hidden"]</a><br>"
-				dat += "<b>Hide Prayers:</b> <a href = '?_src_=prefs;preference=toggle_prayers'>[(chat_toggles & CHAT_PRAYER)?"Shown":"Hidden"]</a><br>"
+				dat += "<b>Hide Dead Chat:</b> <a href = 'byond://?_src_=prefs;preference=toggle_dead_chat'>[(chat_toggles & CHAT_DEAD)?"Shown":"Hidden"]</a><br>"
+				dat += "<b>Hide Radio Messages:</b> <a href = 'byond://?_src_=prefs;preference=toggle_radio_chatter'>[(chat_toggles & CHAT_RADIO)?"Shown":"Hidden"]</a><br>"
+				dat += "<b>Hide Prayers:</b> <a href = 'byond://?_src_=prefs;preference=toggle_prayers'>[(chat_toggles & CHAT_PRAYER)?"Shown":"Hidden"]</a><br>"
 				if(CONFIG_GET(flag/allow_admin_asaycolor))
 					dat += "<br>"
 					dat += "<b>ASAY Color:</b> <span style='border: 1px solid #161616; background-color: [asaycolor ? asaycolor : "#FF4500"];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=asaycolor;task=input'>Change</a><br>"
@@ -944,26 +944,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(CONFIG_GET(flag/auto_deadmin_players))
 					dat += "<b>Always Deadmin:</b> FORCED</a><br>"
 				else
-					dat += "<b>Always Deadmin:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_always'>[(toggles & PREFTOGGLE_DEADMIN_ALWAYS)?"Enabled":"Disabled"]</a><br>"
+					dat += "<b>Always Deadmin:</b> <a href = 'byond://?_src_=prefs;preference=toggle_deadmin_always'>[(toggles & PREFTOGGLE_DEADMIN_ALWAYS)?"Enabled":"Disabled"]</a><br>"
 					if(!(toggles & PREFTOGGLE_DEADMIN_ALWAYS))
 						dat += "<br>"
 						if(!CONFIG_GET(flag/auto_deadmin_antagonists))
-							dat += "<b>As Antag:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_antag'>[(toggles & PREFTOGGLE_DEADMIN_ANTAGONIST)?"Deadmin":"Keep Admin"]</a><br>"
+							dat += "<b>As Antag:</b> <a href = 'byond://?_src_=prefs;preference=toggle_deadmin_antag'>[(toggles & PREFTOGGLE_DEADMIN_ANTAGONIST)?"Deadmin":"Keep Admin"]</a><br>"
 						else
 							dat += "<b>As Antag:</b> FORCED<br>"
 
 						if(!CONFIG_GET(flag/auto_deadmin_heads))
-							dat += "<b>As Command:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_head'>[(toggles & PREFTOGGLE_DEADMIN_POSITION_HEAD)?"Deadmin":"Keep Admin"]</a><br>"
+							dat += "<b>As Command:</b> <a href = 'byond://?_src_=prefs;preference=toggle_deadmin_head'>[(toggles & PREFTOGGLE_DEADMIN_POSITION_HEAD)?"Deadmin":"Keep Admin"]</a><br>"
 						else
 							dat += "<b>As Command:</b> FORCED<br>"
 
 						if(!CONFIG_GET(flag/auto_deadmin_security))
-							dat += "<b>As Security:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_security'>[(toggles & PREFTOGGLE_DEADMIN_POSITION_SECURITY)?"Deadmin":"Keep Admin"]</a><br>"
+							dat += "<b>As Security:</b> <a href = 'byond://?_src_=prefs;preference=toggle_deadmin_security'>[(toggles & PREFTOGGLE_DEADMIN_POSITION_SECURITY)?"Deadmin":"Keep Admin"]</a><br>"
 						else
 							dat += "<b>As Security:</b> FORCED<br>"
 
 						if(!CONFIG_GET(flag/auto_deadmin_silicons))
-							dat += "<b>As Silicon:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_silicon'>[(toggles & PREFTOGGLE_DEADMIN_POSITION_SILICON)?"Deadmin":"Keep Admin"]</a><br>"
+							dat += "<b>As Silicon:</b> <a href = 'byond://?_src_=prefs;preference=toggle_deadmin_silicon'>[(toggles & PREFTOGGLE_DEADMIN_POSITION_SILICON)?"Deadmin":"Keep Admin"]</a><br>"
 						else
 							dat += "<b>As Silicon:</b> FORCED<br>"
 
@@ -1230,12 +1230,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			var/bound_key = user_binds[kb.name]
 			bound_key = (bound_key) ? bound_key : "Unbound"
 
-			HTML += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[url_encode(bound_key)]'>[bound_key] Default: ( [kb.key] )</a>"
+			HTML += "<label>[kb.full_name]</label> <a href ='byond://?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[url_encode(bound_key)]'>[bound_key] Default: ( [kb.key] )</a>"
 			HTML += "<br>"
 
 	HTML += "<br><br>"
-	HTML += "<a href ='?_src_=prefs;preference=keybindings_done'>Close</a>"
-	HTML += "<a href ='?_src_=prefs;preference=keybindings_reset'>Reset to default</a>"
+	HTML += "<a href ='byond://?_src_=prefs;preference=keybindings_done'>Close</a>"
+	HTML += "<a href ='byond://?_src_=prefs;preference=keybindings_reset'>Reset to default</a>"
 	HTML += "</body>"
 
 	winshow(user, "keybindings", TRUE)
