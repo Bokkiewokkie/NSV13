@@ -99,7 +99,8 @@
 	main.Insert(sub, dir = WEST)
 
 	//Mix in GAG color
-	main.Blend(greyscale_colors, ICON_MULTIPLY)
+	if(greyscale_colors) // Blend(null) is a bad icon operation on 516
+		main.Blend(greyscale_colors, ICON_MULTIPLY)
 
 	//Finished
 	monkey_icon = main

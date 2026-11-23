@@ -288,7 +288,8 @@
 	base.Insert(back, dir = NORTH)//Insert faces into the base
 
 	//Mix in GAG color
-	base.Blend(greyscale_colors, ICON_MULTIPLY)
+	if(greyscale_colors) // Blend(null) is a bad icon operation on 516
+		base.Blend(greyscale_colors, ICON_MULTIPLY)
 
 	//Finished!
 	monkey_icon = base
