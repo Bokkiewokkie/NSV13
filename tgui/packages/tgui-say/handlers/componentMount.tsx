@@ -1,9 +1,17 @@
 import { CHANNELS, RADIO_PREFIXES } from '../constants';
-import { windowClose, windowLoad, windowOpen } from '../helpers';
+import { windowClose, windowLoad, windowOpen, windowSet } from '../helpers';
 import { Modal } from '../types';
 
 /** Attach listeners, sets window size just in case */
 export const handleComponentMount = function (this: Modal) {
+  // Only 516 (WebView2) needs window sizes scaled by the skin dpi
+  if (Byond.BLINK) {
+    Byond.winget('tgui_say', 'dpi').then((dpi: number | null) => {
+      this.fields.dpi = dpi || 1;
+      windowSet(this.state.size, this.fields.dpi);
+    });
+  }
+
   Byond.subscribeTo('props', (data) => {
     this.fields.maxLength = data.maxLength;
     this.fields.lightMode = !!data.lightMode;
@@ -22,12 +30,12 @@ export const handleComponentMount = function (this: Modal) {
     setTimeout(() => {
       this.fields.innerRef.current?.focus();
     }, 1);
-    windowOpen(CHANNELS[channel]);
+    windowOpen(CHANNELS[channel], this.fields.dpi);
     const input = this.fields.innerRef.current;
     input?.focus();
   });
   Byond.subscribeTo('close', () => {
-    windowClose();
+    windowClose(this.fields.dpi);
   });
-  windowLoad();
+  windowLoad(this.fields.dpi);
 };
