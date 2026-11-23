@@ -40,6 +40,9 @@
 	if(.)
 		return
 
+	if(!ISINRANGE(params["tab"], TAB_LIBRARY, TAB_PRIVATE))
+		return
+
 	//printer check!
 	var/obj/item/computer_hardware/printer/printer
 	if(computer)

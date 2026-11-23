@@ -14,6 +14,7 @@ ln -s $HOME/libmariadb/libmariadb.so libmariadb.so
 # even though the world is already closed and the result is written to clean_run.lk (515 exited at once).
 # Run it in the background and kill it if it has not exited SHUTDOWN_GRACE seconds after the world shut down.
 SHUTDOWN_GRACE=15
+: > dd_output.log # create it before tail starts
 DreamDaemon nsv13.dmb -close -trusted -verbose -params "log-directory=ci" > dd_output.log 2>&1 &
 DD_PID=$!
 tail -n +1 -f dd_output.log --pid=$DD_PID &

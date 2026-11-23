@@ -8,9 +8,11 @@ on:
       - "html/changelog.html"
     branches:
       - master
+      - '516'
   pull_request:
     branches:
       - master
+      - '516'
 
 jobs:
   run_linters:
