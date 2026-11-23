@@ -8,7 +8,7 @@ export const MAX_VISIBLE_MESSAGES = 2500;
 export const MAX_PERSISTED_MESSAGES = 1000;
 export const MESSAGE_SAVE_INTERVAL = 10000;
 // 516 byondstorage writes one JSON file to disk per save and stalls the
-// client while doing it, so save less, less often (see tgstation#93044).
+// client while doing it, so save less, less often (see tgstation/tgstation#93044).
 export const HUB_STORAGE_MAX_PERSISTED_MESSAGES = 200;
 export const HUB_STORAGE_SAVE_INTERVAL = 60000;
 export const MESSAGE_PRUNE_INTERVAL = 60000;

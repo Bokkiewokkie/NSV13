@@ -4,10 +4,13 @@ import { Modal } from '../types';
 
 /** Attach listeners, sets window size just in case */
 export const handleComponentMount = function (this: Modal) {
-  Byond.winget('tgui_say', 'dpi').then((dpi: number | null) => {
-    this.fields.dpi = dpi || 1;
-    windowSet(this.state.size, this.fields.dpi);
-  });
+  // Only 516 (WebView2) needs window sizes scaled by the skin dpi
+  if (Byond.BLINK) {
+    Byond.winget('tgui_say', 'dpi').then((dpi: number | null) => {
+      this.fields.dpi = dpi || 1;
+      windowSet(this.state.size, this.fields.dpi);
+    });
+  }
 
   Byond.subscribeTo('props', (data) => {
     this.fields.maxLength = data.maxLength;
