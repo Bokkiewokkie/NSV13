@@ -40,6 +40,9 @@
 	if(.)
 		return
 
+	if(!ISINRANGE(params["tab"], TAB_LIBRARY, TAB_PRIVATE))
+		return
+
 	//printer check!
 	var/obj/item/computer_hardware/printer/printer
 	if(computer)
@@ -53,7 +56,7 @@
 	printer.stored_paper -= CANVAS_PAPER_COST
 
 	//canvas printing!
-	var/list/tab2key = list(TAB_LIBRARY = "library", TAB_SECURE = "library_secure", TAB_PRIVATE = "library_private")
+	var/list/tab2key = list(/*TAB_LIBRARY = */"library", /*TAB_SECURE = */"library_secure", /*TAB_PRIVATE = */"library_private")
 	var/folder = tab2key[params["tab"]]
 	var/list/current_list = SSpersistence.paintings[folder]
 	var/list/chosen_portrait = current_list[params["selected"]]
